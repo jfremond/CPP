@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/05/19 21:49:15 by jfremond         ###   ########.fr        #
+#    Updated: 2022/05/19 22:02:31 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RM		=	/bin/rm -rf
 #   FLAGS   #
 #############
 
-CFLAGS	=	-Wall -Wextra -Werror -c
+CFLAGS	=	-Wall -Wextra -Werror -c -g
 CFLAGS	+=	-std=c++98 
 CFLAGS	+=	-MMD -MP
 
