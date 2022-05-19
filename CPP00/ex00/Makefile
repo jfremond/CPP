@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/05/19 15:58:36 by jfremond         ###   ########.fr        #
+#    Updated: 2022/05/19 18:24:16 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ RM		=	/bin/rm -rf
 
 CFLAGS	=	-Wall -Wextra -Werror -c
 CFLAGS	+=	-std=c++98
+CFLAGS	+=	-MMD -MP
 
 ###################
 #   DIRECTORIES   #
@@ -53,6 +54,11 @@ OBJS_L	:=	$(addprefix $(OBJS_D), $(OBJS_L))
 
 OBJS	=	$(OBJS_L)
 
+####################
+#   DEPENDENCIES   #
+####################
+
+DEP		=	$(OBJS:.o=.d)
 
 #############
 #   RULES   #
@@ -63,6 +69,8 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			$(LINK) $(OBJS) $(OUTPUT_OPTION)
 # Pas de cflags quand il y a link 
+
+-include	$(DEP)
 
 $(OBJS_D)%.o:	$(SRCS_L)%.cpp
 				$(MKDIR) $(@D)
