@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/05/19 18:45:37 by jfremond         ###   ########.fr        #
+#    Updated: 2022/05/19 21:49:15 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,6 @@ CFLAGS	+=	-MMD -MP
 OBJS_D	=	objs/
 
 ###############
-#   HEADERS   #
-###############
-
-HEAD_L	=	MyAwesomePhoneBook.hpp	\
-
-###############
 #   SOURCES   #
 ###############
 
@@ -74,13 +68,12 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			$(LINK) $(OBJS) $(OUTPUT_OPTION)
-# Pas de cflags quand il y a link 
 
 -include	$(DEP)
 
 $(OBJS_D)%.o:	$(SRCS_L)%.cpp
 				$(MKDIR) $(@D)
-				$(CC) $(CFLAGS) -I $(HEAD_L) $(OUTPUT_OPTION) $<
+				$(CC) $(CFLAGS) $(OUTPUT_OPTION) $<
 
 clean:
 				$(RM) $(OBJS_D)
