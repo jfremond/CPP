@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/20 13:05:14 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:33:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,27 @@
 int	compare_with_keyword(std::string str)
 {
 	int res;
+	
 	res = -1;
 	int	cmp = str.compare("ADD");
+	std::string	first_name;
+	std::string	last_name;
+	std::string	nickname;
+	std::string	phone_number;
+	std::string	darkest_secret;
 	if (cmp == 0)
 	{
-		std::string	test;
-		std::cout << "Enter test" << std::endl;
-		std::cin >> test;
-		Contact	test2(test, test, test, test, test);
+		std::cout << "First name : " << std::endl;
+		std::cin >> first_name;
+		std::cout << "Last name : " << std::endl;
+		std::cin >> last_name;
+		std::cout << "Nickname : " << std::endl;
+		std::cin >> nickname;
+		std::cout << "Phone number : " << std::endl;
+		std::cin >> phone_number;
+		std::cout << "Darkest secret :" << std::endl;
+		std::cin >> darkest_secret;
+		Contact	test2(first_name, last_name, nickname, phone_number, darkest_secret);
 		std::cout << "Bye" << std::endl;
 		res = 0;
 	}
