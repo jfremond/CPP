@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/20 10:37:11 by jfremond         ###   ########.fr       */
+/*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
+/*   Updated: 2022/05/20 10:36:11 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-PhoneBook::PhoneBook(void)
+Contact::Contact(void)
 {
-	std::cout << "PhoneBook constructor called" << std::endl;
+	std::cout << "Contact constructor called" << std::endl;
 }
 
-PhoneBook::~PhoneBook(void)
+Contact::~Contact(void)
 {
-	std::cout << "PhoneBook destructor called" << std::endl;
+	std::cout << "Contact destructor called" << std::endl;
 }

@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/05/20 10:30:28 by jfremond         ###   ########.fr        #
+#    Updated: 2022/05/20 10:40:27 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ OBJS_D	=	objs/
 ###############
 
 SRCS_L	=	PhoneBook.cpp	\
+			Contact.cpp		\
+			main.cpp
 
 ###############
 #   OBJECTS   #
@@ -71,7 +73,7 @@ $(NAME):	$(OBJS)
 
 -include	$(DEP)
 
-$(OBJS_D)%.o:	$(SRCS_L)%.cpp
+$(OBJS_D)%.o:	%.cpp
 				$(MKDIR) $(@D)
 				$(CC) $(CFLAGS) $(OUTPUT_OPTION) $<
 
