@@ -13,10 +13,13 @@
 #ifndef MYAWESOMEPHONEBOOK_HPP
 #define MYAWESOMEPHONEBOOK_HPP
 
+#include "Contact.hpp"
 #include <iostream>
 
 class PhoneBook
 {
+	private:
+//		int	contact[8];
 	public:	
 		PhoneBook(void);
 		~PhoneBook(void);	
