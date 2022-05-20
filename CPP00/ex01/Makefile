@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/05/19 22:02:31 by jfremond         ###   ########.fr        #
+#    Updated: 2022/05/20 10:30:28 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS_L	=	MyAwesomePhoneBook.cpp	\
+SRCS_L	=	PhoneBook.cpp	\
 
 ###############
 #   OBJECTS   #
