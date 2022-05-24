@@ -19,11 +19,14 @@
 class PhoneBook
 {
 	private:
-		// int	contact[8];
-	public:	
+		Contact	contacts[8];
+		int		nb_contacts;
+	public:
+		// Constructor and desctructor
 		PhoneBook(void);
-		// PhoneBook(int contact[8]);
-		~PhoneBook(void);	
+		~PhoneBook(void);
+		// Functions
+		
 };
 
 #endif
