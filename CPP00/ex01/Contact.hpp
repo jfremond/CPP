@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/24 18:04:49 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:27:12 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Contact
 		std::string	darkest_secret;
 	public:
 		Contact(void);
-		Contact(std::string name);
 		// Setters
 		void	setFirstName(std::string f_name)
 		{

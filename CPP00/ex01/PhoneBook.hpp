@@ -19,10 +19,10 @@
 class PhoneBook
 {
 	private:
-		int	contact[8];
+		// int	contact[8];
 	public:	
 		PhoneBook(void);
-		PhoneBook(int contact[8]);
+		// PhoneBook(int contact[8]);
 		~PhoneBook(void);	
 };
 

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/24 19:16:38 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:29:07 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@
 Contact	store_new_contact(Contact contact)
 {
 	std::string add;
-			
+
+	std::cout << "Enter first name : " << std::endl;
 	getline(std::cin, add);
 	contact.setFirstName(add);
+	std::cout << "Enter last name : " << std::endl;
 	getline(std::cin, add);
 	contact.setLastName(add);
+	std::cout << "Enter nickname : " << std::endl;
 	getline(std::cin, add);
 	contact.setNickname(add);
+	std::cout << "Enter phone number : " << std::endl;
 	getline(std::cin, add);
 	contact.setPhoneNumber(add);
+	std::cout << "Enter darkest secret : " << std::endl;
 	getline(std::cin, add);
 	contact.setDarkestSecret(add);
 	return (contact);
@@ -54,6 +59,8 @@ int	main(void)
 			std::cout << "bye" << std::endl;	
 			break;
 		}
+		std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
+		std::cout << "and EXIT to exit the program" << std::endl;
 	}
 	return (0);
 }
