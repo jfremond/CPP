@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 11:22:48 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 12:59:26 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ Contact::Contact(void)
 	// std::cout << "Contact constructor called" << std::endl;
 }
 
-int	Contact::setInfos(int index)
+int	Contact::setInfos(int num_contact)
 {
-	this->index = index;
+	this->num_contact = num_contact;
 	std::cout << "First name : " << std::endl;
 	getline(std::cin, first_name);
 	size_t len = 0;

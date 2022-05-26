@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 11:27:49 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 12:59:26 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Contact
 {
 	private:
-		int			index;
+		int			num_contact;
 		std::string	first_name;
 		std::string	last_name;
 		std::string	nickname;
@@ -76,7 +76,7 @@ class Contact
 			std::cout << "Darkest secret : " << darkest_secret << std::endl;
 		}
 		Contact(void);
-		int	setInfos(int index);
+		int	setInfos(int num_contact);
 		~Contact(void);
 };
 

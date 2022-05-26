@@ -21,11 +21,13 @@ class PhoneBook
 	private:
 		Contact	contacts[8];
 		int		nb_contacts;
+		int		oldest;
 	public:
 		// Constructor and desctructor
 		PhoneBook(void);
-		void addContact(void);
 		~PhoneBook(void);
+		void 	addContact(void);
+		void	showContacts(void);
 		// Functions
 		
 };

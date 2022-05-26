@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 11:33:34 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:00:27 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	main(void)
 		//	contact.setInfos(i);
 		//	contact = store_new_contact(contact);
 		//	contact.display();
+		}
+		if (input == "SEARCH")
+		{
+			book.showContacts();
 		}
 		if (input != "ADD" && input != "SEARCH" && input != "EXIT")
 		{
