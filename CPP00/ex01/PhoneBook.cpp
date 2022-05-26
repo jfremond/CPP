@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 20:36:14 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:32:26 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ void PhoneBook::addContact(void)
 		if (!this->contacts[this->nb_contacts].setInfos(this->nb_contacts + 1))
 			this->nb_contacts++;	
 	}
+}
+
+int	check_if_digit(std::string str)
+{
+	for (size_t i= 0; i < str.length(); i++)
+	{
+		if (!isdigit(str[i]))
+			return (1);
+	}
+	return (0);
 }
 
 void PhoneBook::showContacts(void)
@@ -73,8 +83,20 @@ void PhoneBook::showContacts(void)
 		std::cout << "|";
 		std::cout << std::endl;
 	}
-		//TODO Function that displays entry based on index
-		this->contacts[index].display();
+	std::cout << "---------------------------------------------" << std::endl;
+	std::string contact;
+	std::cout << "Index search : ";
+	getline(std::cin, contact);
+	if (!check_if_digit(contact))
+	{		
+		std::istringstream(contact) >> index; // Change ma string en int
+		if (index <= 0 || index > this->nb_contacts)
+			std::cout << "Index out of range" << std::endl;
+		else
+			this->contacts[index - 1].display();
+	}
+	else
+		std::cout << "Index is not valid" << std::endl;
 	return ;
 }
 

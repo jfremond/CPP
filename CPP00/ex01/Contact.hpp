@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 20:31:21 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 22:43:30 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define CONTACT_HPP
 
 #include <iostream>
+#include <iomanip>
+#include <string>
+#include <sstream>
 
 class Contact
 {
