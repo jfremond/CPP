@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 15:03:43 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 20:34:27 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ int	Contact::setInfos(int num_contact)
 	return (0);
 }
 
+void	Contact::display()
+{
+	std::cout << "Number :" << this->num_contact << std::endl;
+	std::cout << "First name : " << this->first_name << std::endl;
+	std::cout << "Last name : " << this->last_name << std::endl;
+	std::cout << "Nickname : " << this->nickname << std::endl;
+	std::cout << "Phone number : " << this->phone_number << std::endl;
+	std::cout << "Darkest secret : " << this->darkest_secret << std::endl;
+}
 
 Contact::~Contact(void)
 {

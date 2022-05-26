@@ -6,12 +6,22 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 16:08:31 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:21:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+
+std::string	get_input()
+{
+	std::string	input;
+	
+	std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
+	std::cout << "and EXIT to exit the program" << std::endl;
+	getline(std::cin, input);
+	return (input);
+}
 
 int	main(void)
 {
@@ -21,21 +31,23 @@ int	main(void)
 	int			loop = 1;
 	
 	std::cout << "Welcome to MyAwesomePhoneBook !" << std::endl;
-	std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
-	std::cout << "and EXIT to exit the program" << std::endl;
-	getline(std::cin, input);
+	input = get_input();
 	while (loop)
 	{
+		if (input == "ADD")
+		{
+			book.addContact();
+			input = get_input();
+		}
+		if (input == "SEARCH")
+		{
+			book.showContacts();
+			input = get_input();
+		}
 		if (!std::cin.eof() && input != "ADD" && input != "SEARCH" && input != "EXIT")
 		{
-			std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
-			std::cout << "and EXIT to exit the program" << std::endl;
-			getline(std::cin, input);
+			input = get_input();
 		}
-		if (input == "ADD")
-			book.addContact();
-		if (input == "SEARCH")
-			book.showContacts();
 		if (std::cin.eof() || input == "EXIT")
 		{
 			std::cout << "Thanks for using MyAwesomePhonebook !" << std::endl;
