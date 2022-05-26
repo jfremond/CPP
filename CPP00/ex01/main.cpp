@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/24 19:29:07 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 11:33:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,37 @@ Contact	store_new_contact(Contact contact)
 
 int	main(void)
 {
-	PhoneBook	contacts[8];
+	PhoneBook	book;
 	Contact	contact;
 	std::string input;
 	
 	std::cout << "Welcome to MyAwesomePhoneBook !" << std::endl;
 	std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
 	std::cout << "and EXIT to exit the program" << std::endl;
-	while (1)
+	getline(std::cin, input);
+	while (input != "EXIT")
 	{
-		getline(std::cin, input);
 		if (input == "ADD")
 		{
-			contact = store_new_contact(contact);
-			contact.display();
+		//	int i = 0;
+			book.addContact();
+		//	contact.setInfos(i);
+		//	contact = store_new_contact(contact);
+		//	contact.display();
 		}
 		if (input != "ADD" && input != "SEARCH" && input != "EXIT")
-			input = "EXIT";
-		if (input == "EXIT")
 		{
-			std::cout << "bye" << std::endl;	
-			break;
+			input = "EXIT";
+			break ;
 		}
 		std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
 		std::cout << "and EXIT to exit the program" << std::endl;
+		getline(std::cin, input);
+	}
+	if (input == "EXIT")
+	{
+		std::cout << "Thanks for using MyAwesomePhonebook !" << std::endl;
+		std::cout << "See you around ! :)" << std::endl;	
 	}
 	return (0);
 }

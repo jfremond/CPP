@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/24 22:02:15 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 11:22:48 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ Contact::Contact(void)
 		this->darkest_secret = std::string();
 	}
 	// std::cout << "Contact constructor called" << std::endl;
+}
+
+int	Contact::setInfos(int index)
+{
+	this->index = index;
+	std::cout << "First name : " << std::endl;
+	getline(std::cin, first_name);
+	size_t len = 0;
+	len = first_name.length();
+	if (len == 0)
+	{
+		std::cout << "Empty contact not added" << std::endl;
+		return (1);
+	}
+	std::cout << "First name added !" << std::endl;
+	return (0);
 }
 
 
