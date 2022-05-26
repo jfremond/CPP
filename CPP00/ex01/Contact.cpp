@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 12:59:26 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:03:43 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,51 @@ Contact::Contact(void)
 		this->phone_number = std::string();
 		this->darkest_secret = std::string();
 	}
-	// std::cout << "Contact constructor called" << std::endl;
+}
+
+std::string	checkInfos(int index)
+{
+	std::string	str;
+	std::string fields[5] =
+	{
+		"First name :",
+		"Last name :",
+		"Nickname :",
+		"Phone number :",
+		"Darkest secret :"	
+	};
+	std::cout << fields[index] << std::endl;
+	getline(std::cin, str);
+	size_t len = 0;
+	len = str.length();
+	if (len == 0)
+		std::cout << "Empty contact not added" << std::endl;
+	return (str);
 }
 
 int	Contact::setInfos(int num_contact)
 {
 	this->num_contact = num_contact;
-	std::cout << "First name : " << std::endl;
-	getline(std::cin, first_name);
-	size_t len = 0;
-	len = first_name.length();
-	if (len == 0)
-	{
-		std::cout << "Empty contact not added" << std::endl;
+	first_name = checkInfos(0);
+	if (first_name.empty())
 		return (1);
-	}
-	std::cout << "First name added !" << std::endl;
+	last_name = checkInfos(1);
+	if (last_name.empty())
+		return (1);
+	nickname = checkInfos(2);
+	if (nickname.empty())
+		return (1);
+	phone_number = checkInfos(3);
+	if (phone_number.empty())
+		return (1);
+	darkest_secret = checkInfos(4);
+	if (darkest_secret.empty())
+		return (1);
+	std::cout << "Contact added !" << std::endl;
 	return (0);
 }
 
 
 Contact::~Contact(void)
 {
-	// std::cout << "Contact destructor called" << std::endl;
 }
