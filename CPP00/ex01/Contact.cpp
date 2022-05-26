@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 23:31:06 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:55:53 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 Contact::Contact(void)
 {
-	for (int i = 0; i < 4; i++)
-	{
-		this->first_name = std::string();
-		this->last_name = std::string();
-		this->nickname = std::string();
-		this->phone_number = std::string();
-		this->darkest_secret = std::string();
-	}
+	this->first_name = std::string();
+	this->last_name = std::string();
+	this->nickname = std::string();
+	this->phone_number = std::string();
+	this->darkest_secret = std::string();
 }
 
 std::string	checkInfos(int index)
@@ -29,13 +26,13 @@ std::string	checkInfos(int index)
 	std::string	str;
 	std::string fields[5] =
 	{
-		"First name :",
-		"Last name :",
-		"Nickname :",
-		"Phone number :",
-		"Darkest secret :"	
+		"First name : ",
+		"Last name : ",
+		"Nickname : ",
+		"Phone number : ",
+		"Darkest secret : "	
 	};
-	std::cout << fields[index] << std::endl;
+	std::cout << fields[index];
 	getline(std::cin, str);
 	size_t len = 0;
 	len = str.length();

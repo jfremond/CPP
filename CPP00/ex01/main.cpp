@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 19:21:34 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:40:50 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ std::string	get_input()
 int	main(void)
 {
 	PhoneBook	book;
-	Contact		contact;
 	std::string input;
 	int			loop = 1;
 	

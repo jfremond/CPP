@@ -28,9 +28,9 @@ class PhoneBook
 		// Constructor and desctructor
 		PhoneBook(void);
 		~PhoneBook(void);
+		// Functions
 		void 	addContact(void);
 		void	showContacts(void);
-		// Functions
 		
 };
 

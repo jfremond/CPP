@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 23:32:26 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:59:58 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void PhoneBook::addContact(void)
 
 int	check_if_digit(std::string str)
 {
-	for (size_t i= 0; i < str.length(); i++)
+	for (size_t i = 0; i < str.length(); i++)
 	{
 		if (!isdigit(str[i]))
 			return (1);
