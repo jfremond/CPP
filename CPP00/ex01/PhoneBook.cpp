@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 23:59:58 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:12:30 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	check_if_digit(std::string str)
 void PhoneBook::showContacts(void)
 {
 	int index = 0;
+	//TODO Create new subfunction here
 	std::string fields[4] = 
 	{
 		"\033[34mIndex\033[0m",
@@ -61,6 +62,7 @@ void PhoneBook::showContacts(void)
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << "|     " << fields[0] << "|" << fields[1] << "| " << fields[2] << "|  " << fields[3] << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
+	//TODO create new subfunction here
 	for (int i = 0; i < this->nb_contacts; i++)
 	{
 		std::cout << "|";
@@ -84,6 +86,7 @@ void PhoneBook::showContacts(void)
 		std::cout << std::endl;
 	}
 	std::cout << "---------------------------------------------" << std::endl;
+	//TODO Create new subfunction here
 	std::string contact;
 	std::cout << "Index search : ";
 	getline(std::cin, contact);

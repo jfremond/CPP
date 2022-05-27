@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 23:55:53 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:10:00 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ std::string	checkInfos(int index)
 	size_t len = 0;
 	len = str.length();
 	if (len == 0)
-		std::cout << "Empty contact not added" << std::endl;
+		std::cout << "\033[36mEmpty contact not added !\033[m" << std::endl;
 	return (str);
 }
 
@@ -59,7 +59,7 @@ int	Contact::setInfos(int num_contact)
 	darkest_secret = checkInfos(4);
 	if (darkest_secret.empty())
 		return (1);
-	std::cout << "Contact added !" << std::endl;
+	std::cout << "\033[32mContact added !\033[0m" << std::endl << std::endl;
 	return (0);
 }
 

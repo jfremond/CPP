@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 23:40:50 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:08:06 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ std::string	get_input()
 	return (input);
 }
 
+void	goodbye_message()
+{
+	std::cout << "Thanks for using MyAwesomePhonebook !" << std::endl;
+	std::cout << "See you around ! :)" << std::endl;
+}
+
 int	main(void)
 {
 	PhoneBook	book;
@@ -34,24 +40,19 @@ int	main(void)
 	while (loop)
 	{
 		if (input == "ADD")
-		{
 			book.addContact();
-			input = get_input();
-		}
 		if (input == "SEARCH")
-		{
 			book.showContacts();
-			input = get_input();
-		}
-		if (!std::cin.eof() && input != "ADD" && input != "SEARCH" && input != "EXIT")
-		{
-			input = get_input();
-		}
 		if (std::cin.eof() || input == "EXIT")
 		{
-			std::cout << "Thanks for using MyAwesomePhonebook !" << std::endl;
-			std::cout << "See you around ! :)" << std::endl;	
+			goodbye_message();
 			loop = 0;
+		}
+		else
+		{
+			if (!std::cin.eof() && input != "EXIT" && input != "SEARCH" && input != "ADD")
+				std::cout << "\033[31mWrong command entered...\033[0m" << std::endl;
+			input = get_input();
 		}
 	}
 	return (0);
