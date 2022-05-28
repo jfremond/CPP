@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/27 17:10:00 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/28 10:42:27 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 Contact::Contact(void)
 {
+	this->num_contact = 0;
 	this->first_name = std::string();
 	this->last_name = std::string();
 	this->nickname = std::string();
 	this->phone_number = std::string();
 	this->darkest_secret = std::string();
+	return ;
 }
 
 std::string	checkInfos(int index)
@@ -71,6 +73,7 @@ void	Contact::display()
 	std::cout << std::setw(27) << std::left << "\033[33mNickname : \033[0m" << this->nickname << std::endl;
 	std::cout << std::setw(27) << std::left << "\033[33mPhone number : \033[0m" << this->phone_number << std::endl;
 	std::cout << std::setw(27) << std::left << "\033[33mDarkest secret : \033[0m" << this->darkest_secret << std::endl;
+	return ;
 }
 
 Contact::~Contact(void)

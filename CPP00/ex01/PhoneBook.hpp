@@ -30,8 +30,10 @@ class PhoneBook
 		~PhoneBook(void);
 		// Functions
 		void 	addContact(void);
+		int		displayHeader(void);
+		void	displayContactsInTab(void);
+		void	displayContactByIndex(void);
 		void	showContacts(void);
-		
 };
 
 #endif
