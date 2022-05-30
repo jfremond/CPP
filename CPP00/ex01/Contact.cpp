@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/28 10:42:27 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:13:25 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,72 @@ Contact::Contact(void)
 	return ;
 }
 
+Contact::~Contact(void)
+{
+}
+
+// Setters
+void		Contact::setFirstName(std::string val)
+{
+	this->first_name = val;
+}
+
+void		Contact::setLastName(std::string val)
+{
+	this->last_name = val;
+}
+
+void		Contact::setNickname(std::string val)
+{
+	this->nickname = val;
+}
+
+void		Contact::setPhoneNumber(std::string val)
+{
+	this->phone_number = val;
+}
+
+void		Contact::setDarkestSecret(std::string val)
+{
+	this->darkest_secret = val;
+}
+
+// Getters
+std::string Contact::getFirstName(void)
+{
+	return (this->first_name);
+}
+
+std::string Contact::getLastName(void)
+{
+	return (this->last_name);
+}
+
+std::string Contact::getNickname(void)
+{
+	return (this->nickname);
+}
+
+std::string Contact::getPhoneNumber(void)
+{
+	return (this->phone_number);
+}
+
+std::string Contact::getDarkestSecret(void)
+{
+	return (this->darkest_secret);	
+}
+
+static int	check_if_digit(std::string str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (!isdigit(str[i]))
+			return (1);
+	}
+	return (0);
+}
+
 std::string	checkInfos(int index)
 {
 	std::string	str;
@@ -36,9 +102,17 @@ std::string	checkInfos(int index)
 	};
 	std::cout << fields[index];
 	getline(std::cin, str);
-	size_t len = 0;
-	len = str.length();
-	if (len == 0)
+	if (index == 3)
+	{
+		while (check_if_digit(str))
+		{
+			std::cout << "\033[36mPhone number is not well formatted...\033[m" << std::endl;
+			std::cout << fields[index];
+			getline(std::cin, str);
+		}
+	}	
+	size_t len = str.length();
+	if (len == 0 || std::cin.eof())
 		std::cout << "\033[36mEmpty contact not added !\033[m" << std::endl;
 	return (str);
 }
@@ -76,6 +150,3 @@ void	Contact::display()
 	return ;
 }
 
-Contact::~Contact(void)
-{
-}

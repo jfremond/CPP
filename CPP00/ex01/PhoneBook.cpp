@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/28 10:43:57 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:58:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ PhoneBook::PhoneBook(void)
 	}
 }
 
+PhoneBook::~PhoneBook(void)
+{
+}
+
 void	PhoneBook::addContact(void)
 {
 	if (this->nb_contacts == 8)
@@ -43,7 +47,7 @@ void	PhoneBook::addContact(void)
 	return ;
 }
 
-int	check_if_digit(std::string str)
+static int	check_if_digit(std::string str)
 {
 	for (size_t i = 0; i < str.length(); i++)
 	{
@@ -131,6 +135,3 @@ void PhoneBook::showContacts(void)
 	return ;
 }
 
-PhoneBook::~PhoneBook(void)
-{
-}

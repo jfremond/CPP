@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/28 10:42:10 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:52:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,23 @@ class Contact
 		std::string	phone_number;
 		std::string	darkest_secret;
 	public:
-		// Getters
-		std::string getFirstName(void)
-		{
-			return first_name;
-		}
-		std::string getLastName(void)
-		{
-			return last_name;
-		}
-		std::string getNickname(void)
-		{
-			return nickname;
-		}
-		std::string getPhoneNumber(void)
-		{
-			return phone_number;
-		}
-		std::string getDarkestSecret(void)
-		{
-			return darkest_secret;
-		}
+		// Constructor and destructor
 		Contact(void);
 		~Contact(void);
-		void	display(void);
-		int	setInfos(int num_contact);
+		// Setters and getters
+		void		setFirstName(std::string);
+		void		setLastName(std::string);
+		void		setNickname(std::string);
+		void		setPhoneNumber(std::string);
+		void		setDarkestSecret(std::string);
+		std::string getFirstName(void);
+		std::string getLastName(void);
+		std::string getNickname(void);
+		std::string getPhoneNumber(void);
+		std::string getDarkestSecret(void);
+		// Functions
+		void		display(void);
+		int			setInfos(int num_contact);
 };
 
 #endif
