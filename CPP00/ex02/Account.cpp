@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:39:45 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/30 15:05:29 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:10:54 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ Account::Account(void)
 	return ;
 }
 
-Account::Account(int initial_deposit)
+Account::Account(int initial_deposit) : _amount(initial_deposit)
 {
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
 	this->_accountIndex = Account::_nbAccounts++;
-	this->_amount = initial_deposit;
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";"
 		<< "amount:" << this->_amount << ";"
