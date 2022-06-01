@@ -21,13 +21,13 @@
 class PhoneBook
 {
 	private:
-		Contact	contacts[8];
+		Contact	_contacts[8];
 		int		_nb_contacts;
 		int		_oldest;
 		// Functions
-		int		displayHeader(void) const;
-		void	displayContactsInTab(void) const;
-		void	displayContactByIndex(void) const;
+		int		_displayHeader(void) const;
+		void	_displayContactsInTab(void) const;
+		void	_displayContactByIndex(void) const;
 	public:
 		// Constructor and desctructor
 		PhoneBook(void);

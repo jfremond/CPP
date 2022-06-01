@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 20:00:50 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:07:29 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	PhoneBook::addContact(void)
 {
 	if (this->_nb_contacts == 8)
 	{
-		if (!this->contacts[this->_oldest].setInfos(this->_nb_contacts + 1))
+		if (!this->_contacts[this->_oldest].setInfos(this->_nb_contacts + 1))
 			this->_oldest++;
 		if (this->_oldest == 8)
 			this->_oldest = 0;
 	}
 	else
 	{
-		if (!this->contacts[this->_nb_contacts].setInfos(this->_nb_contacts + 1))
+		if (!this->_contacts[this->_nb_contacts].setInfos(this->_nb_contacts + 1))
 			this->_nb_contacts++;	
 	}
 	return ;
@@ -48,7 +48,7 @@ static int	check_if_digit(std::string str)
 	return (0);
 }
 
-int	PhoneBook::displayHeader(void) const
+int	PhoneBook::_displayHeader(void) const
 {
 	std::string fields[4] = 
 	{
@@ -69,27 +69,27 @@ int	PhoneBook::displayHeader(void) const
 	return (0);
 }
 
-void PhoneBook::displayContactsInTab(void) const
+void PhoneBook::_displayContactsInTab(void) const
 {
 	for (int i = 0; i < this->_nb_contacts; i++)
 	{
 		std::cout << "|";
 		std::cout << std::setw(10) << i + 1;
 		std::cout << "|";
-		if (this->contacts[i].getFirstName().length() > 10)
-			std::cout << this->contacts[i].getFirstName().substr(0, 9) << ".";
+		if (this->_contacts[i].getFirstName().length() > 10)
+			std::cout << this->_contacts[i].getFirstName().substr(0, 9) << ".";
 		else
-			std::cout << std::setw(10) << this->contacts[i].getFirstName();
+			std::cout << std::setw(10) << this->_contacts[i].getFirstName();
 		std::cout << "|";
-		if (this->contacts[i].getLastName().length() > 10)
-			std::cout << this->contacts[i].getLastName().substr(0, 9) << ".";
+		if (this->_contacts[i].getLastName().length() > 10)
+			std::cout << this->_contacts[i].getLastName().substr(0, 9) << ".";
 		else
-			std::cout << std::setw(10) << this->contacts[i].getLastName();
+			std::cout << std::setw(10) << this->_contacts[i].getLastName();
 		std::cout << "|";
-		if (this->contacts[i].getNickname().length() > 10)
-			std::cout << this->contacts[i].getNickname().substr(0, 9) << ".";
+		if (this->_contacts[i].getNickname().length() > 10)
+			std::cout << this->_contacts[i].getNickname().substr(0, 9) << ".";
 		else
-			std::cout << std::setw(10) << this->contacts[i].getNickname();
+			std::cout << std::setw(10) << this->_contacts[i].getNickname();
 		std::cout << "|";
 		std::cout << std::endl;
 	}
@@ -97,7 +97,7 @@ void PhoneBook::displayContactsInTab(void) const
 	return ;
 }
 
-void	PhoneBook::displayContactByIndex(void) const
+void	PhoneBook::_displayContactByIndex(void) const
 {
 	int index = 0;
 	std::string contact;
@@ -109,7 +109,7 @@ void	PhoneBook::displayContactByIndex(void) const
 		if (index <= 0 || index > this->_nb_contacts)
 			std::cout << "\033[31mIndex out of range\033[0m" << std::endl << std::endl;
 		else
-			this->contacts[index - 1].display();
+			this->_contacts[index - 1].display();
 	}
 	else
 		std::cout << "\033[31mIndex is not valid\033[0m" << std::endl << std::endl;
@@ -118,10 +118,10 @@ void	PhoneBook::displayContactByIndex(void) const
 
 void PhoneBook::showContacts(void) const
 {
-	if (!displayHeader())
+	if (!_displayHeader())
 	{	
-		displayContactsInTab();
-		displayContactByIndex();	
+		_displayContactsInTab();
+		_displayContactByIndex();	
 	}
 	return ;
 }
