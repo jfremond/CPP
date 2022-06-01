@@ -6,20 +6,15 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 17:40:06 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:55:31 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(void)
+Contact::Contact(void) : num_contact(0), first_name(std::string()), last_name(std::string()),
+		nickname(std::string()), phone_number(std::string()), darkest_secret(std::string())
 {
-	this->num_contact = 0;
-	this->first_name = std::string();
-	this->last_name = std::string();
-	this->nickname = std::string();
-	this->phone_number = std::string();
-	this->darkest_secret = std::string();
 	return ;
 }
 

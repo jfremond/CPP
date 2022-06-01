@@ -6,24 +6,15 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 17:43:17 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:55:25 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) : nb_contacts(0), oldest(0)
 {
-	this->nb_contacts = 0;
-	this->oldest = 0;
-	for (int i = 0; i < 7; i++)
-	{
-		this->contacts[i].getFirstName() = std::string();
-		this->contacts[i].getLastName() = std::string();
-		this->contacts[i].getNickname() = std::string();
-		this->contacts[i].getPhoneNumber() = std::string();
-		this->contacts[i].getDarkestSecret() = std::string();
-	}
+	return ;
 }
 
 PhoneBook::~PhoneBook(void)
