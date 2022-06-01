@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 17:27:43 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 19:58:46 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 class Contact
 {
 	private:
-		int			num_contact;
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	darkest_secret;
+		int			_num_contact;
+		std::string	_first_name;
+		std::string	_last_name;
+		std::string	_nickname;
+		std::string	_phone_number;
+		std::string	_darkest_secret;
 	public:
 		// Constructor and destructor
 		Contact(void);
@@ -39,7 +39,7 @@ class Contact
 		std::string getDarkestSecret(void) const;
 		// Functions
 		void		display(void) const;
-		int			setInfos(int num_contact);
+		int			setInfos(int _num_contact);
 };
 
 #endif

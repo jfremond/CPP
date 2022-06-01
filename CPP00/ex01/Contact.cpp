@@ -6,14 +6,14 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 17:55:31 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:00:42 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(void) : num_contact(0), first_name(std::string()), last_name(std::string()),
-		nickname(std::string()), phone_number(std::string()), darkest_secret(std::string())
+Contact::Contact(void) : _num_contact(0), _first_name(std::string()), _last_name(std::string()),
+		_nickname(std::string()), _phone_number(std::string()), _darkest_secret(std::string())
 {
 	return ;
 }
@@ -25,27 +25,27 @@ Contact::~Contact(void)
 // Getters
 std::string Contact::getFirstName(void) const
 {
-	return (this->first_name);
+	return (this->_first_name);
 }
 
 std::string Contact::getLastName(void) const
 {
-	return (this->last_name);
+	return (this->_last_name);
 }
 
 std::string Contact::getNickname(void) const
 {
-	return (this->nickname);
+	return (this->_nickname);
 }
 
 std::string Contact::getPhoneNumber(void) const
 {
-	return (this->phone_number);
+	return (this->_phone_number);
 }
 
 std::string Contact::getDarkestSecret(void) const
 {
-	return (this->darkest_secret);	
+	return (this->_darkest_secret);	
 }
 
 static int	check_if_digit(std::string str)
@@ -86,23 +86,23 @@ std::string	checkInfos(int index)
 	return (str);
 }
 
-int	Contact::setInfos(int num_contact)
+int	Contact::setInfos(int _num_contact)
 {
-	this->num_contact = num_contact;
-	first_name = checkInfos(0);
-	if (first_name.empty())
+	this->_num_contact = _num_contact;
+	_first_name = checkInfos(0);
+	if (_first_name.empty())
 		return (1);
-	last_name = checkInfos(1);
-	if (last_name.empty())
+	_last_name = checkInfos(1);
+	if (_last_name.empty())
 		return (1);
-	nickname = checkInfos(2);
-	if (nickname.empty())
+	_nickname = checkInfos(2);
+	if (_nickname.empty())
 		return (1);
-	phone_number = checkInfos(3);
-	if (phone_number.empty())
+	_phone_number = checkInfos(3);
+	if (_phone_number.empty())
 		return (1);
-	darkest_secret = checkInfos(4);
-	if (darkest_secret.empty())
+	_darkest_secret = checkInfos(4);
+	if (_darkest_secret.empty())
 		return (1);
 	std::cout << "\033[32mContact added !\033[0m" << std::endl << std::endl;
 	return (0);
@@ -110,12 +110,12 @@ int	Contact::setInfos(int num_contact)
 
 void	Contact::display() const
 {
-	std::cout << std::setw(27) << std::left << "\033[33mNumber : \033[0m" << this->num_contact << std::endl;
-	std::cout << std::setw(27) << std::left << "\033[33mFirst name : \033[0m" << this->first_name << std::endl;
-	std::cout << std::setw(27) << std::left << "\033[33mLast name : \033[0m" << this->last_name << std::endl;
-	std::cout << std::setw(27) << std::left << "\033[33mNickname : \033[0m" << this->nickname << std::endl;
-	std::cout << std::setw(27) << std::left << "\033[33mPhone number : \033[0m" << this->phone_number << std::endl;
-	std::cout << std::setw(27) << std::left << "\033[33mDarkest secret : \033[0m" << this->darkest_secret << std::endl << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mNumber : \033[0m" << this->_num_contact << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mFirst name : \033[0m" << this->_first_name << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mLast name : \033[0m" << this->_last_name << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mNickname : \033[0m" << this->_nickname << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mPhone number : \033[0m" << this->_phone_number << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mDarkest secret : \033[0m" << this->_darkest_secret << std::endl << std::endl;
 	return ;
 }
 

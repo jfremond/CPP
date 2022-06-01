@@ -6,13 +6,13 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 17:55:25 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:00:50 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void) : nb_contacts(0), oldest(0)
+PhoneBook::PhoneBook(void) : _nb_contacts(0), _oldest(0)
 {
 	return ;
 }
@@ -23,17 +23,17 @@ PhoneBook::~PhoneBook(void)
 
 void	PhoneBook::addContact(void)
 {
-	if (this->nb_contacts == 8)
+	if (this->_nb_contacts == 8)
 	{
-		if (!this->contacts[this->oldest].setInfos(this->nb_contacts + 1))
-			this->oldest++;
-		if (this->oldest == 8)
-			this->oldest = 0;
+		if (!this->contacts[this->_oldest].setInfos(this->_nb_contacts + 1))
+			this->_oldest++;
+		if (this->_oldest == 8)
+			this->_oldest = 0;
 	}
 	else
 	{
-		if (!this->contacts[this->nb_contacts].setInfos(this->nb_contacts + 1))
-			this->nb_contacts++;	
+		if (!this->contacts[this->_nb_contacts].setInfos(this->_nb_contacts + 1))
+			this->_nb_contacts++;	
 	}
 	return ;
 }
@@ -57,7 +57,7 @@ int	PhoneBook::displayHeader(void) const
 		"\033[34mLast name\033[0m",
 		"\033[34mNickname\033[0m",
 	};
-	if (this->nb_contacts == 0)
+	if (this->_nb_contacts == 0)
 	{
 		std::cout << "\033[31mAdd a contact before searching for one !\033[0m" << std::endl;
 		std::cout << std::endl;
@@ -71,7 +71,7 @@ int	PhoneBook::displayHeader(void) const
 
 void PhoneBook::displayContactsInTab(void) const
 {
-	for (int i = 0; i < this->nb_contacts; i++)
+	for (int i = 0; i < this->_nb_contacts; i++)
 	{
 		std::cout << "|";
 		std::cout << std::setw(10) << i + 1;
@@ -106,7 +106,7 @@ void	PhoneBook::displayContactByIndex(void) const
 	if (!check_if_digit(contact))
 	{		
 		std::istringstream(contact) >> index;
-		if (index <= 0 || index > this->nb_contacts)
+		if (index <= 0 || index > this->_nb_contacts)
 			std::cout << "\033[31mIndex out of range\033[0m" << std::endl << std::endl;
 		else
 			this->contacts[index - 1].display();

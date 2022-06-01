@@ -22,8 +22,8 @@ class PhoneBook
 {
 	private:
 		Contact	contacts[8];
-		int		nb_contacts;
-		int		oldest;
+		int		_nb_contacts;
+		int		_oldest;
 		// Functions
 		int		displayHeader(void) const;
 		void	displayContactsInTab(void) const;
