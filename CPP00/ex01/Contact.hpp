@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 15:17:12 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:27:43 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ class Contact
 		Contact(void);
 		~Contact(void);
 		// Getters
-		std::string getFirstName(void);
-		std::string getLastName(void);
-		std::string getNickname(void);
-		std::string getPhoneNumber(void);
-		std::string getDarkestSecret(void);
+		std::string getFirstName(void) const;
+		std::string getLastName(void) const;
+		std::string getNickname(void) const;
+		std::string getPhoneNumber(void) const;
+		std::string getDarkestSecret(void) const;
 		// Functions
-		void		display(void);
+		void		display(void) const;
 		int			setInfos(int num_contact);
 };
 

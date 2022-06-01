@@ -25,16 +25,16 @@ class PhoneBook
 		int		nb_contacts;
 		int		oldest;
 		// Functions
-		int		displayHeader(void);
-		void	displayContactsInTab(void);
-		void	displayContactByIndex(void);
+		int		displayHeader(void) const;
+		void	displayContactsInTab(void) const;
+		void	displayContactByIndex(void) const;
 	public:
 		// Constructor and desctructor
 		PhoneBook(void);
 		~PhoneBook(void);
 		// Functions
 		void 	addContact(void);
-		void	showContacts(void);
+		void	showContacts(void) const;
 };
 
 #endif

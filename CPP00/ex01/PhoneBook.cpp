@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/30 10:58:52 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:43:17 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	check_if_digit(std::string str)
 	return (0);
 }
 
-int	PhoneBook::displayHeader(void)
+int	PhoneBook::displayHeader(void) const
 {
 	std::string fields[4] = 
 	{
@@ -78,7 +78,7 @@ int	PhoneBook::displayHeader(void)
 	return (0);
 }
 
-void PhoneBook::displayContactsInTab(void)
+void PhoneBook::displayContactsInTab(void) const
 {
 	for (int i = 0; i < this->nb_contacts; i++)
 	{
@@ -106,7 +106,7 @@ void PhoneBook::displayContactsInTab(void)
 	return ;
 }
 
-void	PhoneBook::displayContactByIndex(void)
+void	PhoneBook::displayContactByIndex(void) const
 {
 	int index = 0;
 	std::string contact;
@@ -116,16 +116,16 @@ void	PhoneBook::displayContactByIndex(void)
 	{		
 		std::istringstream(contact) >> index;
 		if (index <= 0 || index > this->nb_contacts)
-			std::cout << "Index out of range" << std::endl;
+			std::cout << "\033[31mIndex out of range\033[0m" << std::endl << std::endl;
 		else
 			this->contacts[index - 1].display();
 	}
 	else
-		std::cout << "Index is not valid" << std::endl;
+		std::cout << "\033[31mIndex is not valid\033[0m" << std::endl << std::endl;
 	return ;
 }
 
-void PhoneBook::showContacts(void)
+void PhoneBook::showContacts(void) const
 {
 	if (!displayHeader())
 	{	

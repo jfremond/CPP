@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 15:18:04 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:40:06 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,27 @@ Contact::~Contact(void)
 }
 
 // Getters
-std::string Contact::getFirstName(void)
+std::string Contact::getFirstName(void) const
 {
 	return (this->first_name);
 }
 
-std::string Contact::getLastName(void)
+std::string Contact::getLastName(void) const
 {
 	return (this->last_name);
 }
 
-std::string Contact::getNickname(void)
+std::string Contact::getNickname(void) const
 {
 	return (this->nickname);
 }
 
-std::string Contact::getPhoneNumber(void)
+std::string Contact::getPhoneNumber(void) const
 {
 	return (this->phone_number);
 }
 
-std::string Contact::getDarkestSecret(void)
+std::string Contact::getDarkestSecret(void) const
 {
 	return (this->darkest_secret);	
 }
@@ -113,14 +113,14 @@ int	Contact::setInfos(int num_contact)
 	return (0);
 }
 
-void	Contact::display()
+void	Contact::display() const
 {
 	std::cout << std::setw(27) << std::left << "\033[33mNumber : \033[0m" << this->num_contact << std::endl;
 	std::cout << std::setw(27) << std::left << "\033[33mFirst name : \033[0m" << this->first_name << std::endl;
 	std::cout << std::setw(27) << std::left << "\033[33mLast name : \033[0m" << this->last_name << std::endl;
 	std::cout << std::setw(27) << std::left << "\033[33mNickname : \033[0m" << this->nickname << std::endl;
 	std::cout << std::setw(27) << std::left << "\033[33mPhone number : \033[0m" << this->phone_number << std::endl;
-	std::cout << std::setw(27) << std::left << "\033[33mDarkest secret : \033[0m" << this->darkest_secret << std::endl;
+	std::cout << std::setw(27) << std::left << "\033[33mDarkest secret : \033[0m" << this->darkest_secret << std::endl << std::endl;
 	return ;
 }
 
