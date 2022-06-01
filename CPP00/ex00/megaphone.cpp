@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:45:44 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 19:44:19 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 19:46:04 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void convert_to_uppercase(std::string str)
 {
 	for (size_t i = 0; i < str.length(); i++)
-			str[i] = toupper(str[i]);
-		std::cout << str;
+		str[i] = toupper(str[i]);
+	std::cout << str;
 }
 
 int	main(int argc, char **argv)
