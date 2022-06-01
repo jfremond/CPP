@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:39:45 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 16:10:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:05:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-Account::Account(void)
+Account::Account(void) : _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {
-	this->_nbDeposits = 0;
-	this->_nbWithdrawals = 0;
 	this->_accountIndex = Account::_nbAccounts++;
-	this->_amount = 0;
 	Account::_totalAmount = 0;
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";"
@@ -34,10 +31,8 @@ Account::Account(void)
 	return ;
 }
 
-Account::Account(int initial_deposit) : _amount(initial_deposit)
+Account::Account(int initial_deposit) : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
-	this->_nbDeposits = 0;
-	this->_nbWithdrawals = 0;
 	this->_accountIndex = Account::_nbAccounts++;
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";"
