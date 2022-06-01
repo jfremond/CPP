@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/30 10:52:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:17:12 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,7 @@ class Contact
 		// Constructor and destructor
 		Contact(void);
 		~Contact(void);
-		// Setters and getters
-		void		setFirstName(std::string);
-		void		setLastName(std::string);
-		void		setNickname(std::string);
-		void		setPhoneNumber(std::string);
-		void		setDarkestSecret(std::string);
+		// Getters
 		std::string getFirstName(void);
 		std::string getLastName(void);
 		std::string getNickname(void);

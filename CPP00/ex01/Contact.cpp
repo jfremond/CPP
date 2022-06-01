@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/30 11:13:25 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:18:04 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,6 @@ Contact::Contact(void)
 
 Contact::~Contact(void)
 {
-}
-
-// Setters
-void		Contact::setFirstName(std::string val)
-{
-	this->first_name = val;
-}
-
-void		Contact::setLastName(std::string val)
-{
-	this->last_name = val;
-}
-
-void		Contact::setNickname(std::string val)
-{
-	this->nickname = val;
-}
-
-void		Contact::setPhoneNumber(std::string val)
-{
-	this->phone_number = val;
-}
-
-void		Contact::setDarkestSecret(std::string val)
-{
-	this->darkest_secret = val;
 }
 
 // Getters
