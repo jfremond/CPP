@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:45:44 by jfremond          #+#    #+#             */
-/*   Updated: 2022/05/26 13:40:33 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/01 19:44:19 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,10 @@ int	main(int argc, char **argv)
 {
 	std::string no_arg = "* loud and unbeareable feedback noise *";
 	if (argc == 1)
-	{
 		convert_to_uppercase(no_arg);
-		std::cout << std::endl;
-	}
 	else
-	{
 		for (int j = 1; j < argc; j++)
 			convert_to_uppercase(argv[j]);
-		std::cout << std::endl;
-	}
+	std::cout << std::endl;
 	return (0);
 }
