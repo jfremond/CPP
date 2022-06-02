@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 19:58:46 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/02 13:22:44 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ class Contact
 		std::string getDarkestSecret(void) const;
 		// Functions
 		void		display(void) const;
-		int			setInfos(int _num_contact);
+		int			setInfos(int num_contact);
+		static int	check_if_digit(std::string str);
 };
 
 #endif

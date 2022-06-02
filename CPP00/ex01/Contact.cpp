@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 20:00:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/02 13:28:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ std::string Contact::getDarkestSecret(void) const
 	return (this->_darkest_secret);	
 }
 
-static int	check_if_digit(std::string str)
+int	Contact::check_if_digit(std::string str)
 {
 	for (size_t i = 0; i < str.length(); i++)
 	{
@@ -73,7 +73,7 @@ std::string	checkInfos(int index)
 	getline(std::cin, str);
 	if (index == 3)
 	{
-		while (check_if_digit(str))
+		while (Contact::check_if_digit(str) || str.length() != 10)
 		{
 			std::cout << "\033[36mPhone number is not well formatted...\033[m" << std::endl;
 			std::cout << fields[index];
@@ -86,9 +86,9 @@ std::string	checkInfos(int index)
 	return (str);
 }
 
-int	Contact::setInfos(int _num_contact)
+int	Contact::setInfos(int num_contact)
 {
-	this->_num_contact = _num_contact;
+	this->_num_contact = num_contact;
 	_first_name = checkInfos(0);
 	if (_first_name.empty())
 		return (1);
