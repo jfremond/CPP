@@ -72,7 +72,7 @@ $(NAME):	$(OBJS)
 
 -include	$(DEP)
 
-$(OBJS_D)%.o:	$(SRCS_L)%.cpp
+$(OBJS_D)%.o:	%.cpp
 				$(MKDIR) $(@D)
 				$(CC) $(CFLAGS) $(OUTPUT_OPTION) $<
 
