@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 20:07:29 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/02 12:54:42 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,6 @@ void	PhoneBook::addContact(void)
 			this->_nb_contacts++;	
 	}
 	return ;
-}
-
-static int	check_if_digit(std::string str)
-{
-	for (size_t i = 0; i < str.length(); i++)
-	{
-		if (!isdigit(str[i]))
-			return (1);
-	}
-	return (0);
 }
 
 int	PhoneBook::_displayHeader(void) const
@@ -103,16 +93,13 @@ void	PhoneBook::_displayContactByIndex(void) const
 	std::string contact;
 	std::cout << "Index search : ";
 	getline(std::cin, contact);
-	if (!check_if_digit(contact))
-	{		
-		std::istringstream(contact) >> index;
-		if (index <= 0 || index > this->_nb_contacts)
-			std::cout << "\033[31mIndex out of range\033[0m" << std::endl << std::endl;
-		else
-			this->_contacts[index - 1].display();
-	}
-	else
+	index = atoi(contact.c_str());
+	if (contact.empty() || !isdigit(contact.at(0)))
 		std::cout << "\033[31mIndex is not valid\033[0m" << std::endl << std::endl;
+	else if (index <= 0 || index > this->_nb_contacts)
+		std::cout << "\033[31mIndex out of range\033[0m" << std::endl << std::endl;
+	else
+		this->_contacts[index - 1].display();
 	return ;
 }
 
