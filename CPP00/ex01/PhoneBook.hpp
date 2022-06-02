@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYAWESOMEPHONEBOOK_HPP
-#define MYAWESOMEPHONEBOOK_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include "Contact.hpp"
 #include <iostream>
