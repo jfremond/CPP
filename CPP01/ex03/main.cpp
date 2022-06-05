@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:55:44 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 20:31:40 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/05 15:32:39 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(void)
 	bob.attack();
 
 	club = Weapon("crude spiked club");
+
 	HumanB	jim("Jim");
 	jim.setWeapon(club);
 	jim.attack();
