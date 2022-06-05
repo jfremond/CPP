@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/06/05 17:34:39 by jfremond         ###   ########.fr        #
+#    Updated: 2022/06/05 21:25:41 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS_L	=	main.cpp		\
+SRCS_L	=	check_and_create.cpp	\
+			main.cpp				\
 
 ###############
 #   OBJECTS   #
