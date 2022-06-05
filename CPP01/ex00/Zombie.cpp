@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 15:11:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 16:41:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/05 14:58:23 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Zombie::Zombie() : _name(std::string())
 {
-	std::cout << "Birth of a zombie" << std::endl;
 	return ;
 }
 
