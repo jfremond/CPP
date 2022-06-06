@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:39:36 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/06 10:43:05 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:33:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 class Harl
 {
 	private:
-		void	_debug(void);
-		void	_info(void);
-		void	_warning(void);
-		void	_error(void);
+		void	_debug(void) const;
+		void	_info(void) const;
+		void	_warning(void) const;
+		void	_error(void) const;
 	public:
 		Harl(void);
 		~Harl(void);
-		void	complain(std::string level);
+		void	complain(std::string level) const;
 };
 
 #endif
