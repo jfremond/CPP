@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:23:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/05 21:49:47 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:10:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,17 @@ int	check_strings(std::string s1, std::string s2)
 	return (0);
 }
 
-std::string	create_oufile(char *arg)
-{
-	std::string	outfile;
-	std::string	extension;
-	
-	extension = ".replace";
-	outfile = arg + extension;
-	return (outfile);
-}
-
-int	check_infile(std::ifstream &ifs, char *arg)
+int	check_infile(std::ifstream &ifs, std::string arg)
 {
 	struct stat	s;
-	if (!stat(arg, &s) && s.st_mode & S_IFDIR)
-	{
-		std::cout << "Infile is a directory" << std::endl;
-		return (1);
-	}
 	if (!ifs.is_open())
 	{
 		std::cout << "Infile couldn't open" << std::endl;
+		return (1);
+	}
+	if (!stat(arg.c_str(), &s) && s.st_mode & S_IFDIR)
+	{
+		std::cout << "Infile is a directory" << std::endl;
 		return (1);
 	}
 	return (0);
@@ -66,4 +56,15 @@ int	check_outfile(std::ofstream &ofs)
 		return (1);
 	}
 	return (0);
+}
+
+std::string	create_oufile(std::string arg)
+{
+	std::string	outfile;
+	std::string	extension;
+	
+	outfile = arg;
+	extension = ".replace";
+	outfile.append(extension);
+	return (outfile);
 }
