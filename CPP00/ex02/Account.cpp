@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 16:39:45 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/01 18:05:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:37:39 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	Account::_displayTimestamp(void)
 	tm		*cur_time = localtime(&timestamp);
 	std::cout << "["
 		<< std::setfill('0') << (1900 + cur_time->tm_year)
-		<< std::setw(2) << cur_time->tm_mon
+		<< std::setw(2) << cur_time->tm_mon + 1
 		<< std::setw(2) << cur_time->tm_mday
 		<< "_"
 		<< std::setw(2) << cur_time->tm_hour
@@ -128,14 +128,15 @@ bool	Account::makeWithdrawal(int withdrawal)
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex <<";"
 		<< "p_amount:" << this->_amount << ";";
-	if (this->_amount < withdrawal)
+	this->_amount -= withdrawal;
+	if (!Account::checkAmount())
 	{
+		this->_amount += withdrawal;
 		std::cout << "withdrawal:refused" << std::endl;
 		return (false);
 	}
 	else
 	{
-		this->_amount -= withdrawal;
 		this->_nbWithdrawals++;
 		std::cout << "withdrawal:" << withdrawal << ";"
 			<< "amount:" << this->_amount << ";"
@@ -145,6 +146,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 	}
 	return (true);
 }
+
 int		Account::checkAmount(void) const
 {
 	return (this->_amount > 0);
