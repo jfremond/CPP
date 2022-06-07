@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 12:54:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:38:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	PhoneBook::addContact(void)
 {
 	if (this->_nb_contacts == 8)
 	{
-		if (!this->_contacts[this->_oldest].setInfos(this->_nb_contacts + 1))
+		if (!this->_contacts[this->_oldest].createNewContact(this->_nb_contacts + 1))
 			this->_oldest++;
 		if (this->_oldest == 8)
 			this->_oldest = 0;
 	}
 	else
 	{
-		if (!this->_contacts[this->_nb_contacts].setInfos(this->_nb_contacts + 1))
-			this->_nb_contacts++;	
+		if (!this->_contacts[this->_nb_contacts].createNewContact(this->_nb_contacts + 1))
+			this->_nb_contacts++;
 	}
 	return ;
 }
@@ -89,7 +89,7 @@ void PhoneBook::_displayContactsInTab(void) const
 
 void	PhoneBook::_displayContactByIndex(void) const
 {
-	int index = 0;
+	int index;
 	std::string contact;
 	std::cout << "Index search : ";
 	getline(std::cin, contact);

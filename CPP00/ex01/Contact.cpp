@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 13:28:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:24:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ std::string	checkInfos(int index)
 	return (str);
 }
 
-int	Contact::setInfos(int num_contact)
+int	Contact::createNewContact(int num_contact)
 {
 	this->_num_contact = num_contact;
 	_first_name = checkInfos(0);
