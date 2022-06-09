@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:21:14 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/09 20:10:35 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:14:07 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,35 @@ Fixed::Fixed(Fixed const &src)
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 	return ;
+}
+
+Fixed::~Fixed(void)
+{
+	std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
+int	Fixed::getRawBits(void) const
+{
+	// std::cout << "getRawBits member function called" << std::endl;
+	return (this->_value);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	// std::cout << "setRawBits member function called" << std::endl;
+	this->_value = raw;
+	return ;
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)this->_value / (float)(1 << this->_bits));
+}
+
+int	Fixed::toInt(void) const
+{
+	return (this->_value >> this->_bits);
 }
 
 Fixed &Fixed::operator=(Fixed const &rhs)
@@ -133,35 +162,6 @@ Fixed	Fixed::operator--(int)
 	Fixed	tmp = *this;
 	--*this;
 	return (tmp);	
-}
-
-Fixed::~Fixed(void)
-{
-	std::cout << "Destructor called" << std::endl;
-	return ;
-}
-
-float	Fixed::toFloat(void) const
-{
-	return ((float)this->_value / (float)(1 << this->_bits));
-}
-
-int	Fixed::toInt(void) const
-{
-	return (this->_value >> this->_bits);
-}
-
-int	Fixed::getRawBits(void) const
-{
-	// std::cout << "getRawBits member function called" << std::endl;
-	return (this->_value);
-}
-
-void	Fixed::setRawBits(int const raw)
-{
-	// std::cout << "setRawBits member function called" << std::endl;
-	this->_value = raw;
-	return ;
 }
 
 Fixed	&Fixed::min(Fixed &a, Fixed &b)

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:12:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/09 15:18:18 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:07:54 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ class Fixed
 		int					_value;
 		static const int	_bits;
 	public:
-	Fixed(void);
-	Fixed(Fixed const &src);
-	Fixed &operator=(Fixed const &rhs);
-	~Fixed(void);
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+		// Constructors and destructor
+		Fixed(void);
+		Fixed(Fixed const &src);
+		~Fixed(void);
+		// Getter and setter
+		int					getRawBits(void) const;
+		void				setRawBits(int const raw);
+		// Assignation operator overload
+		Fixed				&operator=(Fixed const &rhs);
 };
 
 #endif

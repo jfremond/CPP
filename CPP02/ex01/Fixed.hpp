@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:12:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/09 18:44:11 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:05:30 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,20 @@ class Fixed
 		int					_value;
 		static const int	_bits;
 	public:
-	Fixed(void);
-	Fixed(const int val);
-	Fixed(const float val);
-	Fixed(Fixed const &src);
-	Fixed &operator=(Fixed const &rhs);
-	~Fixed(void);
-	float	toFloat(void) const;
-	int		toInt(void) const;
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+		// Constructors and destructor
+		Fixed(void);
+		Fixed(const int val);
+		Fixed(const float val);
+		Fixed(Fixed const &src);
+		~Fixed(void);
+		// Getter and setter
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		// Member functions
+		float	toFloat(void) const;
+		int		toInt(void) const;
+		// Assignation operator overload
+		Fixed &operator=(Fixed const &rhs);
 };
 
 std::ostream &operator<<(std::ostream &o, Fixed const &i);
