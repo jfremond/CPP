@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 10:08:13 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/10 12:11:28 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/10 12:34:31 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Point
 };
 
 //false if point on edge or is vertex
+float	calculate_area(Point const a, Point const b, Point const c);
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif
