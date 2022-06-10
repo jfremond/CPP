@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 10:17:39 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/10 11:51:32 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/10 12:26:07 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ Point::~Point(void)
 	return ;
 }
 
-Fixed const	&Point::getX() const
+float	Point::getX() const
 {
-	return (this->_x);
+	return (this->_x.toFloat());
 }
 
-Fixed const	&Point::getY() const
+float	Point::getY() const
 {
-	return (this->_y);
+	return (this->_y.toFloat());
 }

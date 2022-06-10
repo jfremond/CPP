@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 10:08:13 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/10 11:28:44 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/10 12:11:28 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Point
 		Point(Point const &src);
 		Point	&operator=(Point const &rhs);
 		~Point(void);
-		Fixed const	&getX(void) const;
-		Fixed const	&getY(void) const;
+		float	getX(void) const;
+		float	getY(void) const;
 };
 
 //false if point on edge or is vertex

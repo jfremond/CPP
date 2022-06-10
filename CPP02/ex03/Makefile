@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/09 15:31:18 by jfremond          #+#    #+#              #
-#    Updated: 2022/06/10 10:30:43 by jfremond         ###   ########.fr        #
+#    Updated: 2022/06/10 12:28:35 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #   EXECUTABLE   #
 ##################
 
-NAME	=	Fixed
+NAME	=	bsp
 
 ################
 #   COMMANDS   #
@@ -43,7 +43,8 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS_L	=	Fixed.cpp		\
+SRCS_L	=	bsp.cpp			\
+			Fixed.cpp		\
 			Point.cpp		\
 			main.cpp		\
 
