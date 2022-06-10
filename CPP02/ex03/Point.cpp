@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 10:17:39 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/10 11:36:02 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:51:32 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ Point::Point(Point const &src) : _x(src.getX()), _y(src.getY())
 
 Point	&Point::operator=(Point const &rhs)
 {
-	if (this->_x != rhs.getX())
-	{
-		this->_x = rhs.getX();
-	}
+	(void)rhs;
 	return (*this);
 }
 
