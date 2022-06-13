@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/13 14:55:53 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:34:58 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 ClapTrap::ClapTrap(void) : _name("clap-clap"), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
-	std::cout << this->_name << " constructor called" << std::endl;
+	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mconstructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
-	std::cout << this->_name << " constructor called" << std::endl;
+	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mconstructor called" << std::endl;
 	return ;
 }
 
@@ -41,7 +41,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << this->_name << " destructor called" << std::endl;
+	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mdestructor called" << std::endl;
 	return ;
 }
 
@@ -49,19 +49,19 @@ void		ClapTrap::attack(const std::string &target)
 {
 	if (this->_en_pts == 0)
 	{
-		std::cout << this->_name << " couldn't attack " << target
+		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mcouldn't attack " << target
 			<< " because they do not have energy points!" << std::endl;
 		return ;
 	}
 	if (this->_hit_pts == 0)
 	{
-		std::cout << this->_name << " couldn't attack " << target
+		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mcouldn't attack " << target
 			<< " because they're dead!" << std::endl;
 		return ;
 	}
 	else
 	{
-		std::cout << this->_name << " attacks " << target << ", causing "
+		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mattacks " << target << ", causing "
 			<< this->_hit_pts << " points of damage!" << std::endl;
 		this->_en_pts--;
 	}
@@ -69,17 +69,18 @@ void		ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->_hit_pts < amount)
+	if (this->_hit_pts == 0)
 	{
-		this->_hit_pts = 0;
-		std::cout << this->_name << " is dead, beat it!" << std::endl;
+		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mis dead, beat it!" << std::endl;
 		return ;
 	}
 	else
 	{
 		this->_hit_pts -= amount;
-		std::cout << this->_name << " took some damage!" 
+		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mtook some damage!" 
 			<< " They lost " << amount << " hit points!" << std::endl;
+		if (this->_hit_pts < 0)
+			this->_hit_pts = 0;
 	}
 }
 
@@ -87,22 +88,22 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_en_pts == 0)
 	{
-		std::cout << this->_name
-			<< " couldn't repair themselves because they do not have energy points!"
+		std::cout << "\033[34mClapTrap " << this->_name
+			<< " \033[0mcouldn't repair themselves because they do not have energy points!"
 			<< std::endl;
 			return ;
 	}
 	if (this->_hit_pts == 0)
 	{
-		std::cout << this->_name
-			<< " couldn't repair themselves because they've passed away!"
+		std::cout << "\033[34mClapTrap " << this->_name
+			<< " \033[0mcouldn't repair themselves because they've passed away!"
 			<< std::endl;
 			return ;
 	}
 	if (this->_en_pts > 0)
 	{
 		this->_hit_pts += amount;
-		std::cout << this->_name << " repaired themselves. "
+		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mrepaired themselves. "
 			<< "They gained " << amount << " hit points! "
 			<< "They now have " << this->_hit_pts << " hit points!" << std::endl;
  		this->_en_pts--;
