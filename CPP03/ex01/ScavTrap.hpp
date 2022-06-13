@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 15:37:17 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/13 17:31:22 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:42:55 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class ScavTrap : protected ClapTrap
 {
 	private:
 		std::string	_name;
