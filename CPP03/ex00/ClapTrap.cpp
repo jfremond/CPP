@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/13 15:47:37 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:18:27 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(10), _en_pts(10), _
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
 	*this = src;
+	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mcopy constructor called" << std::endl;
 	return ;
 }
 
