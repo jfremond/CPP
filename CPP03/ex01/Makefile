@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/13 12:23:48 by jfremond          #+#    #+#              #
-#    Updated: 2022/06/13 16:36:20 by jfremond         ###   ########.fr        #
+#    Updated: 2022/06/13 17:48:12 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ OBJS_D	=	objs/
 
 SRCS_L	=	ClapTrap.cpp	\
 			main.cpp		\
+			ScavTrap.cpp	\
 
 ###############
 #   OBJECTS   #
