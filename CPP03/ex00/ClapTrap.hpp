@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/13 15:26:58 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:46:47 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class ClapTrap
 		void		attack(const std::string &target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		std::string const	&getName(void);
 };
 
 #endif
