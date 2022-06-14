@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 10:16:08 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:38:05 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 ClapTrap::ClapTrap(void) : _name("CT"), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
-	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mdefault constructor called" << std::endl;
+	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " default constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
-	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mname constructor called" << std::endl;
+	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " name constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
 	*this = src;
-	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mcopy constructor called" << std::endl;
+	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " copy constructor called" << std::endl;
 	return ;
 }
 
@@ -42,7 +42,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mdestructor called" << std::endl;
+	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " destructor called" << std::endl;
 	return ;
 }
 
@@ -50,19 +50,19 @@ void		ClapTrap::attack(const std::string &target)
 {
 	if (this->_en_pts == 0)
 	{
-		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mcouldn't attack " << target
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " couldn't attack " << target
 			<< " because they do not have energy points!" << std::endl;
 		return ;
 	}
 	if (this->_hit_pts == 0)
 	{
-		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mcouldn't attack " << target
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " couldn't attack " << target
 			<< " because they're dead!" << std::endl;
 		return ;
 	}
 	else
 	{
-		std::cout << "\033[34mClapTrap " << this->_name << " \033[0mattacks " << target << ", causing "
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " attacks " << target << ", causing "
 			<< this->_hit_pts << " points of damage!" << std::endl;
 		this->_en_pts--;
 	}

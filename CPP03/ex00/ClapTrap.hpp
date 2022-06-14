@@ -6,14 +6,24 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 10:09:46 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:33:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+
 #include <iostream>
+
 class ClapTrap
 {
 	private:
