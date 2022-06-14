@@ -6,13 +6,13 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 09:52:35 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:14:45 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("CT"), _hit_pts(10), _en_pts(10), _atk_dmg(0)
+ClapTrap::ClapTrap(void) : _name("Default"), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
 	std::cout << "\033[34mClapTrap " << this->_name << " \033[0mdefault constructor called" << std::endl;
 	return ;
