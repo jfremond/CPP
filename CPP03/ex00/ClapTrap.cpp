@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 10:38:05 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:28:21 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		ClapTrap::attack(const std::string &target)
 	else
 	{
 		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " attacks " << target << ", causing "
-			<< this->_hit_pts << " points of damage!" << std::endl;
+			<< this->_atk_dmg << " points of damage!" << std::endl;
 		this->_en_pts--;
 	}
 }
