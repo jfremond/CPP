@@ -6,54 +6,49 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/07 16:00:13 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:34:04 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-std::string	get_input()
+void	print_commands(void)
 {
-	std::string	input;
-	
-	std::cout << "Type ADD to add a contact, SEARCH to search a contact, " << std::endl;
-	std::cout << "and EXIT to exit the program" << std::endl;
-	getline(std::cin, input);
-	return (input);
+	std::cout << "Possible commands are : "
+		<< "[" << CYAN << "ADD" << RESET << "] "
+		<< "[" << CYAN << "SEARCH" << RESET << "] "
+		<< "[" << CYAN << "EXIT" << RESET << "]" << std::endl;
 }
 
-void	goodbye_message()
+void	print_welcome(void)
 {
-	std::cout << "Thanks for using MyAwesomePhonebook !" << std::endl;
-	std::cout << "See you around ! :)" << std::endl;
+	std::cout << "Hello and welcome to MyAwesomePhoneBook !" << std::endl;
+	print_commands();
+}
+
+void	print_goodbye(void)
+{
+	std::cout << "Thanks for using MyAwesomePhoneBook ! See you around ! :)" << std::endl;
 }
 
 int	main(void)
 {
+	std::string	input;
 	PhoneBook	book;
-	std::string input;
-	int			loop = 1;
-	
-	std::cout << "Welcome to MyAwesomePhoneBook !" << std::endl;
-	input = get_input();
-	while (loop)
+	print_welcome();
+	getline(std::cin, input);
+	while (!std::cin.eof() && input.compare("EXIT"))
 	{
-		if (input == "ADD")
+		if (!input.compare("ADD"))
 			book.addContact();
-		if (input == "SEARCH")
-			book.showContacts();
-		if (std::cin.eof() || input == "EXIT")
-		{
-			goodbye_message();
-			loop = 0;
-		}
-		else
-		{
-			if (!std::cin.eof() && input != "EXIT" && input != "SEARCH" && input != "ADD")
-				std::cout << "\033[31mWrong command entered...\033[0m" << std::endl;
-			input = get_input();
-		}
+		if (!input.compare("SEARCH"))
+			book.searchContact();
+		if (input.compare("ADD") && input.compare("SEARCH"))
+			std::cout << RED << "You have entered a wrong command..." << RESET << std::endl;
+		if (!std::cin.eof())
+			print_commands();
+		getline(std::cin, input);
 	}
-	return (0);
+	print_goodbye();
 }

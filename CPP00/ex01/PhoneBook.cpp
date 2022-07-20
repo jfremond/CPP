@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/07 15:38:49 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:34:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	PhoneBook::addContact(void)
 {
 	if (this->_nb_contacts == 8)
 	{
-		if (!this->_contacts[this->_oldest].createNewContact(this->_nb_contacts + 1))
-			this->_oldest++;
 		if (this->_oldest == 8)
 			this->_oldest = 0;
+		if (!this->_contacts[this->_oldest].createNewContact(this->_oldest + 1))
+			this->_oldest++;
 	}
 	else
 	{
@@ -40,21 +40,23 @@ void	PhoneBook::addContact(void)
 
 int	PhoneBook::_displayHeader(void) const
 {
-	std::string fields[4] = 
+	std::string tab_fields[4] = 
 	{
-		"\033[34mIndex\033[0m",
-		"\033[34mFirst name\033[0m",
-		"\033[34mLast name\033[0m",
-		"\033[34mNickname\033[0m",
+		"Index",
+		"First name",
+		"Last name",
+		"Nickname",
 	};
 	if (this->_nb_contacts == 0)
 	{
-		std::cout << "\033[31mAdd a contact before searching for one !\033[0m" << std::endl;
-		std::cout << std::endl;
+		std::cout << RED << "Add a contact before searching for one !" << RESET << std::endl;
 		return (1);
 	}
 	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << "|     " << fields[0] << "|" << fields[1] << "| " << fields[2] << "|  " << fields[3] << "|" << std::endl;
+	std::cout << "|" << BLUE << std::setw(10) << tab_fields[0] << RESET << "|"
+		<< BLUE << std::setw(10) << tab_fields[1] << RESET << "|"
+		<< BLUE << std::setw(10) << tab_fields[2] << RESET << "|"
+		<< BLUE << std::setw(10) << tab_fields[3] << RESET << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 	return (0);
 }
@@ -87,28 +89,29 @@ void PhoneBook::_displayContactsInTab(void) const
 	return ;
 }
 
-void	PhoneBook::_displayContactByIndex(void) const
+void	PhoneBook::_displaySearchResult(void) const
 {
-	int index;
-	std::string contact;
+	int 		index;
+	std::string input;
+	
 	std::cout << "Index search : ";
-	getline(std::cin, contact);
-	index = atoi(contact.c_str());
-	if (contact.empty() || !isdigit(contact.at(0)))
-		std::cout << "\033[31mIndex is not valid\033[0m" << std::endl << std::endl;
+	getline(std::cin, input);
+	index = atoi(input.c_str());
+	if (input.empty() || !isdigit(input.at(0)))
+		std::cout << RED << "Index is not valid" << RESET << std::endl;
 	else if (index <= 0 || index > this->_nb_contacts)
-		std::cout << "\033[31mIndex out of range\033[0m" << std::endl << std::endl;
+		std::cout << RED << "Index is out of range" << RESET << std::endl;
 	else
-		this->_contacts[index - 1].display();
+		this->_contacts[index - 1].displayContact();
 	return ;
 }
 
-void PhoneBook::showContacts(void) const
+void PhoneBook::searchContact(void) const
 {
 	if (!_displayHeader())
 	{	
 		_displayContactsInTab();
-		_displayContactByIndex();	
+		_displaySearchResult();	
 	}
 	return ;
 }
