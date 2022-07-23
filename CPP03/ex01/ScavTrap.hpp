@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 10:43:07 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 12:17:19 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 00:00:58 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 class ScavTrap : public ClapTrap
 {
 	private:
-		std::string	_name;
-		int			_hit_pts;
-		int			_en_pts;
-		int			_atk_dmg;
 		bool		_gatekeep;
 	public:
 		ScavTrap(void);
@@ -33,15 +29,13 @@ class ScavTrap : public ClapTrap
 		void	guardGate(void);
 };
 
-ScavTrap::ScavTrap(void) : ClapTrap(), _name(this->getName()), _hit_pts(this->getHitPts()),
-	_en_pts(this->getEnergyPts()), _atk_dmg(this->getAttackDmg()), _gatekeep(false)
+ScavTrap::ScavTrap(void) : ClapTrap(), _gatekeep(false)
 {
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " default constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _name(this->getName()), _hit_pts(this->getHitPts()),
-	_en_pts(this->getEnergyPts()), _atk_dmg(this->getAttackDmg()), _gatekeep(false)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _gatekeep(false)
 {
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " name constructor called" << std::endl;
 	return ;
@@ -72,19 +66,18 @@ ScavTrap::~ScavTrap(void)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	// this->_hit_pts = getHitPts();
-	if (this->_hit_pts == 0)
+	if (this->_hit_pts <= 0)
 	{
 		std::cout << RED << "ScavTrap " << this->_name << RESET << " couldn't attack because they're dead!" << std::endl;
 		return ;
 	}
-	if (this->_en_pts == 0)
+	if (this->_en_pts <= 0)
 	{
 		std::cout << RED << "ScavTrap " << this->_name << RESET << " couldn't attack because they don't have enough energy!" << std::endl;
 		return ;
 	}
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " attacks "
-		<< target << ", causing " << this->_atk_dmg << " points of damage!" << std::endl;
+		<< target << ", causing " << this->getAttackDmg() << " points of damage!" << std::endl;
 	this->_en_pts--;
 	return ;
 }

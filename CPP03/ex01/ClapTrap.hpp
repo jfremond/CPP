@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 10:46:22 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/23 23:50:33 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string	_name;
 		int			_hit_pts;
 		int			_en_pts;
