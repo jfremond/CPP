@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 12:28:21 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/23 23:57:04 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hit_pts == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " is dead, beat it!" << std::endl;
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " is dead, beat it!" << std::endl;
 		return ;
 	}
 	else
 	{
 		this->_hit_pts -= amount;
-		std::cout << "ClapTrap " << this->_name << " took some damage!" 
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " took some damage!" 
 			<< " They lost " << amount << " hit points!" << std::endl;
 		if (this->_hit_pts < 0)
 			this->_hit_pts = 0;
@@ -89,14 +89,14 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_en_pts == 0)
 	{
-		std::cout << "ClapTrap " << this->_name
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET
 			<< " couldn't repair themselves because they do not have energy points!"
 			<< std::endl;
 			return ;
 	}
 	if (this->_hit_pts == 0)
 	{
-		std::cout << "ClapTrap " << this->_name
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET
 			<< " couldn't repair themselves because they've passed away!"
 			<< std::endl;
 			return ;
@@ -104,7 +104,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_en_pts > 0)
 	{
 		this->_hit_pts += amount;
-		std::cout << "ClapTrap " << this->_name << " repaired themselves. "
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " repaired themselves. "
 			<< "They gained " << amount << " hit points! "
 			<< "They now have " << this->_hit_pts << " hit points!" << std::endl;
  		this->_en_pts--;
