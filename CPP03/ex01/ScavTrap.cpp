@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:39:52 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:19:39 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 21:28:10 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ScavTrap::attack(const std::string &target)
 		return ;
 	}
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " attacks "
-		<< target << ", causing " << this->getAttackDmg() << " points of damage!" << std::endl;
+		<< target << ", causing " << this->_atk_dmg << " points of damage!" << std::endl;
 	this->_en_pts--;
 	return ;
 }
