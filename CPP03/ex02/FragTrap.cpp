@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:50:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:22:11 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 21:52:41 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ FragTrap::FragTrap(void)
 	return ;
 }
 
-FragTrap::FragTrap(std::string name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	this->_name = name;
 	this->_hit_pts = 100;
