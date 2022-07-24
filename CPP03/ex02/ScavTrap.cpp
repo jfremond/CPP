@@ -6,20 +6,29 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:39:52 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 14:40:06 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 18:19:39 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap(), _gatekeep(false)
+ScavTrap::ScavTrap(void)
 {
+	this->_hit_pts = 100;
+	this->_en_pts = 50;
+	this->_atk_dmg = 20;
+	this->_gatekeep = false;
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " default constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _gatekeep(false)
+ScavTrap::ScavTrap(std::string name)
 {
+	this->_name = name;
+	this->_hit_pts = 100;
+	this->_en_pts = 50;
+	this->_atk_dmg = 20;
+	this->_gatekeep = false;
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " name constructor called" << std::endl;
 	return ;
 }

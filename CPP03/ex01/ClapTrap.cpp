@@ -6,19 +6,19 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/23 23:59:02 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 18:14:23 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("CT"), _hit_pts(100), _en_pts(50), _atk_dmg(20)
+ClapTrap::ClapTrap(void) : _name("CT"), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
 	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " default constructor called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(100), _en_pts(50), _atk_dmg(20)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
 	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " name constructor called" << std::endl;
 	return ;
