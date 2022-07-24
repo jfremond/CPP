@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/23 23:50:57 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 14:42:03 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 int	main(void)
 {
-	// ClapTrap 	clyde("Clyde");
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	clyde.attack("a random bot");
-	// 	clyde.takeDamage(5);
-	// 	clyde.beRepaired(2);
-	// }
 	ScavTrap	scarlett("Scarlett");
 	for (int i = 0; i < 4; i++)
 	{
