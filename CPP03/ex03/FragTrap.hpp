@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:43:52 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 21:33:43 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 22:35:32 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class FragTrap : public virtual ClapTrap
 		FragTrap &operator=(FragTrap const &rhs);
 		~FragTrap(void);
 		void	highFivesGuys(void);
+		int		getHitPts(void);
+		int		getAtkDmg(void);
 };
 
 #endif

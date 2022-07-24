@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 10:43:07 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 21:33:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 22:35:38 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class ScavTrap : public virtual ClapTrap
 		~ScavTrap(void);
 		void	attack(const std::string &target);
 		void	guardGate(void);
+		int		getEnPts(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:50:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:22:11 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 21:40:56 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,14 @@ FragTrap &FragTrap::operator=(FragTrap const &rhs)
 void	FragTrap::highFivesGuys(void)
 {
 	std::cout << GREEN << "FragTrap " << this->_name << RESET << " does a high five!" << std::endl;	
+}
+
+int		FragTrap::getHitPts(void)
+{
+	return (this->_hit_pts);
+}
+
+int		FragTrap::getAtkDmg(void)
+{
+	return (this->_atk_dmg);
 }

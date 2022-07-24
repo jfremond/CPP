@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:39:52 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 21:29:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 21:39:59 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,9 @@ void	ScavTrap::guardGate(void)
 	this->_gatekeep = true;
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " enters gatekeeping mode!" << std::endl;
 	return ;
+}
+
+int		ScavTrap::getEnPts(void)
+{
+	return (this->_en_pts);
 }

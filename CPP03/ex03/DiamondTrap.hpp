@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 21:31:53 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 21:37:25 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 22:41:37 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,14 @@
 class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
-		/* data */
+		std::string	_name;
 	public:
 		DiamondTrap(void);
+		DiamondTrap(std::string name);
+		DiamondTrap(DiamondTrap const &src);
+		DiamondTrap &operator=(DiamondTrap const &rhs);
 		~DiamondTrap(void);
+		void	whoAmI(void);
 };
-
-DiamondTrap::DiamondTrap(void)
-{
-	std::cout << "ft_hit_pts: 100"
-		<< "st_en_pts: 100"
-		<< "ft_atk_pts: 30" << std::endl;
-	return ;
-}
-
-DiamondTrap::~DiamondTrap(void)
-{
-	return ;
-}
-
 
 #endif
