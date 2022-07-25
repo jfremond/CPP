@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:36:55 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/20 18:34:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:46:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void PhoneBook::_displayContactsInTab(void) const
 	for (int i = 0; i < this->_nb_contacts; i++)
 	{
 		std::cout << "|";
-		std::cout << std::setw(10) << i + 1;
+		std::cout << std::setw(10) << std::right << i + 1;
 		std::cout << "|";
 		if (this->_contacts[i].getFirstName().length() > 10)
 			std::cout << this->_contacts[i].getFirstName().substr(0, 9) << ".";

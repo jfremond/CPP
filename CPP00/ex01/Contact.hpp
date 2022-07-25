@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:33:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/20 18:18:17 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:46:04 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class Contact
 		std::string	_nickname;
 		std::string	_phone_number;
 		std::string	_darkest_secret;
+		std::string	checkInfos(int index);
+		static int	check_if_digit(std::string str);
 	public:
 		// Constructor and destructor
 		Contact(void);
@@ -48,9 +50,7 @@ class Contact
 		std::string getDarkestSecret(void) const;
 		// Functions
 		void		displayContact(void) const;
-		std::string	checkInfos(int index);
 		int			createNewContact(int contact_id);
-		static int	check_if_digit(std::string str);
 };
 
 #endif
