@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:34:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/25 19:47:26 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:50:22 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ std::string	Contact::checkInfos(int index)
 	};
 	std::cout << fields[index];
 	getline(std::cin, field);
-	// if (index == 3)
-	// {
-	// 	while (!std::cin.eof() && (check_if_digit(field) || field.length() != 10))
-	// 	{
-	// 		std::cout << ORANGE << "Phone number not well formated..." << RESET << std::endl;
-	// 		std::cout << fields[index];
-	// 		getline(std::cin, field);
-	// 	}
-	// }	
+	if (index == 3)
+	{
+		while (!std::cin.eof() && (check_if_digit(field) || field.length() != 10))
+		{
+			std::cout << ORANGE << "Phone number not well formated... (only 10 numbers allowed)" << RESET << std::endl;
+			std::cout << fields[index];
+			getline(std::cin, field);
+		}
+	}	
 	size_t len = field.length();
 	if (len == 0)
 		std::cout << RED << "Empty contact not added ! " << RESET <<std::endl;

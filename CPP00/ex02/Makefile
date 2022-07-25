@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/18 15:51:07 by jfremond          #+#    #+#              #
-#    Updated: 2022/07/21 16:16:22 by jfremond         ###   ########.fr        #
+#    Updated: 2022/07/25 19:51:26 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,21 +42,21 @@ OBJS_D		=	objs/
 #   SOURCES   #
 ###############
 
-SRCS_F		=	Account.cpp	\
+SRCS_L		=	Account.cpp	\
 				tests.cpp	\
 
 ###############
 #   OBJECTS   #
 ###############
 
-OBJS_F	=		$(SRCS_F:.cpp=.o)
-OBJS_F	:=		$(addprefix $(OBJS_D), $(OBJS_F))
+OBJS_L	=		$(SRCS_L:.cpp=.o)
+OBJS_L	:=		$(addprefix $(OBJS_D), $(OBJS_L))
 
 ####################
 #   DEPENDENCIES   #
 ####################
 
-DEP_F	=		$(OBJS_F:.o=.d)
+DEP_L	=		$(OBJS_L:.o=.d)
 
 #############
 #   RULES   #
@@ -64,10 +64,10 @@ DEP_F	=		$(OBJS_F:.o=.d)
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS_F)
-				$(CXX) $(OBJS_F) $(OUTPUT_OPTION)
+$(NAME):		$(OBJS_L)
+				$(CXX) $(OBJS_L) $(OUTPUT_OPTION)
 
--include $(DEP_F)
+-include $(DEP_L)
 
 $(OBJS_D)%.o:	%.cpp
 				$(MKDIR) $(OBJS_D)
