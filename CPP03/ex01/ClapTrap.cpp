@@ -6,19 +6,19 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 12:26:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/14 12:29:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 21:27:29 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("CT"), _hit_pts(100), _en_pts(50), _atk_dmg(20)
+ClapTrap::ClapTrap(void) : _name("CT"), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
 	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " default constructor called" << std::endl;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(100), _en_pts(50), _atk_dmg(20)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hit_pts(10), _en_pts(10), _atk_dmg(0)
 {
 	std::cout << BLUE << "ClapTrap " << this->_name << RESET << " name constructor called" << std::endl;
 	return ;
@@ -72,13 +72,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hit_pts == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " is dead, beat it!" << std::endl;
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " is dead, beat it!" << std::endl;
 		return ;
 	}
 	else
 	{
 		this->_hit_pts -= amount;
-		std::cout << "ClapTrap " << this->_name << " took some damage!" 
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET <<" took some damage!" 
 			<< " They lost " << amount << " hit points!" << std::endl;
 		if (this->_hit_pts < 0)
 			this->_hit_pts = 0;
@@ -89,14 +89,14 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_en_pts == 0)
 	{
-		std::cout << "ClapTrap " << this->_name
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET
 			<< " couldn't repair themselves because they do not have energy points!"
 			<< std::endl;
 			return ;
 	}
 	if (this->_hit_pts == 0)
 	{
-		std::cout << "ClapTrap " << this->_name
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET
 			<< " couldn't repair themselves because they've passed away!"
 			<< std::endl;
 			return ;
@@ -104,29 +104,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_en_pts > 0)
 	{
 		this->_hit_pts += amount;
-		std::cout << "ClapTrap " << this->_name << " repaired themselves. "
+		std::cout << BLUE << "ClapTrap " << this->_name << RESET << " repaired themselves. "
 			<< "They gained " << amount << " hit points! "
 			<< "They now have " << this->_hit_pts << " hit points!" << std::endl;
  		this->_en_pts--;
 	}
-}
-
-std::string	ClapTrap::getName(void) const
-{
-	return (this->_name);
-}
-
-int			ClapTrap::getHitPts(void) const
-{
-	return (this->_hit_pts);
-}
-
-int			ClapTrap::getEnergyPts(void) const
-{
-	return (this->_en_pts);
-}
-
-int			ClapTrap::getAttackDmg(void) const
-{
-	return (this->_atk_dmg);
 }

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:20:09 by jfremond         ###   ########.fr       */
+/*   Created: 2022/06/14 10:43:07 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/24 22:35:38 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int	main(void)
+#include "ClapTrap.hpp"
+
+class ScavTrap : public virtual ClapTrap
 {
-	ScavTrap	scarlett("Scarlett");
-	for (int i = 0; i < 4; i++)
-	{
-		scarlett.attack("a common bot");
-		scarlett.takeDamage(50);
-		scarlett.beRepaired(20);
-	}
-	scarlett.guardGate();
-	scarlett.guardGate();
-	return (0);
-}
+	private:
+		bool		_gatekeep;
+	public:
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		ScavTrap(ScavTrap const &src);
+		ScavTrap &operator=(ScavTrap const &rhs);
+		~ScavTrap(void);
+		void	attack(const std::string &target);
+		void	guardGate(void);
+		int		getEnPts(void);
+};
+
+#endif

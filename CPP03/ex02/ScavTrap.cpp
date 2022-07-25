@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:39:52 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 21:53:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/24 21:29:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ScavTrap::ScavTrap(void)
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)
 {
 	this->_name = name;
 	this->_hit_pts = 100;

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:20:09 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/24 14:43:52 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/24 14:54:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+#include "ClapTrap.hpp"
 
-int	main(void)
+class FragTrap : public ClapTrap
 {
-	ScavTrap	scarlett("Scarlett");
-	for (int i = 0; i < 4; i++)
-	{
-		scarlett.attack("a common bot");
-		scarlett.takeDamage(50);
-		scarlett.beRepaired(20);
-	}
-	scarlett.guardGate();
-	scarlett.guardGate();
-	return (0);
-}
+	private:
+	public:
+		FragTrap(void);
+		FragTrap(std::string name);
+		FragTrap(FragTrap const &src);
+		FragTrap &operator=(FragTrap const &rhs);
+		~FragTrap(void);
+		void	highFivesGuys(void);
+};
+
+#endif

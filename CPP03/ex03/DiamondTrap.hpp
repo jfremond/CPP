@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:20:09 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/24 21:31:53 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/24 22:41:37 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-int	main(void)
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+
+class DiamondTrap : public ScavTrap, public FragTrap
 {
-	ScavTrap	scarlett("Scarlett");
-	for (int i = 0; i < 4; i++)
-	{
-		scarlett.attack("a common bot");
-		scarlett.takeDamage(50);
-		scarlett.beRepaired(20);
-	}
-	scarlett.guardGate();
-	scarlett.guardGate();
-	return (0);
-}
+	private:
+		std::string	_name;
+	public:
+		DiamondTrap(void);
+		DiamondTrap(std::string name);
+		DiamondTrap(DiamondTrap const &src);
+		DiamondTrap &operator=(DiamondTrap const &rhs);
+		~DiamondTrap(void);
+		void	whoAmI(void);
+};
+
+#endif
