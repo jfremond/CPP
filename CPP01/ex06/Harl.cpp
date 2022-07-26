@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:42:31 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/26 06:10:11 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/26 06:16:55 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,16 @@ void	Harl::complain(std::string level)
 	switch (index)
 	{
 		case 0:
-			_write_complaint(0, functPtr, levels);
+			_write_complaint(index, functPtr, levels);
+			index++;
 		case 1:
-			_write_complaint(1, functPtr, levels);
+			_write_complaint(index, functPtr, levels);
+			index++;
 		case 2:
-			_write_complaint(2, functPtr, levels);
+			_write_complaint(index, functPtr, levels);
+			index++;
 		case 3:
-			_write_complaint(3, functPtr, levels);
+			_write_complaint(index, functPtr, levels);
 			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
