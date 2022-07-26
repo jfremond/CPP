@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 06:06:11 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/25 22:39:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/26 06:10:11 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Harl
 		void	_info(void) const;
 		void	_warning(void) const;
 		void	_error(void) const;
-		void	_write_complaints(int index, void (Harl::*functPtr[4])(void) const,
+		void	_write_complaint(int index, void (Harl::*functPtr[4])(void) const,
 				std::string levels[4]);
 	public:
 		Harl(void);

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:42:31 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/06 12:52:33 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/07/26 06:10:11 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	Harl::_error(void) const
 	return ;
 }
 
-void	Harl::_write_complaints(int index, void (Harl::*functPtr[4])(void) const, std::string levels[4])
+void	Harl::_write_complaint(int index, void (Harl::*functPtr[4])(void) const, std::string levels[4])
 {
 		std::cout << "[ " << levels[index] << " ]" << std::endl;
 		(this->*functPtr[index])();
@@ -75,13 +75,13 @@ void	Harl::complain(std::string level)
 	switch (index)
 	{
 		case 0:
-			_write_complaints(0, functPtr, levels);
+			_write_complaint(0, functPtr, levels);
 		case 1:
-			_write_complaints(1, functPtr, levels);
+			_write_complaint(1, functPtr, levels);
 		case 2:
-			_write_complaints(2, functPtr, levels);
+			_write_complaint(2, functPtr, levels);
 		case 3:
-			_write_complaints(3, functPtr, levels);
+			_write_complaint(3, functPtr, levels);
 			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
