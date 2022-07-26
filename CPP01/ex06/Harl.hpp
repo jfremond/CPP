@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 10:39:36 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/06 12:49:01 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/22 06:06:11 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/25 22:39:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 class Harl
 {
 	private:
-		void	_debug(void);
-		void	_info(void);
-		void	_warning(void);
-		void	_error(void);
-		void	_complaining_loop(int index, void (Harl::*functPtr[4])(void), std::string levels[4]);
+		void	_debug(void) const;
+		void	_info(void) const;
+		void	_warning(void) const;
+		void	_error(void) const;
+		void	_write_complaints(int index, void (Harl::*functPtr[4])(void) const,
+				std::string levels[4]);
 	public:
 		Harl(void);
 		~Harl(void);

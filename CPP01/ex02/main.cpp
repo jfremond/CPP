@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
+
+#define ORANGE	"\033[38;2;255;165;0m"	/* Orange */
+#define YELLOW  "\033[33m"				/* Yellow */
+#define RESET   "\033[0m"
 
 int	main(void)
 {
@@ -19,14 +22,13 @@ int	main(void)
 	std::string	*stringPTR = &str;
 	std::string	&stringREF = str;
 
-	std::cout << "Addresses :" << std::endl;
-	std::cout << "str : " << &str << std::endl;
-	std::cout << "PTR : " << stringPTR << std::endl;
-	std::cout << "REF : " << &stringREF << std::endl << std::endl;
+	std::cout << ORANGE <<  "Memory address of the string" << RESET << std::endl;
+	std::cout << YELLOW << "str: " << RESET << &str << std::endl;
+	std::cout << YELLOW << "stringPTR: " << RESET << stringPTR << std::endl;
+	std::cout << YELLOW << "stringREF: " << RESET << &stringREF << std::endl << std::endl;
 
-	std::cout << "Values :" << std::endl;
-	std::cout << "str : " << str << std::endl;
-	std::cout << "PTR : " << *stringPTR << std::endl;
-	std::cout << "REF : " << stringREF << std::endl << std::endl;
-	return (0);
+	std::cout << ORANGE << "Value of the string" << RESET << std::endl;
+	std::cout << YELLOW << "str: " << RESET << str << std::endl;
+	std::cout << YELLOW << "stringPTR: " << RESET << *stringPTR << std::endl;
+	std::cout << YELLOW << "stringREF: " << RESET<< stringREF << std::endl;
 }

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/19 15:27:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/06/06 12:30:02 by jfremond         ###   ########.fr        #
+#    Created: 2022/07/22 04:58:45 by jfremond          #+#    #+#              #
+#    Updated: 2022/07/25 13:43:48 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,68 +14,64 @@
 #   EXECUTABLE   #
 ##################
 
-NAME	=	harlFilter
+NAME 		=	HarlFilter
 
 ################
 #   COMMANDS   #
 ################
 
-CC		=	c++
-LINK	=	c++
-MKDIR	=	/bin/mkdir -p
-RM		=	/bin/rm -rf
+CXX			=	c++
+MKDIR		=	/bin/mkdir -p
+RM			=	/bin/rm -rf
 
 #############
 #   FLAGS   #
 #############
 
-CFLAGS	=	-Wall -Wextra -Werror -c
-CFLAGS	+=	-std=c++98
-CFLAGS	+=	-MMD -MP
+CXXFLAGS	=	-Wall -Wextra -Werror -c
+CXXFLAGS	+=	-std=c++98 -g
+CXXFLAGS	+=	-MMD -MP
 
 ###################
 #   DIRECTORIES   #
 ###################
 
-OBJS_D	=	objs/
+OBJS_D		=	objs/
 
 ###############
 #   SOURCES   #
 ###############
 
-SRCS_L	=	Harl.cpp		\
-			main.cpp		\
+SRCS_L		=	main.cpp	\
+				Harl.cpp	\
 
 ###############
 #   OBJECTS   #
 ###############
 
-OBJS_L	=	$(SRCS_L:.cpp=.o)
-OBJS_L	:=	$(addprefix $(OBJS_D), $(OBJS_L))
-
-OBJS	=	$(OBJS_L)
+OBJS_L	=		$(SRCS_L:.cpp=.o)
+OBJS_L	:=		$(addprefix $(OBJS_D), $(OBJS_L))
 
 ####################
 #   DEPENDENCIES   #
 ####################
 
-DEP		=	$(OBJS:.o=.d)
+DEP_L	=		$(OBJS_L:.o=.d)
 
 #############
 #   RULES   #
 #############
 
-all:		$(NAME)
+all:			$(NAME)
 
-$(NAME):	$(OBJS)
-			$(LINK) $(OBJS) $(OUTPUT_OPTION)
-# Pas de cflags quand il y a link 
+$(NAME):		$(OBJS_L)
+				$(CXX) $(OBJS_L) $(OUTPUT_OPTION)
 
--include	$(DEP)
+-include $(DEP_L)
 
 $(OBJS_D)%.o:	%.cpp
-				$(MKDIR) $(@D)
-				$(CC) $(CFLAGS) $(OUTPUT_OPTION) $<
+				$(MKDIR) $(OBJS_D)
+				$(CXX) $(CXXFLAGS) $(OUTPUT_OPTION) $<
 
 clean:
 				$(RM) $(OBJS_D)
@@ -85,4 +81,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re 

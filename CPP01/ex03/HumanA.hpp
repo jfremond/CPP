@@ -5,10 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 19:10:47 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 20:27:12 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/22 00:40:13 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/25 12:58:59 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
 #include "Weapon.hpp"
 
@@ -20,5 +23,7 @@ class HumanA
 	public:
 		HumanA(std::string name, Weapon &weapon);
 		~HumanA(void);
-		void	attack(void) const;
+		void	attack(void);
 };
+
+#endif

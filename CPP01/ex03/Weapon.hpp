@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 18:57:21 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 19:07:11 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/22 00:07:53 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/25 12:57:40 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #define WEAPON_HPP
 
 #include <iostream>
-#include <string>
 
 class Weapon
 {
 	private:
-		std::string _type;
+		std::string	_type;
 	public:
+		Weapon(void);
 		Weapon(std::string type);
 		~Weapon(void);
-		std::string	const &getType(void);
+		std::string	const &getType() const;
 		void		setType(std::string type);
 };
 

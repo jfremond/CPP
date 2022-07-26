@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 19:21:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 19:32:51 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/22 04:46:36 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/25 12:51:59 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-
 #ifndef HUMANB_HPP
 #define HUMANB_HPP
+
+#include "Weapon.hpp"
 
 class HumanB
 {
@@ -24,7 +24,7 @@ class HumanB
 		HumanB(std::string name);
 		~HumanB(void);
 		void	setWeapon(Weapon &weapon);
-		void	attack(void) const;
+		void	attack(void);
 };
 
 #endif

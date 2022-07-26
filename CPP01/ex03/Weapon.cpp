@@ -5,12 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 19:07:14 by jfremond          #+#    #+#             */
-/*   Updated: 2022/06/02 19:07:38 by jfremond         ###   ########.fr       */
+/*   Created: 2022/07/22 00:15:25 by jfremond          #+#    #+#             */
+/*   Updated: 2022/07/25 12:54:33 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
+
+Weapon::Weapon(void)
+{
+	return ;
+}
 
 Weapon::Weapon(std::string type) : _type(type)
 {
@@ -22,7 +27,7 @@ Weapon::~Weapon(void)
 	return ;
 }
 
-std::string const &Weapon::getType(void)
+std::string	const &Weapon::getType() const
 {
 	return (this->_type);
 }
