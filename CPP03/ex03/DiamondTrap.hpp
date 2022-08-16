@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 21:31:53 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 22:41:37 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/12 05:30:30 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/16 01:03:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
-		std::string	_name;
-	public:
 		DiamondTrap(void);
+	public:
 		DiamondTrap(std::string name);
 		DiamondTrap(DiamondTrap const &src);
-		DiamondTrap &operator=(DiamondTrap const &rhs);
+		DiamondTrap	&operator=(DiamondTrap const &rhs);
 		~DiamondTrap(void);
 		void	whoAmI(void);
 };
+
+std::ostream	&operator<<(std::ostream &os, DiamondTrap const &obj);
 
 #endif

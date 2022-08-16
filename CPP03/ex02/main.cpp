@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 15:00:09 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/05 08:57:26 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/12 05:19:10 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,27 @@
 
 int	main(void)
 {
-	FragTrap	Frank("Frank");
-	for (int i = 0; i < 4; i++)
+	FragTrap	fran("Francis");
+	for (int i = 0; i < 51; i++)
 	{
-		Frank.attack("a common bot");
-		Frank.takeDamage(50);
-		Frank.beRepaired(20);
+		fran.takeDamage(2);
+		fran.beRepaired(2);
+		fran.attack("a common bot");
 	}
-	Frank.highFivesGuys();
+	fran.highFivesGuys();
+	std::cout << std::endl;
+
+	FragTrap	felix("Felix");
+	felix.takeDamage(100);
+	felix.beRepaired(2);
+	felix.attack("a common bot");
+	felix.highFivesGuys();
+	std::cout << std::endl;
+
+	FragTrap	finn("Finn");
+	finn.highFivesGuys();
+	finn.highFivesGuys();
+	std::cout << std::endl;
+	
 	return (0);
 }

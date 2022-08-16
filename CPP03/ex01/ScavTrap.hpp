@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/14 10:43:07 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 14:39:47 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/11 22:35:15 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/16 01:02:05 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,21 @@
 class ScavTrap : public ClapTrap
 {
 	private:
-		bool		_gatekeep;
-	public:
+		bool				_gatekeep;
+		static unsigned int	_scavHitPts;
+		static unsigned int	_scavEnPts;
+		static unsigned int _scavAtkDmg;
 		ScavTrap(void);
+	public:
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const &src);
-		ScavTrap &operator=(ScavTrap const &rhs);
+		ScavTrap	&operator=(ScavTrap const &rhs);
 		~ScavTrap(void);
 		void	attack(const std::string &target);
 		void	guardGate(void);
+		bool	getGatekeep(void) const;
 };
+
+std::ostream &operator<<(std::ostream &os, ScavTrap const &obj);
 
 #endif

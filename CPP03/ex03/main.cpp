@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 23:10:28 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/05 08:57:26 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/16 00:19:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,32 @@
 
 int	main(void)
 {
-	DiamondTrap	Diams("Diams");
-	for (int i = 0; i < 4; i++)
+	DiamondTrap	diams("Diams");
+	for (int i = 0; i < 25; i++)
 	{
-		Diams.attack("a common bot");
-		Diams.takeDamage(50);
-		Diams.beRepaired(20);
+		diams.takeDamage(2);
+		diams.beRepaired(2);
+		diams.attack("a common bot");
 	}
-	Diams.guardGate();
-	Diams.highFivesGuys();
-	Diams.whoAmI();
+	diams.guardGate();
+	diams.highFivesGuys();
+	diams.whoAmI();
+	std::cout << std::endl;
+
+	DiamondTrap	david("David");
+	david.takeDamage(100);
+	david.attack("a common bot");
+	david.guardGate();
+	david.highFivesGuys();
+	david.whoAmI();
+	std::cout << std::endl;
+
+	DiamondTrap delta("Delta");
+	delta.guardGate();
+	delta.guardGate();
+	delta.highFivesGuys();
+	delta.whoAmI();
+	std::cout << std::endl;
+	
 	return (0);
 }

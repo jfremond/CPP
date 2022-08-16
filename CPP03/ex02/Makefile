@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/06/13 12:23:48 by jfremond          #+#    #+#              #
-#    Updated: 2022/07/24 14:50:07 by jfremond         ###   ########.fr        #
+#    Created: 2022/08/05 08:44:19 by jfremond          #+#    #+#              #
+#    Updated: 2022/08/12 02:24:55 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ NAME	=	FragTrap
 #   COMMANDS   #
 ################
 
-CC		=	c++
-LINK	=	c++
+CXX		=	c++
 MKDIR	=	/bin/mkdir -p
 RM		=	/bin/rm -rf
 
@@ -29,9 +28,9 @@ RM		=	/bin/rm -rf
 #   FLAGS   #
 #############
 
-CFLAGS	=	-Wall -Wextra -Werror -c
-CFLAGS	+=	-std=c++98
-CFLAGS	+=	-MMD -MP
+CXXFLAGS	=	-c -Wall -Wextra -Werror
+CXXFLAGS	+=	-std=c++98
+CXXFLAGS	+=	-MMD -MP
 
 ###################
 #   DIRECTORIES   #
@@ -43,19 +42,17 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS_L	=	ClapTrap.cpp	\
+SRCS	=	main.cpp		\
+			ClapTrap.cpp	\
 			ScavTrap.cpp	\
 			FragTrap.cpp	\
-			main.cpp		\
 
 ###############
 #   OBJECTS   #
 ###############
 
-OBJS_L	=	$(SRCS_L:.cpp=.o)
-OBJS_L	:=	$(addprefix $(OBJS_D), $(OBJS_L))
-
-OBJS	=	$(OBJS_L)
+OBJS	=	$(SRCS:.cpp=.o)
+OBJS	:=	$(addprefix $(OBJS_D), $(OBJS))
 
 ####################
 #   DEPENDENCIES   #
@@ -70,14 +67,13 @@ DEP		=	$(OBJS:.o=.d)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			$(LINK) $(OBJS) $(OUTPUT_OPTION)
-# Pas de cflags quand il y a link 
+			$(CXX) $(OBJS) $(OUTPUT_OPTION)
 
 -include	$(DEP)
 
 $(OBJS_D)%.o:	%.cpp
-				$(MKDIR) $(@D)
-				$(CC) $(CFLAGS) $(OUTPUT_OPTION) $<
+				$(MKDIR) $(OBJS_D)
+				$(CXX) $(CXXFLAGS) $(OUTPUT_OPTION) $<
 
 clean:
 				$(RM) $(OBJS_D)

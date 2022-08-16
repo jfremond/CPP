@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 12:25:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 18:20:09 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/05 08:57:26 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/12 00:48:39 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,26 @@
 
 int	main(void)
 {
-	ScavTrap	scarlett("Scarlett");
-	for (int i = 0; i < 4; i++)
+	ScavTrap	sam("Sam");
+	for (int i = 0; i < 26; i++)
 	{
-		scarlett.attack("a common bot");
-		scarlett.takeDamage(50);
-		scarlett.beRepaired(20);
+		sam.takeDamage(2);
+		sam.beRepaired(2);
+		sam.attack("a common bot");
 	}
-	scarlett.guardGate();
-	scarlett.guardGate();
+	sam.guardGate();
+	std::cout << std::endl;
+	
+	ScavTrap	steve("Steve");
+	steve.takeDamage(100);
+	steve.attack("a common bot");
+	steve.guardGate();
+	std::cout << std::endl;
+	
+	ScavTrap	sylvester("Sylvester");
+	sylvester.guardGate();
+	sylvester.guardGate();
+	std::cout << std::endl;
+	
 	return (0);
 }

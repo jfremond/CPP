@@ -5,48 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 14:39:52 by jfremond          #+#    #+#             */
-/*   Updated: 2022/07/24 21:29:24 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/11 23:29:04 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/12 03:07:57 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+unsigned int	ScavTrap::_scavHitPts = 100;
+unsigned int	ScavTrap::_scavEnPts = 50;
+unsigned int	ScavTrap::_scavAtkDmg = 20;
+
+ScavTrap::ScavTrap(void) : _gatekeep(false)
 {
-	this->_hit_pts = 100;
-	this->_en_pts = 50;
-	this->_atk_dmg = 20;
-	this->_gatekeep = false;
+	this->_hitPts = ScavTrap::_scavHitPts;
+	this->_enPts = ScavTrap::_scavEnPts;
+	this->_atkDmg = ScavTrap::_scavAtkDmg;
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " default constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _gatekeep(false)
 {
-	this->_name = name;
-	this->_hit_pts = 100;
-	this->_en_pts = 50;
-	this->_atk_dmg = 20;
-	this->_gatekeep = false;
+	this->_hitPts = ScavTrap::_scavHitPts;
+	this->_enPts = ScavTrap::_scavEnPts;
+	this->_atkDmg = ScavTrap::_scavAtkDmg;
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " name constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
+ScavTrap::ScavTrap(ScavTrap const &src)
 {
-	*this = src;
+	(*this) = src;
 	std::cout << RED << "ScavTrap " << this->_name << RESET << " copy constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
+ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
 {
 	this->_name = rhs._name;
-	this->_hit_pts = rhs._hit_pts;
-	this->_en_pts = rhs._en_pts;
-	this->_atk_dmg = rhs._atk_dmg;
-	this->_gatekeep = rhs._gatekeep;
+	this->_hitPts = rhs._hitPts;
+	this->_enPts = rhs._enPts;
+	this->_atkDmg = rhs._atkDmg;
 	return (*this);
 }
 
@@ -58,30 +58,61 @@ ScavTrap::~ScavTrap(void)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->_hit_pts <= 0)
+	if (!this->_name.c_str())
+		return ;
+	if (this->_hitPts == 0)
 	{
-		std::cout << RED << "ScavTrap " << this->_name << RESET << " couldn't attack because they're dead!" << std::endl;
+		std::cout << RED << "ScavTrap " << this->_name << RESET
+			<< " is dead, therefore " << target << " wasn't attacked!" << std::endl;
 		return ;
 	}
-	if (this->_en_pts <= 0)
+	if (this->_enPts == 0)
 	{
-		std::cout << RED << "ScavTrap " << this->_name << RESET << " couldn't attack because they don't have enough energy!" << std::endl;
+		std::cout << RED << "ScavTrap " << this->_name << RESET
+			<< " has no energy left, therefore " << target << " wasn't attacked!" << std::endl;
 		return ;
 	}
-	std::cout << RED << "ScavTrap " << this->_name << RESET << " attacks "
-		<< target << ", causing " << this->_atk_dmg << " points of damage!" << std::endl;
-	this->_en_pts--;
-	return ;
+	std::cout << RED << "ScavTrap " << this->_name << RESET
+		<< " attacks " << target << ", causing " << this->_atkDmg << " points of damage!" << std::endl;
+	this->_enPts--;
 }
 
 void	ScavTrap::guardGate(void)
 {
+	if (!this->_name.c_str())
+		return ;
+	if (this->_hitPts == 0)
+	{
+		std::cout << RED << "ScavTrap " << this->_name << RESET
+			<< " is dead, therefore it can't enter gatekeeping mode!"  << std::endl;
+		return ;
+	}
+	if (this->_enPts == 0)
+	{
+		std::cout << RED << "ScavTrap " << this->_name << RESET
+			<< " has no energy left, therefore it can't enter gatekeeping mode!" << std::endl;
+		return ;
+	}
 	if (this->_gatekeep == true)
 	{
 		std::cout << RED << "ScavTrap " << this->_name << RESET << " is already in gatekeeping mode!" << std::endl;
 		return ;
 	}
+	std::cout << RED << "ScavTrap " << this->_name << RESET << " is entering gatekeeping mode!" << std::endl;
 	this->_gatekeep = true;
-	std::cout << RED << "ScavTrap " << this->_name << RESET << " enters gatekeeping mode!" << std::endl;
-	return ;
+}
+
+bool	ScavTrap::getGatekeep(void) const
+{
+	return (this->_gatekeep);
+}
+
+std::ostream &operator<<(std::ostream &os, ScavTrap const &obj)
+{
+	os << "name: " << obj.getName() << std::endl;
+	os << "hitPts: " << obj.getHitPts() << std::endl;
+	os << "enPts: " << obj.getEnPts() << std::endl;
+	os << "atkDmg: " << obj.getAtkDmg() << std::endl;
+	os << "gatekeep: " << obj.getGatekeep();
+	return (os);
 }
