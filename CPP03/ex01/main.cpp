@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:57:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/12 00:48:39 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/16 09:27:12 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 
 int	main(void)
 {
+	// Main ClapTrap
+	// ClapTrap	clyde("Clyde");
+	// for (int i = 0; i < 6; i++)
+	// {
+	// 	clyde.takeDamage(3);
+	// 	clyde.beRepaired(4);
+	// 	clyde.attack("a common bot");
+	// }
+	// std::cout << std::endl;
+
+	// ClapTrap	carl("Carl");
+	// carl.takeDamage(10);
+	// carl.attack("a common bot");
+	// std::cout << std::endl;
+	
 	ScavTrap	sam("Sam");
 	for (int i = 0; i < 26; i++)
 	{

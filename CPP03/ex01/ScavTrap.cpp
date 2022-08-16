@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 23:29:04 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/12 03:07:52 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/16 09:27:51 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
 	this->_hitPts = rhs._hitPts;
 	this->_enPts = rhs._enPts;
 	this->_atkDmg = rhs._atkDmg;
+	this->_gatekeep = rhs._gatekeep;
 	return (*this);
 }
 

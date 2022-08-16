@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 05:32:43 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/16 00:18:16 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/16 09:45:43 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(void)
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name") // Utilse sinon appel des 3 autres constructeurs par défaut
 {
 	this->_name = name;
 	this->_hitPts = FragTrap::_fragHitPts;
@@ -74,7 +74,7 @@ void	DiamondTrap::whoAmI(void)
 		return ;
 	}
 	std::cout << "Hello ! My name is " << YELLOW << this->_name << RESET
-		<< " and my clap name is " << YELLOW << ClapTrap::_name + "_clap_name" << RESET << std::endl;
+		<< " and my clap name is " << YELLOW << ClapTrap::_name << RESET << std::endl;
 	this->_enPts--;
 }
 
