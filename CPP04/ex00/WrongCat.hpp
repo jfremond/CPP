@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 04:27:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/17 04:45:10 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/17 05:41:44 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ WrongCat::~WrongCat(void)
 {
 	std::cout << "WrongCat destructor called" << std::endl;
 	return ;
+}
+
+void WrongCat::makeSound(void) const
+{
+	std::cout << "WrongCat sounds..." << std::endl;
 }
 
 #endif
