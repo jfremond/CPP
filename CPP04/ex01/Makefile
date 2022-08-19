@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 02:53:08 by jfremond          #+#    #+#              #
-#    Updated: 2022/08/18 21:53:10 by jfremond         ###   ########.fr        #
+#    Updated: 2022/08/19 03:36:27 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS	=	main.cpp		\
 			Cat.cpp			\
 			WrongAnimal.cpp	\
 			WrongCat.cpp	\
+			Brain.cpp		\
 
 ###############
 #   OBJECTS   #
