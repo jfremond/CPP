@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:58:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/18 21:52:17 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/22 22:16:45 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #define ANIMAL_HPP
 
 #include <iostream>
+
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
+#define ORANGE  "\033[38;2;255;165;0m"
 
 class Animal
 {

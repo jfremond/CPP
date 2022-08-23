@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 00:22:27 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/19 05:49:21 by jfremond         ###   ########.fr       */
+/*   Created: 2022/08/22 22:08:02 by jfremond          #+#    #+#             */
+/*   Updated: 2022/08/23 05:39:13 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 Brain::Brain(void)
 {
 	for (int i = 0; i < 100; i++)
-		this->ideas[i] = "A new idea...";
+		this->_ideas[i] = "A new idea...";
 	std::cout << "Brain default constructor called" << std::endl;
 	return ;
 }
 
 Brain::Brain(Brain const &src)
 {
-	(*this) = src;
+	(*this) = src;	
 	std::cout << "Brain copy constructor called" << std::endl;
 	return ;
 }
 
 Brain	&Brain::operator=(Brain const &rhs)
 {
-	for (int i = 0; i < 100; i++)
-		this->ideas[i] = rhs.ideas[i];
+	for (int i = 0; i < 1000; i++)
+		this->_ideas[i] = rhs._ideas[i];
 	return (*this);
 }
 
@@ -40,12 +40,27 @@ Brain::~Brain(void)
 	return ;
 }
 
-std::string	Brain::getIdea(int i) const
+std::string	Brain::getIdea(int index)
 {
-	return (this->ideas[i]);
+	if (index >= 100)
+	{
+		std::cout << "Index can't be greater than 100" << std::endl;
+		return (std::string());
+	}
+	return (this->_ideas[index]);
 }
 
-std::string	*Brain::getAddress(int i)
+std::string	*Brain::getAddress()
 {
-	return (&this->ideas[i]);
+	return (&this->_ideas[0]);
+}
+
+void	Brain::setIdea(std::string str, int index)
+{
+	if (index >= 100)
+	{
+		std::cout << "Index can't be greater than 100" << std::endl;
+		return ;
+	}
+	this->_ideas[index] = str;
 }
