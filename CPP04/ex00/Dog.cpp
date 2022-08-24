@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:54:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/18 21:54:27 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 10:55:16 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Dog::Dog(void)
 	return ;
 }
 
-Dog::Dog(Dog const &src)
+Dog::Dog(Dog const &src) : Animal(src)
 {
 	(*this) = src;
 	std::cout << "Dog copy constructor called" << std::endl;
@@ -40,5 +40,5 @@ Dog::~Dog(void)
 
 void	Dog::makeSound(void) const
 {
-	std::cout << "Bark bark" << std::endl;
+	std::cout << "woof" << std::endl;
 }

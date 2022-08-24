@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:53:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/18 21:53:59 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 10:55:07 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Cat::Cat(void)
 	return ;
 }
 
-Cat::Cat(Cat const &src)
+Cat::Cat(Cat const &src) : Animal(src)
 {
 	(*this) = src;
 	std::cout << "Cat copy constructor called" << std::endl;
@@ -40,5 +40,5 @@ Cat::~Cat(void)
 
 void	Cat::makeSound(void) const
 {
-	std::cout << "Meow meow" << std::endl;
+	std::cout << "meow" << std::endl;
 }
