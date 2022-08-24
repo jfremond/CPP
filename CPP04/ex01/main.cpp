@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:53:56 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/23 05:58:16 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:00:15 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(void)
 		std::cout << array[i]->getType() << " goes ";
 		array[i]->makeSound();
 	}
+	
 	std::cout << std::endl;
 	std::cout << ORANGE << "Destruction of the array" << RESET << std::endl;
 	for (int i = 0; i < 10; i++)
@@ -48,17 +49,43 @@ int	main(void)
 	}
 	std::cout << std::endl;
 	std::cout << RED << "Test 2 : Test that the copies are deep copies" << RESET << std::endl;
-	
-	Dog	dog;
-	Dog	cpy = dog;
-	std::cout << dog.getIdea(0) << std::endl;
-	std::cout << cpy.getIdea(0) << std::endl;
-	std::cout << dog.getAddress() << std::endl;
-	std::cout << cpy.getAddress() << std::endl;
-	dog.setIdea("I love Rock n Roll", 0);
-	std::cout << dog.getIdea(0) << std::endl;
-	std::cout << cpy.getIdea(0) << std::endl;
-	std::cout << dog.getAddress() << std::endl;
-	std::cout << cpy.getAddress() << std::endl;
+	{
+		std::cout << std::endl;
+		std::cout << ORANGE << "DOG" << RESET << std::endl;	
+		Dog	dog;
+		Dog	cpy = dog;
+		std::cout << YELLOW << "Dog Ideas" << RESET << std::endl;
+		std::cout << dog.getIdea(0) << std::endl;
+		std::cout << cpy.getIdea(0) << std::endl;
+		std::cout << YELLOW << "Dog Addresses" << RESET << std::endl;
+		std::cout << dog.getAddress() << std::endl;
+		std::cout << cpy.getAddress() << std::endl;
+		dog.setIdea("I am a cute little dog 🐶", 0);
+		std::cout << YELLOW << "Dog Ideas" << RESET << std::endl;
+		std::cout << dog.getIdea(0) << std::endl;
+		std::cout << cpy.getIdea(0) << std::endl;
+		std::cout << YELLOW << "Dog Addresses" << RESET << std::endl;
+		std::cout << dog.getAddress() << std::endl;
+		std::cout << cpy.getAddress() << std::endl << std::endl;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << ORANGE << "CAT" << RESET << std::endl;	
+		Cat	cat;
+		Cat	cpy = cat;
+		std::cout << YELLOW << "Cat Ideas" << RESET << std::endl;
+		std::cout << cat.getIdea(0) << std::endl;
+		std::cout << cpy.getIdea(0) << std::endl;
+		std::cout << YELLOW << "Cat Addresses" << RESET << std::endl;
+		std::cout << cat.getAddress() << std::endl;
+		std::cout << cpy.getAddress() << std::endl;
+		cat.setIdea("I am a cute little cat 🐱", 0);
+		std::cout << YELLOW << "Cat Ideas" << RESET << std::endl;
+		std::cout << cat.getIdea(0) << std::endl;
+		std::cout << cpy.getIdea(0) << std::endl;
+		std::cout << YELLOW << "Cat Addresses" << RESET << std::endl;
+		std::cout << cat.getAddress() << std::endl;
+		std::cout << cpy.getAddress() << std::endl << std::endl;
+	}
 	return (0);
 }

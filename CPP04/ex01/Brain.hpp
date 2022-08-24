@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:43:48 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/23 05:39:13 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:56:38 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Brain
 {
 	private:
-		std::string	_ideas[1000];
+		std::string	_ideas[100];
 	public:
 	Brain(void);
 	Brain(Brain const &src);

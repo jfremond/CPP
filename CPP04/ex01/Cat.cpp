@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:53:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 11:32:34 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:59:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ Cat	&Cat::operator=(Cat const &rhs)
 {
 	this->type = rhs.type;
 	this->_catBrain = new Brain;
-	
 	*(this->_catBrain) = *rhs._catBrain;
 	return (*this);	
 }
@@ -46,4 +45,19 @@ Cat::~Cat(void)
 void	Cat::makeSound(void) const
 {
 	std::cout << "meow" << std::endl;
+}
+
+std::string		Cat::getIdea(int index)
+{
+	return (this->_catBrain->getIdea(index));
+}
+
+std::string		*Cat::getAddress(void)
+{
+	return (this->_catBrain->getAddress());
+}
+
+void	Cat::setIdea(std::string str, int index)
+{
+	this->_catBrain->setIdea(str, index);
 }
