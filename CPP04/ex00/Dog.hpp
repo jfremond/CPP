@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:13:17 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/18 21:54:12 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:29:00 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Dog : public Animal
 		Dog(void);
 		Dog(Dog const &src);
 		Dog	&operator=(Dog const &rhs);
-		~Dog(void);
+		virtual ~Dog(void);
 		virtual void	makeSound(void) const;
 };
 
