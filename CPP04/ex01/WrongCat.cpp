@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:55:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/18 21:55:13 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:32:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ WrongCat::WrongCat(void)
 	return ;
 }
 
-WrongCat::WrongCat(WrongCat const &src)
+WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 {
 	(*this) = src;
 	std::cout << "WrongCat copy constructor called" << std::endl;
