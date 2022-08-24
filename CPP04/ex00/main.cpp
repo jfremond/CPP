@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:53:56 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/18 21:40:50 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:19:19 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ int	main(void)
 	const Animal *d = new Dog();
 
 	std::cout << std::endl;
+	std::cout << ORANGE << "TESTING DYNAMIC LINKAGE" << RESET << std::endl;
 	std::cout << "I am an " <<  meta->getType() << std::endl;
 	std::cout << "I am a " << c->getType() << std::endl;
 	std::cout << "I am a " << d->getType() << std::endl;
 
 	std::cout << std::endl;
 	meta->makeSound();
-	c->makeSound();
-	d->makeSound();
+	std::cout << "Cat goes "; c->makeSound();
+	std::cout << "Dog goes "; d->makeSound();
 	
 	std::cout << std::endl;
 	delete meta;
@@ -40,6 +41,7 @@ int	main(void)
 	const WrongAnimal	*Wcat = new WrongCat();
 	
 	std::cout << std::endl;
+	std::cout << ORANGE << "TESTING STATIC LINKAGE" << RESET << std::endl;
 	std::cout << "I am a " << Wmeta->getType() << std::endl;
 	std::cout << "I am a " << Wcat->getType() << std::endl;
 
