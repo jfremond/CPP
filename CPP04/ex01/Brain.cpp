@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:08:02 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/23 05:39:13 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/24 11:34:15 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Brain::Brain(Brain const &src)
 
 Brain	&Brain::operator=(Brain const &rhs)
 {
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 100; i++)
 		this->_ideas[i] = rhs._ideas[i];
 	return (*this);
 }
