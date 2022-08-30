@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:13:17 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 12:20:33 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/27 09:58:28 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Dog : public AAnimal
 		virtual ~Dog(void);
 		virtual void	makeSound(void) const;
 		std::string		getIdea(int index);
-		std::string		*getAddress(void);
 		void			setIdea(std::string str, int index);
 };
 

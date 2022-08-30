@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:53:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 11:59:49 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/27 09:51:06 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void	Cat::makeSound(void) const
 std::string		Cat::getIdea(int index)
 {
 	return (this->_catBrain->getIdea(index));
-}
-
-std::string		*Cat::getAddress(void)
-{
-	return (this->_catBrain->getAddress());
 }
 
 void	Cat::setIdea(std::string str, int index)

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:53:56 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 11:19:19 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/27 04:55:58 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,22 @@ int	main(void)
 	std::cout << std::endl;
 	const WrongAnimal	*Wmeta = new WrongAnimal();
 	const WrongAnimal	*Wcat = new WrongCat();
+	const WrongCat		*Rcat = new WrongCat();
 	
 	std::cout << std::endl;
 	std::cout << ORANGE << "TESTING STATIC LINKAGE" << RESET << std::endl;
 	std::cout << "I am a " << Wmeta->getType() << std::endl;
 	std::cout << "I am a " << Wcat->getType() << std::endl;
+	std::cout << "I am a " << Rcat->getType() << std::endl;
 
 	std::cout << std::endl;
 	Wmeta->makeSound();
 	Wcat->makeSound();
+	Rcat->makeSound();
 	
 	std::cout << std::endl;
 	delete Wmeta;
 	delete Wcat;
+	delete Rcat;
 	return (0);
 }

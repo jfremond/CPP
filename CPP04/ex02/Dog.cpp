@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:54:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 12:12:47 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/27 09:58:00 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void	Dog::makeSound(void) const
 std::string		Dog::getIdea(int index)
 {
 	return (this->_dogBrain->getIdea(index));
-}
-
-std::string		*Dog::getAddress(void)
-{
-	return (this->_dogBrain->getAddress());
 }
 
 void	Dog::setIdea(std::string str, int index)

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:08:02 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 11:34:15 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/27 09:50:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ std::string	Brain::getIdea(int index)
 		return (std::string());
 	}
 	return (this->_ideas[index]);
-}
-
-std::string	*Brain::getAddress()
-{
-	return (&this->_ideas[0]);
 }
 
 void	Brain::setIdea(std::string str, int index)
