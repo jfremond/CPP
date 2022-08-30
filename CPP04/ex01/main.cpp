@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 02:53:56 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/27 09:49:53 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:13:43 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(void)
 	std::cout << RED << "Test 2 : Test that the copies are deep copies" << RESET << std::endl;
 	{
 		std::cout << std::endl;
-		std::cout << ORANGE << "DOG" << RESET << std::endl;	
+		std::cout << ORANGE << "DOG assignment operator overload" << RESET << std::endl;	
 		Dog	dog;
 		Dog	cpy = dog;
 		std::cout << YELLOW << "Dog Ideas" << RESET << std::endl;
@@ -65,7 +65,35 @@ int	main(void)
 	}
 	{
 		std::cout << std::endl;
-		std::cout << ORANGE << "CAT" << RESET << std::endl;	
+		std::cout << ORANGE << "DOG construction by copy" << RESET << std::endl;	
+		Dog	dog;
+		Dog	cpy(dog);
+		std::cout << YELLOW << "Dog Ideas" << RESET << std::endl;
+		std::cout << "dog: " << dog.getIdea(0) << std::endl;
+		std::cout << "cpy: " << dog.getIdea(0) << std::endl;
+		std::cout << GREEN << "Setting the Dog Idea" << RESET << std::endl;
+		dog.setIdea("I am a cute little dog 🐶", 0);
+		std::cout << YELLOW << "Dog Ideas" << RESET << std::endl;
+		std::cout << "dog: " << dog.getIdea(0) << std::endl;
+		std::cout << "cpy: " << cpy.getIdea(0) << std::endl << std::endl;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << ORANGE << "CAT assignment operator overload" << RESET << std::endl;	
+		Cat	cat;
+		Cat	cpy = cat;
+		std::cout << YELLOW << "Cat Ideas" << RESET << std::endl;
+		std::cout << "cat: " << cat.getIdea(0) << std::endl;
+		std::cout << "cpy: " << cpy.getIdea(0) << std::endl;
+		std::cout << GREEN << "Setting the Cat Idea" << RESET << std::endl;
+		cat.setIdea("I am a cute little cat 🐱", 0);
+		std::cout << YELLOW << "Cat Ideas" << RESET << std::endl;
+		std::cout << "cat: " << cat.getIdea(0) << std::endl;
+		std::cout << "cpy: " << cpy.getIdea(0) << std::endl << std::endl;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << ORANGE << "CAT construction by copy" << RESET << std::endl;	
 		Cat	cat;
 		Cat	cpy(cat);
 		std::cout << YELLOW << "Cat Ideas" << RESET << std::endl;
