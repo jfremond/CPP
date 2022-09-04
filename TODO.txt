@@ -1,0 +1,3 @@
+Remove all void from default constructors and destructors
+as it's a bad practice in CPP to put void parameters in functions
+If it's not done yet, change all CC by CXX and CFLAGS by CXXFLAGS in Makefiles
