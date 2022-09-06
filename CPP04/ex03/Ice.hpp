@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 06:29:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/06 06:30:33 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/07 00:15:13 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,11 @@ class Ice : public AMateria
 {
 	public:
 		Ice();
-		~Ice();
+		Ice(Ice const &src);
+		Ice					&operator=(Ice const &rhs);
+		virtual ~Ice();
+		virtual AMateria	*clone() const;
+		virtual void		use(ICharacter &target);
 };
-
-Ice::Ice()
-{
-}
-
-Ice::~Ice()
-{
-}
-
 
 #endif

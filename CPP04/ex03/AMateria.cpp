@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 06:08:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/06 06:28:57 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/07 00:31:30 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ AMateria::AMateria(AMateria const &src)
 
 AMateria	&AMateria::operator=(AMateria const &rhs)
 {
-	this->_type = rhs.getType();
+	this->_type = rhs._type;
 	return (*this);
 }
 
@@ -45,5 +45,5 @@ AMateria::~AMateria()
 void	AMateria::use(ICharacter &target)
 {
 	// ! Very wrong if you see this
-	this->_type << " AMateria uses something against " << target.getName();
+	std::cout << this->_type << " AMateria uses something against " << target.getName() << std::endl;
 }

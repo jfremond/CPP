@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 05:41:33 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/07 00:31:05 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/07 00:17:21 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/07 00:18:57 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
 
-int main(void)
+#include "AMateria.hpp"
+
+class AMateria;
+
+class ICharacter
 {
-    std::cout << "Starting ex03" << std::endl;
-}
+	public:
+		virtual	~ICharacter() {}
+		virtual	std::string const & getName() const = 0;
+		virtual	void equip(AMateria* m) = 0;
+		virtual	void unequip(int idx) = 0;
+		virtual	void use(int idx, ICharacter& target) = 0;
+};
+
+#endif
