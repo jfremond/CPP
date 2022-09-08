@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 07:05:50 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/08 07:06:16 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/08 22:46:26 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ class Cure : public AMateria
 		Cure();
 		Cure(Cure const &src);
 		Cure					&operator=(Cure const &rhs);
-		virtual ~Cure();
-		virtual AMateria	*clone() const;
-		virtual void		use(ICharacter &target);
+		~Cure();
+		AMateria	*clone() const;
+		void		use(ICharacter &target);
 };
 
 #endif

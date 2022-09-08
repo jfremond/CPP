@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 05:42:49 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/07 00:26:19 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/09 00:49:08 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,12 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS	=	main.cpp		\
-			AMateria.cpp	\
-			Ice.cpp			\
+SRCS	=	main.cpp			\
+			AMateria.cpp		\
+			Ice.cpp				\
+			Cure.cpp			\
+			Character.cpp		\
+			MateriaSource.cpp	\
 
 ###############
 #   OBJECTS   #
