@@ -6,16 +6,16 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 00:15:22 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/07 00:31:20 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 02:49:23 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice()
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Ice default constructor called" << std::endl;
-	this->_type = "ice";
+	// this->_type = "ice";
 	return ;
 }
 
@@ -28,7 +28,8 @@ Ice::Ice(Ice const &src) : AMateria(src)
 
 Ice			&Ice::operator=(Ice const &rhs)
 {
-	this->_type = rhs._type;
+	(void)rhs;
+	// this->_type = rhs._type;
 	return (*this);
 }
 

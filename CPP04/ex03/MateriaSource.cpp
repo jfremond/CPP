@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:15:14 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 01:15:33 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 02:59:57 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 	this->_array[this->_index++] = m;
 }
 
-AMateria	*MateriaSource::createMateria(std::string const &type)
+AMateria*	MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < this->_index; i++)
 	{

@@ -6,15 +6,15 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 00:47:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 00:53:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 02:53:03 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character()
+Character::Character() : _name("unknown")
 {
-	this->_name = "unknown";
+	// this->_name = "unknown";
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = NULL;
 	std::cout << "Character default constructor called" << std::endl;
@@ -29,7 +29,7 @@ Character::Character(std::string const &name) : _name(name)
 	return ;
 }
 
-Character::Character(Character const &src)
+Character::Character(Character const &src) : _name(src._name)
 {
 	(*this) = src;
 	std::cout << "Character copy constructor called" << std::endl;
@@ -38,7 +38,7 @@ Character::Character(Character const &src)
 
 Character	&Character::operator=(Character const &rhs)
 {
-	this->_name = rhs._name;
+	// this->_name = rhs._name;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = rhs._array[i];
 	return (*this);
@@ -62,7 +62,7 @@ void				Character::equip(AMateria* m)
 		std::cout << "Array of Materia is full" << std::endl;
 		return ;
 	}
-	std::cout << m->getType() << " Materia equipped" << std::endl;
+	std::cout << " Materia equipped" << std::endl;
 	this->_array[this->_index++] = m;
 }
 

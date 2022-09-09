@@ -6,16 +6,16 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 07:06:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/08 07:07:40 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 02:49:58 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure()
+Cure::Cure() : AMateria("cure")
 {
 	std::cout << "Cure default constructor called" << std::endl;
-	this->_type = "cure";
+	// this->_type = "cure";
 	return ;
 }
 
@@ -28,7 +28,8 @@ Cure::Cure(Cure const &src) : AMateria(src)
 
 Cure			&Cure::operator=(Cure const &rhs)
 {
-	this->_type = rhs._type;
+	(void)rhs;
+	// this->_type = rhs._type;
 	return (*this);
 }
 
