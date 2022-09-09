@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 00:47:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 02:53:03 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 06:25:18 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Character::Character() : _name("unknown")
 {
 	// this->_name = "unknown";
+	this->_index = 0;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = NULL;
 	std::cout << "Character default constructor called" << std::endl;
@@ -23,6 +24,7 @@ Character::Character() : _name("unknown")
 
 Character::Character(std::string const &name) : _name(name)
 {
+	this->_index = 0;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = NULL;
 	std::cout << "Character string constructor called" << std::endl;
@@ -38,7 +40,7 @@ Character::Character(Character const &src) : _name(src._name)
 
 Character	&Character::operator=(Character const &rhs)
 {
-	// this->_name = rhs._name;
+	this->_index = rhs._index;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = rhs._array[i];
 	return (*this);

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 06:08:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 03:02:15 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 06:08:42 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ AMateria::AMateria(AMateria const &src) : _type(src._type)
 AMateria	&AMateria::operator=(AMateria const &rhs)
 {
 	(void)rhs;
-//	this->_type = rhs._type;
 	return (*this);
 }
 
