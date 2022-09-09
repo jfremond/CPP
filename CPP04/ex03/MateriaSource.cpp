@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:15:14 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 06:18:48 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:37:47 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ MateriaSource::MateriaSource()
 	this->_index = 0;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = NULL;
-	std::cout << "MateriaSource default destructor called" << std::endl;
+	std::cout << GREEN << "MateriaSource default destructor called" << RESET << std::endl;
 	return ;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &src)
 {
 	(*this) = src;
-	std::cout << "MateriaSource copy constructor called" << std::endl;
+	std::cout << GREEN << "MateriaSource copy constructor called" << RESET << std::endl;
 	return ;
 }
 
@@ -41,7 +41,7 @@ MateriaSource::~MateriaSource()
 	for (int i = 0; i < this->_index; i++)
 		delete this->_array[i];
 	this->_index = 0;
-	std::cout << "MateriaSource destructor called" << std::endl;
+	std::cout << RED << "MateriaSource destructor called" << RESET << std::endl;
 }
 
 void	MateriaSource::learnMateria(AMateria *m)

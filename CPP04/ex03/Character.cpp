@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 00:47:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 20:21:57 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:34:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 Character::Character() : _name("unknown")
 {
-	// this->_name = "unknown";
 	this->_index = 0;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = NULL;
-	std::cout << "Character default constructor called" << std::endl;
+	std::cout << GREEN << "Character default constructor called" << RESET << std::endl;
 	return ;
 }
 
@@ -27,14 +26,14 @@ Character::Character(std::string const &name) : _name(name)
 	this->_index = 0;
 	for (int i = 0; i < 4; i++)
 		this->_array[i] = NULL;
-	std::cout << "Character string constructor called" << std::endl;
+	std::cout << GREEN << "Character string constructor called" << RESET << std::endl;
 	return ;
 }
 
 Character::Character(Character const &src) : _name(src._name)
 {
 	(*this) = src;
-	std::cout << "Character copy constructor called" << std::endl;
+	std::cout << GREEN << "Character copy constructor called" << RESET << std::endl;
 	return ;
 }
 
@@ -48,7 +47,7 @@ Character	&Character::operator=(Character const &rhs)
 
 Character::~Character()
 {
-	std::cout << "Character " << this->_name << " destructor called" << std::endl;
+	std::cout << RED << "Character " << this->_name << " destructor called" << RESET << std::endl;
 	return ;
 }
 
