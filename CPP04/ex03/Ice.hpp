@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 06:29:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/08 22:47:34 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:59:12 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Ice : public AMateria
 		Ice(Ice const &src);
 		Ice					&operator=(Ice const &rhs);
 		~Ice();
-		AMateria	*clone() const;
-		void		use(ICharacter &target);
+		virtual AMateria	*clone() const;
+		virtual void		use(ICharacter &target);
 };
 
 #endif
