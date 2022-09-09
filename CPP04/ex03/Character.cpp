@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 00:47:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 06:25:18 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:21:57 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void				Character::equip(AMateria* m)
 		std::cout << "Array of Materia is full" << std::endl;
 		return ;
 	}
-	std::cout << " Materia equipped" << std::endl;
+	std::cout << "Materia equipped" << std::endl;
 	this->_array[this->_index++] = m;
 }
 

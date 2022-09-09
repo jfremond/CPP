@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 07:06:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 06:09:55 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:21:28 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ AMateria	*Cure::clone() const
 
 void		Cure::use(ICharacter &target)
 {
-	std::cout << "* heals " << target.getName() << "'s wounds*" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
