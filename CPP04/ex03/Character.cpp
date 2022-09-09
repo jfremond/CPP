@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 00:47:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 20:34:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/10 01:48:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void				Character::equip(AMateria* m)
 {
 	if (this->_index == 3)
 	{
-		std::cout << "Array of Materia is full" << std::endl;
+		// std::cout << "Array of Materia is full" << std::endl;
 		return ;
 	}
-	std::cout << "Materia equipped" << std::endl;
+	// std::cout << "Materia equipped" << std::endl;
 	this->_array[this->_index++] = m;
 }
 
@@ -80,10 +80,11 @@ void				Character::unequip(int idx)
 
 void				Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx <= 3)
+	// Rajout de this->_array[idx]
+	if (idx >= 0 && idx <= 3 && this->_array[idx])
 	{
 		this->_array[idx]->use(target);
 	}
-	else
-		std::cout << "Materia doesn't exist therefor it can't be used" << std::endl;
+	// else
+		// std::cout << "Materia doesn't exist therefore it can't be used" << std::endl;
 }
