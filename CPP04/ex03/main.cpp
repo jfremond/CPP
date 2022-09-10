@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 05:41:33 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/10 04:25:08 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/10 04:44:29 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main()
 	tmp1 = src->createMateria("cure");
 	me->equip(tmp1);
 
+	me->unequip(2);
 	ICharacter* bob = new Character("Bob");
 	me->use(4, *bob);
 	me->use(1, *bob);
