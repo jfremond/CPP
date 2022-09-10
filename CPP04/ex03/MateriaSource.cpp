@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 01:15:14 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 20:37:47 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/10 04:22:59 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ AMateria*	MateriaSource::createMateria(std::string const &type)
 		if (this->_array[i]->getType() == type)
 			return (this->_array[i]->clone());
 	}
-	return (0);	
+	return (NULL);	
 }

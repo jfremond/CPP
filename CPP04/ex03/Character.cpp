@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 00:47:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/10 01:48:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/10 04:24:44 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ Character	&Character::operator=(Character const &rhs)
 
 Character::~Character()
 {
+	for (int i = 0; i < 4; i++)
+		delete this->_array[i];
 	std::cout << RED << "Character " << this->_name << " destructor called" << RESET << std::endl;
 	return ;
 }
@@ -58,12 +60,12 @@ std::string const	&Character::getName() const
 
 void				Character::equip(AMateria* m)
 {
-	if (this->_index == 3)
+	if (this->_index == 4)
 	{
-		// std::cout << "Array of Materia is full" << std::endl;
+		std::cout << "Array of Materia is full" << std::endl;
 		return ;
 	}
-	// std::cout << "Materia equipped" << std::endl;
+	std::cout << "Materia equipped" << std::endl;
 	this->_array[this->_index++] = m;
 }
 
@@ -74,8 +76,8 @@ void				Character::unequip(int idx)
 		this->_array[idx] = NULL;
 		this->_index--;
 	}
-	else
-		std::cout << "Materia doesn't exist" << std::endl;
+//	else
+//		std::cout << "Materia doesn't exist" << std::endl;
 }
 
 void				Character::use(int idx, ICharacter& target)
