@@ -6,12 +6,15 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:24:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/12 16:53:56 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:24:38 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int	main(void)
 {

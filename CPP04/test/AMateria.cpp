@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:36:26 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/12 17:19:05 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:38:20 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@ AMateria::AMateria() : _type("unknown")
 	return ;
 }
 
-AMateria::AMateria(std::string const type) : _type(type)
+AMateria::AMateria(std::string const &type) : _type(type)
 {
 	std::cout << "AMateria " << this->_type << " string constructor called" << std::endl;
 	return ;
 }
 
-AMateria::AMateria(AMateria const &src) : _type(src.getType())
+AMateria::AMateria(AMateria const &src) : _type(src._type)
 {
+	(*this) = src;
 	std::cout << "AMateria copy constructor called" << std::endl;
 	return ;
 }
 
 AMateria	&AMateria::operator=(AMateria const &rhs)
 {
-	(*this) = rhs;
+	(void)rhs;
 	return (*this);	
 }
 

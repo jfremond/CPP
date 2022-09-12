@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 14:31:29 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/12 16:49:35 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/13 00:47:59 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ MKDIR		=		/usr/bin/mkdir -p
 #   FLAGS   #
 #############
 
-CXXFLAGS	=		-Wall -Wextra -Werror
+CXXFLAGS	=		-Wall -Wextra -Werror -g
 CXXFLAGS	+=		-std=c++98
 CXXFLAGS	+=		-MMD -MP
 
@@ -42,9 +42,12 @@ OBJS_D		=		objs/
 #   SOURCES   #
 ###############
 
-SRCS		=		main.cpp		\
-					AMateria.cpp	\
-					Ice.cpp			\
+SRCS		=		main.cpp			\
+					AMateria.cpp		\
+					Ice.cpp				\
+					Cure.cpp			\
+					Character.cpp		\
+					MateriaSource.cpp	\
 
 ###############
 #   OBJECTS   #

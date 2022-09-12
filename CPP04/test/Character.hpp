@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:34:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/12 17:36:27 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:46:35 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,25 @@
 
 #include "ICharacter.hpp"
 
+class AMateria;
+
 class Character : public ICharacter
 {
 	private:
-		/* data */
+		std::string const			_name;
+		int							_index;
+		AMateria					*_stuff[4];
+		AMateria					*_floor[4];
 	public:
-		Character(/* args */);
-		~Character();
+		Character();
+		Character(std::string const name);
+		Character(Character const &src);
+		Character					&operator=(Character const &rhs);
+		virtual ~Character();
+		virtual std::string const	&getName() const;
+		virtual void				equip(AMateria *m);
+		virtual void				unequip(int idx);
+		virtual void				use(int idx, ICharacter &target);
 };
-
-Character::Character(/* args */)
-{
-}
-
-Character::~Character()
-{
-}
-
 
 #endif

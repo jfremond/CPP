@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 15:56:35 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/12 17:19:11 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:28:56 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class AMateria
 		std::string const	_type;
 	public:
 		AMateria();
-		AMateria(std::string const type);
+		AMateria(std::string const &type);
 		AMateria(AMateria const &src);
 		AMateria			&operator=(AMateria const &rhs);
 		virtual ~AMateria();
