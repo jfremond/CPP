@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 00:15:22 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 20:36:43 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/12 16:49:03 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 00:44:05 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,31 @@
 
 Ice::Ice() : AMateria("ice")
 {
-	std::cout << GREEN << "Ice default constructor called" << RESET << std::endl;
+	std::cout << "Ice default constructor called" << std::endl;
 	return ;
 }
 
 Ice::Ice(Ice const &src) : AMateria(src)
 {
 	(*this) = src;
-	std::cout << GREEN << "Ice copy constructor called" << RESET << std::endl;
+	std::cout << "Ice copy constructor called" << std::endl;
 	return ;
 }
 
 Ice			&Ice::operator=(Ice const &rhs)
 {
 	(void)rhs;
-	// this->_type = rhs._type;
 	return (*this);
 }
 
 Ice::~Ice()
 {
-	std::cout << RED << "Ice destructor called" << RESET << std::endl;
 	return ;
 }
 
 AMateria	*Ice::clone() const
 {
-	AMateria *newIce = new Ice;
+	AMateria	*newIce = new Ice;
 	return (newIce);
 }
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 07:06:46 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 20:35:39 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/13 00:26:02 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 00:41:45 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 Cure::Cure() : AMateria("cure")
 {
-	std::cout << GREEN << "Cure default constructor called" << RESET << std::endl;
+	std::cout << "Cure default constructor called" << std::endl;
 	return ;
 }
 
 Cure::Cure(Cure const &src) : AMateria(src)
 {
 	(*this) = src;
-	std::cout << GREEN << "Cure copy constructor called" << RESET << std::endl;
+	std::cout << "Cure copy constructor called" << std::endl;
 	return ;
 }
 
-Cure			&Cure::operator=(Cure const &rhs)
+Cure		&Cure::operator=(Cure const &rhs)
 {
 	(void)rhs;
 	return (*this);
@@ -33,9 +33,10 @@ Cure			&Cure::operator=(Cure const &rhs)
 
 Cure::~Cure()
 {
-	std::cout << RED << "Cure destructor called" << RESET << std::endl;
+	std::cout << "Cure destructor called" << std::endl;
 	return ;
 }
+
 
 AMateria	*Cure::clone() const
 {

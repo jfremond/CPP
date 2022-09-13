@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 06:29:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 20:59:12 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/12 16:37:44 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 00:35:53 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Ice : public AMateria
 		Ice();
 		Ice(Ice const &src);
 		Ice					&operator=(Ice const &rhs);
-		~Ice();
+		virtual ~Ice();
 		virtual AMateria	*clone() const;
 		virtual void		use(ICharacter &target);
 };

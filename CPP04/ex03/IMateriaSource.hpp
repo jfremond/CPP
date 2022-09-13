@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 00:49:12 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 02:56:02 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/12 23:54:29 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 00:49:55 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 #include "AMateria.hpp"
 
+class AMateria;
+
 class IMateriaSource
 {
 	public:
 		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
+		virtual void		learnMateria(AMateria *m) = 0;
 		virtual AMateria	*createMateria(std::string const &type) = 0;
 };
 
