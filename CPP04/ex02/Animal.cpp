@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.cpp                                         :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 21:52:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/24 12:12:13 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/13 02:56:27 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 02:56:28 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-AAnimal::AAnimal(void)
+AAnimal::AAnimal(void) : type("Animal")
 {
-	this->type = "Animal";
 	std::cout << "Animal default constructor called" << std::endl;
 	return ;
 }

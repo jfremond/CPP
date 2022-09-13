@@ -1,0 +1,15 @@
+  Things to test
+    - Learning too many Materia ✅
+    - Learning a null materia ✅
+    - MateriaSource copy constructor and overload operator
+    - Create the wrong kind of Materia ✅
+    - AMateria copy constructor and overload operator
+    - Equip a materia that isn't created ✅
+	// It's in EQUIP MATERIA ALREADY EQUIPPED/UNEQUIPPED
+    - Equip a materia already equipped ✅
+    - Unequip a materia already unequipped ✅
+    - Use with values that don't exist ✅
+    - Character copy constructor and opertator overload
+    - Change *_floor[4] to *_floor and modify code accordingly ✅
+    - Create cleanFloor function to be called when a materia is unequipped ✅
+    - Check leaks (done with things tested)

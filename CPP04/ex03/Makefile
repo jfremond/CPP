@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 14:31:29 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/13 02:37:15 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/13 04:39:56 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ MKDIR		=		/usr/bin/mkdir -p
 #   FLAGS   #
 #############
 
-CXXFLAGS	=		-c -Wall -Wextra -Werror
+CXXFLAGS	=		-c -Wall -Wextra -Werror -g
 CXXFLAGS	+=		-std=c++98
 CXXFLAGS	+=		-MMD -MP
 

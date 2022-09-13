@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 02:53:56 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/30 16:13:43 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/13 02:57:23 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 03:00:10 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	std::cout << RED << "Test 1 : Create and fill an array of Animal objects." << std::endl;
 	std::cout << "Half of them are Dog objects, the other half are Cat objects." << RESET << std::endl << std::endl;
 	
-	Animal	*array[10];
+	AAnimal	*array[10];
 	std::cout << ORANGE << "Construction of the array" << RESET << std::endl;
 	for (int i = 0; i < 10; i++)
 	{

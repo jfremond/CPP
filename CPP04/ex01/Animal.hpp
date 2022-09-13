@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 02:58:03 by jfremond          #+#    #+#             */
-/*   Updated: 2022/08/22 22:16:45 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/13 02:56:39 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/13 03:05:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Animal
 		Animal(Animal const &src);
 		Animal	&operator=(Animal const &rhs);
 		virtual ~Animal(void);
-		virtual void	makeSound(void) const;
+		virtual void	makeSound(void) const = 0;
 		std::string		getType(void) const;
 };
 

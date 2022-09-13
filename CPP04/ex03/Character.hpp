@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:34:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/13 00:46:35 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:49:42 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Character : public ICharacter
 		std::string const			_name;
 		int							_index;
 		AMateria					*_stuff[4];
-		AMateria					*_floor[4];
 	public:
+		AMateria					*_floor;
 		Character();
 		Character(std::string const name);
 		Character(Character const &src);

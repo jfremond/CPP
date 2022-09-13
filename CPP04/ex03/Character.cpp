@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:43:50 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/13 00:40:53 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:59:12 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ Character::Character() : _name("unknown")
 {
 	this->_index = 0;
 	for (int i = 0; i < 4; i++)
-	{
 		this->_stuff[i] = NULL;
-		this->_floor[i] = NULL;
-	}
+	this->_floor = NULL;
 	std::cout << "Character default constructor called" << std::endl;
 	return ;
 }
@@ -28,10 +26,8 @@ Character::Character(std::string const name) : _name(name)
 {
 	this->_index = 0;
 	for (int i = 0; i < 4; i++)
-	{
 		this->_stuff[i] = NULL;
-		this->_floor[i] = NULL;
-	}
+	this->_floor = NULL;
 	std::cout << "Character " << this->_name << " string constructor called" << std::endl;
 	return ;
 }
@@ -49,26 +45,21 @@ Character	&Character::operator=(Character const &rhs)
 	{
 		if (this->_stuff[i])
 			delete this->_stuff[i];
-		if (this->_floor[i])
-			delete this->_floor[i];
 	}
+	delete this->_floor;
 	this->_index = rhs._index;
 	for (int i = 0; i < this->_index; i++)
-	{
 		this->_stuff[i] = rhs._stuff[i];
-		this->_floor[i] = rhs._floor[i];
-	}
+	*this->_floor = *rhs._floor;
 	return (*this);
 }
 
 Character::~Character()
 {
-	for (int i = 0; i < this->_index; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		if (this->_stuff[i])
 			delete this->_stuff[i];
-		if (this->_floor[i])
-			delete this->_floor[i];
 	}
 	std::cout << "Character " << this->_name << " destructor called" << std::endl;
 	return ;
@@ -83,24 +74,41 @@ void				Character::equip(AMateria *m)
 {
 	if (this->_index < 4 && m)
 	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->_stuff[i] == m)
+			{
+				std::cout << RED << "Something went wrong. Couldn't equip Materia" << RESET << std::endl;
+				return ;
+			}
+			// else if (this->_stuff[i] == NULL)
+			// {
+			// 	this->_stuff[i] = m;
+			// 	this->_index++;
+			// 	std::cout << "Materia equipped" << std::endl;
+			// 	return ;
+			// }
+		}
 		this->_stuff[this->_index++] = m;
+		std::cout << m->getType() << std::endl;
 		std::cout << "Materia equipped" << std::endl;
 	}
 	else
-		std::cout << "Can't equip a Materia that doesn't exist" << std::endl;
+		std::cout << RED << "Something went wrong. Couldn't equip Materia" << RESET << std::endl;
 }
 
 void				Character::unequip(int idx)
 {
-	if (idx >= 0 && idx <= 3 && this->_stuff[idx])
+	if (idx >= 0 && idx <= 3 && this->_stuff[idx] != NULL)
 	{
-		this->_floor[idx] = this->_stuff[idx];
+		this->_floor = this->_stuff[idx];
 		this->_stuff[idx] = NULL;
-		this->_index--;
+		// if (this->_index > 0)
+			this->_index--;
 		std::cout << "Materia unequipped" << std::endl;
 	}
 	else
-		std::cout << "Can't unequip a Materia that doesn't exist" << std::endl;
+		std::cout << RED << "Something went wrong. Couldn't unequip Materia" << RESET << std::endl;
 }
 
 void				Character::use(int idx, ICharacter &target)
@@ -111,5 +119,5 @@ void				Character::use(int idx, ICharacter &target)
 		std::cout << "Attack used" << std::endl;
 	}
 	else
-		std::cout << "Something went wrong. Couldn't attack " << target.getName();
+		std::cout << RED << "Something went wrong. Couldn't attack " << target.getName() << RESET << std::endl;
 }

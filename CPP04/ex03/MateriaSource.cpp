@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:06:30 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/13 01:00:28 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/13 04:50:05 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,25 @@ void			MateriaSource::learnMateria(AMateria *m)
 	if (this->_index < 4 && m)
 	{
 		this->_stuff[this->_index++] = m;
-		std::cout << "Materia Learned" << std::endl;
+		// std::cout << "Materia Learned" << std::endl;
 	}
 	else
-		std::cout << "Something went wrong, couldn't learn Materia" << std::endl;
+	{
+		if (m)
+			delete m;
+		std::cout << RED << "Something went wrong, couldn't learn Materia" << RESET <<  std::endl;
+	}
 }
 
 AMateria		*MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < this->_index; i++)
 	{
-		if (this->_stuff[i]->getType() == type)
+		if (this->_stuff[i]->getType() == type && i < 4)
+		{
 			return (this->_stuff[i]->clone());
+		}
 	}
+	std::cout << RED << "Something went wrong, couldn't create materia" << RESET << std::endl;
 	return (NULL);	
 }
