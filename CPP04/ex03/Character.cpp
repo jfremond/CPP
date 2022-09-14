@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:43:50 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/13 17:59:12 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/14 03:39:31 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,40 @@ Character::Character(std::string const name) : _name(name)
 	return ;
 }
 
-Character::Character(Character const &src) : _name(src._name)
+Character::Character(Character const &src)
 {
-	(*this) = src;
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+		this->_stuff[i] = NULL;
+	i = -1;
+	while (++i < src._index)
+		if (src._stuff[i])
+			this->equip(src._stuff[i]->clone());
+	this->_name = src.getName();
+	this->_index = src._index;
 	std::cout << "Character copy constructor called" << std::endl;
 	return ;
 }
 
 Character	&Character::operator=(Character const &rhs)
 {
-	for (int i = 0; i < this->_index; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		if (this->_stuff[i])
-			delete this->_stuff[i];
+		delete this->_stuff[i]; 
+		this->_stuff[i] = NULL;
 	}
-	delete this->_floor;
+	for (int i = 0; i < 4; i++)
+	{
+		if (rhs._stuff[i])
+			this->_stuff[i] = rhs._stuff[i];
+		else
+			this->_stuff[i] = NULL;
+	}
 	this->_index = rhs._index;
-	for (int i = 0; i < this->_index; i++)
-		this->_stuff[i] = rhs._stuff[i];
-	*this->_floor = *rhs._floor;
+	this->_name = rhs._name;
+	this->_floor = rhs._floor;
 	return (*this);
 }
 
@@ -78,23 +93,15 @@ void				Character::equip(AMateria *m)
 		{
 			if (this->_stuff[i] == m)
 			{
-				std::cout << RED << "Something went wrong. Couldn't equip Materia" << RESET << std::endl;
+				std::cout << RED << "Something went wrong. Couldn't equip Materia." << RESET << std::endl;
 				return ;
 			}
-			// else if (this->_stuff[i] == NULL)
-			// {
-			// 	this->_stuff[i] = m;
-			// 	this->_index++;
-			// 	std::cout << "Materia equipped" << std::endl;
-			// 	return ;
-			// }
 		}
 		this->_stuff[this->_index++] = m;
-		std::cout << m->getType() << std::endl;
-		std::cout << "Materia equipped" << std::endl;
+		std::cout << GREEN << "Materia equipped" << RESET << std::endl;
 	}
 	else
-		std::cout << RED << "Something went wrong. Couldn't equip Materia" << RESET << std::endl;
+		std::cout << RED << "Something went wrong. Couldn't equip Materia." << RESET << std::endl;
 }
 
 void				Character::unequip(int idx)
@@ -103,12 +110,11 @@ void				Character::unequip(int idx)
 	{
 		this->_floor = this->_stuff[idx];
 		this->_stuff[idx] = NULL;
-		// if (this->_index > 0)
-			this->_index--;
-		std::cout << "Materia unequipped" << std::endl;
+		this->_index--;
+		std::cout << GREEN << "Materia unequipped" << RESET << std::endl;
 	}
 	else
-		std::cout << RED << "Something went wrong. Couldn't unequip Materia" << RESET << std::endl;
+		std::cout << RED << "Something went wrong. Couldn't unequip Materia." << RESET << std::endl;
 }
 
 void				Character::use(int idx, ICharacter &target)
@@ -116,7 +122,7 @@ void				Character::use(int idx, ICharacter &target)
 	if (idx >= 0 && idx <= 3 && this->_stuff[idx])
 	{
 		this->_stuff[idx]->use(target);
-		std::cout << "Attack used" << std::endl;
+		std::cout << GREEN << "Attack used" << RESET << std::endl;
 	}
 	else
 		std::cout << RED << "Something went wrong. Couldn't attack " << target.getName() << RESET << std::endl;

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:34:38 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/13 16:49:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/14 02:35:31 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class AMateria;
 
 class Character : public ICharacter
 {
 	private:
-		std::string const			_name;
+		std::string					_name;
 		int							_index;
 		AMateria					*_stuff[4];
 	public:
