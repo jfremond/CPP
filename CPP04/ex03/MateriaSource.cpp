@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:06:30 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/14 01:05:41 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/15 23:30:05 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,27 @@ MateriaSource::MateriaSource() : _index(0)
 
 MateriaSource::MateriaSource(MateriaSource const &src)
 {
-	for (int i = 0; i < src._index; i++)
-		this->_stuff[i] = src._stuff[i]->clone();
-	for (int i = src._index; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 		this->_stuff[i] = NULL;
-	this->_index = src._index;	
-	// this->_index = src._index;
-	// // for (int i = 0; i < 4; i++)
-	// // 	if (this->_stuff[i])
-	// // 		delete this->_stuff[i];
-	// for (int i = 0; i < 4; i++)
-	// 	this->_stuff[i] = NULL;
+	for (int i = 0; i < 4; i++)
+		if (src._stuff[i])
+			this->_stuff[i] = src._stuff[i]->clone();
+	this->_index = src._index;
 	std::cout << "MateriaSource copy constructor called" << std::endl;
 	return ;
 }
 
 MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
 {
-	for (int i = 0; i < this->_index; i++)
+	for (int i = 0; i < 4 ; i++)
+	{
 		delete this->_stuff[i];
+		this->_stuff[i] = NULL;	
+	}
 	for (int i = 0; i < rhs._index; i++)
-		this->_stuff[i] = rhs._stuff[i]->clone();
-	for (int i = rhs._index; i < 4; i++)
-		this->_stuff[i] = NULL;
+		if (rhs._stuff[i])
+			this->_stuff[i] = rhs._stuff[i]->clone();
 	this->_index = rhs._index;	
-	// for (int i = 0; i < 4; i++)
-	// 	if (this->_stuff[i])
-	// 		delete this->_stuff[i];
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	if (rhs._stuff[i])
-	// 		this->learnMateria(rhs._stuff[i]->clone());
-	// }
-	// for (int i = 0; i < 4; i++)
-	// 	this->_stuff[i] = NULL;
-	// this->_index = rhs._index;
 	return (*this);
 }
 
@@ -92,6 +78,7 @@ AMateria		*MateriaSource::createMateria(std::string const &type)
 	{
 		if (this->_stuff[i]->getType() == type && i < 4)
 		{
+			std::cout << GREEN << "Materia created" << RESET << std::endl;
 			return (this->_stuff[i]->clone());
 		}
 	}

@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/12 14:31:29 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/13 04:39:56 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/15 23:47:06 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #   EXECUTABLE   #
 ##################
 
-NAME		=		interface
+NAME		=		Polymorphism
 
 ################
 #   COMMANDS   #

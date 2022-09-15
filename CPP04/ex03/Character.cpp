@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:43:50 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/14 03:39:31 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/15 23:35:47 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ Character::Character(std::string const name) : _name(name)
 
 Character::Character(Character const &src)
 {
-	int	i;
-
-	i = -1;
-	while (++i < 4)
+	this->_index = 0;
+	for (int i = 0; i < 4; i++)
 		this->_stuff[i] = NULL;
-	i = -1;
-	while (++i < src._index)
+	for (int i = 0; i < 4; i++)
 		if (src._stuff[i])
 			this->equip(src._stuff[i]->clone());
-	this->_name = src.getName();
+	this->_name = src._name;
 	this->_index = src._index;
+	this->_floor = src._floor;
 	std::cout << "Character copy constructor called" << std::endl;
 	return ;
 }
@@ -57,12 +55,8 @@ Character	&Character::operator=(Character const &rhs)
 		this->_stuff[i] = NULL;
 	}
 	for (int i = 0; i < 4; i++)
-	{
 		if (rhs._stuff[i])
-			this->_stuff[i] = rhs._stuff[i];
-		else
-			this->_stuff[i] = NULL;
-	}
+			this->equip(rhs._stuff[i]->clone());
 	this->_index = rhs._index;
 	this->_name = rhs._name;
 	this->_floor = rhs._floor;
@@ -125,5 +119,14 @@ void				Character::use(int idx, ICharacter &target)
 		std::cout << GREEN << "Attack used" << RESET << std::endl;
 	}
 	else
-		std::cout << RED << "Something went wrong. Couldn't attack " << target.getName() << RESET << std::endl;
+		std::cout << RED << "Something went wrong. Couldn't attack " << target.getName() << "." <<  RESET << std::endl;
+}
+
+void	Character::cleanFloor()
+{
+	if (this->_floor)
+	{
+		delete this->_floor;
+		this->_floor = NULL;
+	}
 }
