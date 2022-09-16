@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:12:33 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/06 01:42:38 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:31:08 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ void				Form::beSigned(Bureaucrat const &bc)
 	try
 	{
 		if (bc.getGrade() > this->getExecGrade())
-	{
-		std::cout << bc.getName() << " couldn't sign " << this->_name
-			<< " because ";
-		throw Form::GradeTooLowException();
-	}
+		{
+			std::cout << bc.getName() << " couldn't sign " << this->_name
+				<< " because ";
+			throw Form::GradeTooLowException();
+		}
 	}
 	catch(const std::exception& e)
 	{
