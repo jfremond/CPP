@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:23:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/09 04:53:41 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:54:15 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
 	std::cout << YELLOW << "========== GRADE TOO LOW ==========" << RESET << std::endl;
@@ -33,7 +33,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
 	std::cout << YELLOW << "========== HIGHEST LIMIT ==========" << RESET << std::endl;
@@ -46,7 +46,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
 	std::cout << YELLOW << "========== LOWEST LIMIT ==========" << RESET << std::endl;
@@ -59,7 +59,7 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 	std::cout << YELLOW << "========== VALID BUREAUCRAT ==========" << RESET << std::endl;
 	try
@@ -80,6 +80,6 @@ int	main(void)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 	}
 }

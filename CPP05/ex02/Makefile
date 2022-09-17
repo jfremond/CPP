@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/04 15:09:45 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/05 18:12:54 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/17 04:32:24 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,4 +82,7 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re
+clean_files:
+				$(RM) *_shrubbery
+
+.PHONY:			all clean fclean re clean_files
