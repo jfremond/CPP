@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:10:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/04 19:35:23 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/20 00:46:32 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/20 04:41:07 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 class Bureaucrat
 {
 	private:
-		std::string	const	_name;
+		std::string const	_name;
 		int					_grade;
 	public:
 		Bureaucrat();
@@ -42,24 +42,24 @@ class Bureaucrat
 		void				incrementGrade();
 		void				decrementGrade();
 		void				checkGrade();
-		class GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Grade too high");
+					return ("The grade of the bureaucrat is too high");
 				}
 		};
-		class GradeTooLowException : public std::exception
+		class GradeTooLowException : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Grade too low");
+					return ("The grade of the bureaucrat is too low");
 				}
 		};
 };
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &obj);
+std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &obj);
 
 #endif

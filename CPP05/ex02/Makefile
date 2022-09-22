@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/04 15:09:45 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/17 04:32:24 by jfremond         ###   ########.fr        #
+#    Created: 2022/09/20 04:36:41 by jfremond          #+#    #+#              #
+#    Updated: 2022/09/22 05:28:18 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,10 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS	=	main.cpp		\
-			Bureaucrat.cpp	\
-			Form.cpp		\
+SRCS	=	main.cpp					\
+			Bureaucrat.cpp				\
+			AForm.cpp					\
+			ShrubberyCreationForm.cpp	\
 
 ###############
 #   OBJECTS   #
@@ -82,7 +83,4 @@ fclean:			clean
 
 re:				fclean all
 
-clean_files:
-				$(RM) *_shrubbery
-
-.PHONY:			all clean fclean re clean_files
+.PHONY:			all clean fclean re

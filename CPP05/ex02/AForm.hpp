@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 05:00:08 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/21 04:37:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:38:38 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		std::string const	_name;
@@ -25,16 +25,17 @@ class Form
 		int const			_gradeSign;
 		int const			_gradeExec;
 	public:
-		Form();
-		Form(std::string const name, int const gts, int const gte);
-		Form(Form const &src);
-		Form				&operator=(Form const &rhs);
-		~Form();
+		AForm();
+		AForm(std::string const name, int const gts, int const gte);
+		AForm(AForm const &src);
+		AForm				&operator=(AForm const &rhs);
+		~AForm();
 		std::string const 	&getName() const;
 		bool const			&getSigned() const;
 		int const			&getGradeSign() const;
 		int const			&getGradeExec() const;
 		void				beSigned(Bureaucrat const &bc);
+		virtual void		execute(Bureaucrat const &executor) const = 0;
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -53,6 +54,6 @@ class Form
 		};
 };
 
-std::ostream	&operator<<(std::ostream &os, Form const &obj);
+std::ostream	&operator<<(std::ostream &os, AForm const &obj);
 
 #endif

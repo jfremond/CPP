@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:23:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/06 01:36:17 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/20 04:56:19 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/21 23:53:56 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,169 +14,119 @@
 
 int	main(void)
 {
-	std::cout << YELLOW << "========== GRADE TO SIGN TOO HIGH ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== DEFAULT FORM ==========" << RESET << std::endl;
 	try
 	{
-		Form	H34("H34", 0, 12);
-		std::cout << H34;
+		Form	defaultForm;
+		std::cout << defaultForm << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
-	std::cout << YELLOW << "========== GRADE TO EXECUTE TOO HIGH ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== INVALID FORM (Grade too high) ==========" << RESET << std::endl;
 	try
 	{
-		Form	K42("K42", 12, -18);
-		std::cout << K42;
+		Form	D43("D43", 0, 43);
+		std::cout << D43 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
-	std::cout << YELLOW << "========== GRADE TO SIGN TOO LOW ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== INVALID FORM (Grade too high) ==========" << RESET << std::endl;
 	try
 	{
-		Form	S31("S31", 313, 53);
-		std::cout << S31;
+		Form	D43("D43", 43, 0);
+		std::cout << D43 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
-	std::cout << YELLOW << "========== GRADE TO EXECUTE TOO LOW ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== INVALID FORM (Grade too low) ==========" << RESET << std::endl;
 	try
 	{
-		Form	G02("G02", 53, 313);
-		std::cout << G02;
+		Form	J56("J56", 151, 56);
+		std::cout << J56 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
-	std::cout << YELLOW << "========== FORM VALID BUT CAN'T BE SIGNED ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== INVALID FORM (Grade too low) ==========" << RESET << std::endl;
 	try
 	{
-		Form		V01("V01", 130, 50);
-		Bureaucrat	fred("Fred", 138);
-		std::cout << V01;
-		std::cout << fred;
-		V01.beSigned(fred);
+		Form	J56("J56", 56, 151);
+		std::cout << J56 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
-	std::cout << YELLOW << "========== INCREASING THE BUREACRAT VALUE TO SIGN THE FORM ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== VALID FORM THAT CAN'T BE SIGNED (beSigned) ==========" << RESET << std::endl;
 	try
 	{
-		Form		V02("V02", 149, 50);
-		Bureaucrat	bill("Bill", 150);
-		std::cout << V02 << std::endl;
-		std::cout << bill << std::endl;
-		bill.incrementGrade();
-		std::cout << bill << std::endl;
-		V02.beSigned(bill);
-		std::cout << V02 << std::endl;
-		V02.beSigned(bill);
+		Bureaucrat	greg("Greg", 120);
+		Form		F84("F84", 115, 125);
+		F84.beSigned(greg);
+		greg.signForm(F84);
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
-	std::cout << YELLOW << "========== DECREASING THE BUREACRAT VALUE TO NOT SIGN THE FORM ==========" << RESET << std::endl;
+	std::cout << YELLOW << "========== VALID FORM THAT CAN'T BE SIGNED (signForm) ==========" << RESET << std::endl;
 	try
 	{
-		Form		V03("V03", 130, 50);
-		Form		V04("V04", 130, 50);
-		Bureaucrat	emma("Emma", 130);
-		std::cout << V03 << std::endl;
-		std::cout << emma << std::endl;
-		V03.beSigned(emma);
-		emma.decrementGrade();
-		std::cout << emma << std::endl;
-		V04.beSigned(emma);		
+		Bureaucrat	greg("Greg", 120);
+		Form		F84("F84", 115, 125);
+		greg.signForm(F84);
+		F84.beSigned(greg);
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
 	std::cout << std::endl;
+	std::cout << YELLOW << "========== VALID FORM THAT WILL BE SIGNED ==========" << RESET << std::endl;
+	{
+		Bureaucrat	rich("Richard", 115);
+		Form		G55("G55", 115, 125);
+		std::cout << rich << std::endl;
+		std::cout << G55 << std::endl;
+		G55.beSigned(rich);
+		rich.signForm(G55);
+		std::cout << std::endl;
+		std::cout << G55 << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << YELLOW << "========== COPY CONSTRUCTOR ==========" << RESET << std::endl;
+	{
+		Form		src("src", 115, 125);
+		Form		cpy(src);
 
+		std::cout << src << std::endl;
+		std::cout << cpy << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << YELLOW << "========== ASSIGNMENT OPERATOR OVERLOAD ==========" << RESET << std::endl;
+	{
+		Bureaucrat	pete("Pete", 111);
+		Form		src("src", 115, 125);
+		Form		cpy("cpy", 143, 124);
 
-	
-	// std::cout << YELLOW << "========== GRADE TOO HIGH ==========" << RESET << std::endl;
-	// try
-	// {
-	// 	Bureaucrat	tooHigh("TooHigh", 0);
-	// 	std::cout << tooHigh << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "========== GRADE TOO LOW ==========" << RESET << std::endl;
-	// try
-	// {
-	// 	Bureaucrat	tooLow("TooLow", 151);
-	// 	std::cout << tooLow << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "========== HIGHEST LIMIT ==========" << RESET << std::endl;
-	// try
-	// {
-	// 	Bureaucrat	highLimit("HighLimit", 1);
-	// 	std::cout << highLimit << std::endl;
-	// 	std::cout << ORANGE << "Incrementing the grade (GradeTooHighException thrown)" << RESET << std::endl;
-	// 	highLimit.incrementGrade();
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// std::cout << std::endl;
-	// std::cout << YELLOW << "========== LOWEST LIMIT ==========" << RESET << std::endl;
-	// try
-	// {
-	// 	Bureaucrat	lowLimit("LowLimit", 150);
-	// 	std::cout << lowLimit << std::endl;
-	// 	std::cout << ORANGE << "Decrementing the grade (GradeTooHLowException thrown)" << RESET << std::endl;
-	// 	lowLimit.decrementGrade();
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// std::cout << YELLOW << "========== VALID BUREAUCRAT ==========" << RESET << std::endl;
-	// try
-	// {
-	// 	Bureaucrat	valid("Valid", 75);
-	// 	std::cout << valid << std::endl;
-	// 	std::cout << ORANGE << "Decrementing the grade 3 times" << RESET << std::endl;
-	// 	valid.decrementGrade();
-	// 	valid.decrementGrade();
-	// 	valid.decrementGrade();
-	// 	std::cout << valid;
-	// 	std::cout << ORANGE << "Incrementing the grade 4 times" << RESET << std::endl;
-	// 	valid.incrementGrade();
-	// 	valid.incrementGrade();
-	// 	valid.incrementGrade();
-	// 	valid.incrementGrade();
-	// 	std::cout << valid;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
+		std::cout << src << std::endl;
+		std::cout << cpy << std::endl;
+		pete.signForm(src);
+		cpy = src;
+		std::cout << src << std::endl;
+		std::cout << cpy << std::endl;
+	}
 }

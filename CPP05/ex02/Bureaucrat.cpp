@@ -5,43 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 18:47:07 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/16 04:44:37 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/20 04:41:09 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/22 05:14:51 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
+Bureaucrat::Bureaucrat() : _name("Crat"), _grade(150)
 {
 	std::cout << GREEN << "Bureaucrat default constructor called" << RESET << std::endl;
-	return ;
+	return ;	
 }
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
 {
 	this->checkGrade();
-	std::cout << GREEN << "Bureaucrat " << this->_name << " constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Bureaucrat " << this->_name << " string constructor called" << RESET << std::endl;
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src._name + "_cpy")
+Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src.getName())
 {
-	std::cout << GREEN << "Bureaucrat " << src.getName() << " copy constructor called" << RESET << std::endl;
-	(*this) = src;
+	(*this)	= src;
+	std::cout << GREEN << "Bureaucrat copy constructor called" << RESET << std::endl;
 	return ;
 }
 
-Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
+Bureaucrat			&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
-	this->_grade = rhs._grade;
-	std::cout << "Name can't be assigned, becomes \"name + _cpy\"" << std::endl;
+	this->_grade = rhs.getGrade();
 	return (*this);
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << RED << "Bureaucrat " << this->_name << " destructor called" << RESET << std::endl;
+	std::cout << RED << "Bureaucrat " << this->getName() << " destructor called" << RESET << std::endl;
 	return ;
 }
 
@@ -52,7 +51,7 @@ std::string const	&Bureaucrat::getName() const
 
 int	const			&Bureaucrat::getGrade() const
 {
-	return (this->_grade);
+	return (this->_grade);	
 }
 
 void				Bureaucrat::incrementGrade()
@@ -64,7 +63,7 @@ void				Bureaucrat::incrementGrade()
 void				Bureaucrat::decrementGrade()
 {
 	this->_grade++;
-	this->checkGrade();		
+	this->checkGrade();	
 }
 
 void				Bureaucrat::checkGrade()
@@ -72,30 +71,39 @@ void				Bureaucrat::checkGrade()
 	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (this->_grade > 150)
-		throw Bureaucrat::GradeTooLowException();	
+		throw Bureaucrat::GradeTooLowException();
 }
 
 void				Bureaucrat::signForm(AForm &form)
 {
-	if (form.getSigned() == true)
-		std::cout << "Bureaucrat " << this->_name << " couldn't sign the form because it is already signed" << std::endl;
-	else
+	try
 	{
-		try
-		{
-			form.beSigned(*this);
-			std::cout << this->_name << " signed " << form.getName() << std::endl;
-		}
-		catch(const std::exception& e)
-		{
-			std::cout << this->getName() << " can't sign " << form.getName() << " because " << e.what() << std::endl;
-		}
+		form.beSigned(*this);
+		std::cout << CYAN <<  this->getName() << " signed " << form.getName() << RESET << std::endl;
 	}
-		
+	catch(const std::exception& e)
+	{
+		std::cout << CYAN << this->getName() << " couldn't sign "
+			<< form.getName() << " because " << e.what() << "." << RESET << std::endl;
+	}	
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &obj)
+void				Bureaucrat::executeForm(AForm const &form)
 {
-	os << obj.getName() << ", grade " << obj.getGrade() << "." << std::endl;
+	try
+	{
+		form.execute(*this);
+		std::cout << CYAN <<  this->getName() << " executed " << form.getName() << RESET << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << CYAN << this->getName() << " couldn't execute "
+			<< form.getName() << " because " << e.what() << "." << RESET << std::endl;
+	}
+}
+
+std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &obj)
+{
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;	
 	return (os);
 }

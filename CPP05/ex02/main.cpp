@@ -5,19 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:23:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/17 04:44:32 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/20 04:56:19 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/22 05:16:31 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
 int	main(void)
 {
-	std::cout << "Starting ex02" << std::endl;
-	ShrubberyCreationForm	test;
-	Bureaucrat	lala("lala", 10);
-	test.beSigned(lala);
-	test.execute(lala);
+	ShrubberyCreationForm test;
+	std::cout << test << std::endl;
+
+	ShrubberyCreationForm test2("caca");
+	std::cout << test2 << std::endl;
+
+	Bureaucrat	bc("bc", 12);
+	bc.signForm(test2);
+	bc.executeForm(test2);
 }

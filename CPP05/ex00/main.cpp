@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:23:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/05 22:54:15 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/20 04:56:19 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/21 23:55:21 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(void)
 	try
 	{
 		Bureaucrat	highLimit("HighLimit", 1);
+		
 		std::cout << highLimit << std::endl;
 		std::cout << ORANGE << "Incrementing the grade (GradeTooHighException thrown)" << RESET << std::endl;
 		highLimit.incrementGrade();
@@ -53,18 +54,20 @@ int	main(void)
 	try
 	{
 		Bureaucrat	lowLimit("LowLimit", 150);
+		
 		std::cout << lowLimit << std::endl;
-		std::cout << ORANGE << "Decrementing the grade (GradeTooHLowException thrown)" << RESET << std::endl;
+		std::cout << ORANGE << "Decrementing the grade (GradeTooLowException thrown)" << RESET << std::endl;
 		lowLimit.decrementGrade();
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
+	std::cout << std::endl;
 	std::cout << YELLOW << "========== VALID BUREAUCRAT ==========" << RESET << std::endl;
-	try
 	{
 		Bureaucrat	valid("Valid", 75);
+		
 		std::cout << valid << std::endl;
 		std::cout << ORANGE << "Decrementing the grade 3 times" << RESET << std::endl;
 		valid.decrementGrade();
@@ -78,8 +81,26 @@ int	main(void)
 		valid.incrementGrade();
 		std::cout << valid;
 	}
-	catch(const std::exception& e)
+	std::cout << std::endl;
+	std::cout << YELLOW << "========== COPY CONSTRUCTOR ==========" << RESET << std::endl;
 	{
-		std::cout << e.what() << '\n';
+		Bureaucrat	src("Jack", 12);
+		Bureaucrat	cpy(src);
+		
+		std::cout << src << std::endl;
+		std::cout << cpy << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << YELLOW << "========== ASSIGNMENT OPERATOR OVERLOAD ==========" << RESET << std::endl;
+	{
+		Bureaucrat	src("Jack", 12);
+		Bureaucrat	cpy;
+		
+		std::cout << src << std::endl;
+		std::cout << cpy << std::endl;
+
+		cpy = src;
+		std::cout << src << std::endl;
+		std::cout << cpy << std::endl;
 	}
 }

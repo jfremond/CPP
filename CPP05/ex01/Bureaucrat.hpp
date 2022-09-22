@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:10:20 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/05 18:11:24 by jfremond         ###   ########.fr       */
+/*   Created: 2022/09/20 00:46:32 by jfremond          #+#    #+#             */
+/*   Updated: 2022/09/20 05:11:39 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 #include <iostream>
 #include <stdexcept>
+
 #include "Form.hpp"
 
 class Form;
@@ -32,7 +33,7 @@ class Form;
 class Bureaucrat
 {
 	private:
-		std::string	const	_name;
+		std::string const	_name;
 		int					_grade;
 	public:
 		Bureaucrat();
@@ -46,24 +47,24 @@ class Bureaucrat
 		void				decrementGrade();
 		void				checkGrade();
 		void				signForm(Form &form);
-		class GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Grade too high");
+					return ("The grade of the bureaucrat is too high");
 				}
 		};
-		class GradeTooLowException : public std::exception
+		class GradeTooLowException : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Grade too low");
+					return ("The grade of the bureaucrat is too low");
 				}
 		};
 };
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &obj);
+std::ostream 	&operator<<(std::ostream &os, Bureaucrat const &obj);
 
 #endif
