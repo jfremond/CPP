@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:21:59 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 16:16:37 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/22 18:59:20 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ void				Form::beSigned(Bureaucrat const &bc)
 
 void				Form::execute(Bureaucrat const &executor) const
 {
-	std::cout << executor.getName() << " executed " << this->getName() << " form." << std::endl;
+	if (this->getSigned())
+		throw Form::IsNotSignedException();
+	else
+		std::cout << executor.getName() << " executed " << this->getName() << " form." << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, Form const &obj)

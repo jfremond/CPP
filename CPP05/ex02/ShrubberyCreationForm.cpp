@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 05:27:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 16:17:17 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/22 18:53:59 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : Form(), _target(this->getName())
 {
-	std::cout << GREEN << "Default" << RESET << std::endl;
+	std::cout << GREEN << "ShrubberyCreationForm default constructor called" << RESET << std::endl;
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target, 145, 137), _target(target) 
 {
-	std::cout << GREEN << "String" << RESET << std::endl;
+	std::cout << GREEN << "ShrubberyCreationForm " << this->_target << " string constructor called " << RESET << std::endl;
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src)
 {
 	(*this) = src;
-	std::cout << GREEN << "Copy" << RESET << std::endl;	
+	std::cout << GREEN << "ShrubberyCreationForm copy constructor called" << RESET << std::endl;	
 	return ;
 }
 
@@ -39,12 +39,14 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << RED << "Destructor" << std::endl;
+	std::cout << RED << "ShrubberyCreationForm " << this->_target << " destructor called" << std::endl;
 	return ;
 }
 
 void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+	if (!this->getSigned())
+		throw Form::IsNotSignedException();
 	if (executor.getGrade() <= this->getGradeExec())
 	{
 		std::string		filename = this->_target;
@@ -55,6 +57,19 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		{
 			std::cout << "Error when opening file" << std::endl;
 			return ;
+		}
+		else
+		{
+			ofs << "		,@@@@@@@," << std::endl;
+			ofs << "	,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+			ofs << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\'88/8o" << std::endl;
+			ofs << "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+			ofs << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
+			ofs << "  %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
+			ofs << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
+			ofs << "       |o|        |.|         |o|" << std::endl;
+			ofs << "   o   |.|        | |         |.|      o" << std::endl;
+			ofs << "__\\|/_/ ._\\_  ___/ ._\\_______/._ \\____\\|/_" << std::endl;
 		}
 	}
 	else

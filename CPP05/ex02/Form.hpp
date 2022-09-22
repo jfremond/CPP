@@ -52,6 +52,14 @@ class Form
 					return ("One of the grades is too low, can't handle form");
 				}
 		};
+		class IsNotSignedException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("The form is not signed");
+				}
+		};
 };
 
 std::ostream	&operator<<(std::ostream &os, Form const &obj);
