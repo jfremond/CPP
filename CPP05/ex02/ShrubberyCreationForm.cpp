@@ -6,25 +6,25 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 05:27:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 05:36:12 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:17:17 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm(), _target(this->getName())
+ShrubberyCreationForm::ShrubberyCreationForm() : Form(), _target(this->getName())
 {
 	std::cout << GREEN << "Default" << RESET << std::endl;
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137), _target(target) 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target, 145, 137), _target(target) 
 {
 	std::cout << GREEN << "String" << RESET << std::endl;
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : AForm(src)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src)
 {
 	(*this) = src;
 	std::cout << GREEN << "Copy" << RESET << std::endl;	
@@ -58,7 +58,7 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		}
 	}
 	else
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 
 std::ostream	&operator<<(std::ostream &os, ShrubberyCreationForm const &obj)

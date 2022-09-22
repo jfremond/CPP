@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 04:41:09 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 05:14:51 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:15:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void				Bureaucrat::checkGrade()
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void				Bureaucrat::signForm(AForm &form)
+void				Bureaucrat::signForm(Form &form)
 {
 	try
 	{
@@ -88,7 +88,7 @@ void				Bureaucrat::signForm(AForm &form)
 	}	
 }
 
-void				Bureaucrat::executeForm(AForm const &form)
+void				Bureaucrat::executeForm(Form const &form)
 {
 	try
 	{

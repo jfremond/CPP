@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:36:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 05:27:18 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:14:51 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #define SHRUBBERYCREATIONFORM
 
 #include <fstream>
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public Form
 {
 	private:
 		std::string const		_target;

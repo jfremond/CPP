@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 04:36:41 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/22 05:28:18 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/22 16:16:18 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJS_D	=	objs/
 
 SRCS	=	main.cpp					\
 			Bureaucrat.cpp				\
-			AForm.cpp					\
+			Form.cpp					\
 			ShrubberyCreationForm.cpp	\
 
 ###############
