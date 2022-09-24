@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:58:29 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/25 00:36:04 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/25 00:42:18 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,15 @@ Form	*Intern::makeForm(std::string const &name, std::string const &target)
 	switch (index)
 	{
 		case (0):
+			std::cout << CYAN << "Intern creates " << target << RESET << std::endl;
 			return (new ShrubberyCreationForm(target));
 			break;
 		case (1):
+			std::cout << CYAN << "Intern creates " << target << RESET << std::endl;
 			return (new RobotomyRequestForm(target));
 			break;
 		case (2):
+			std::cout << CYAN << "Intern creates " << target << RESET << std::endl;
 			return (new PresidentialPardonForm(target));
 			break;
 		default:

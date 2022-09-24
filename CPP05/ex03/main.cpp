@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 04:56:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/25 00:37:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/25 00:43:47 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,7 +256,6 @@ int	main(void)
 		Form	*wrong;
 		
 		wrong = intern.makeForm("shrubbery creation", "pouet");
-		std::cout << wrong << std::endl;
 		Bureaucrat	test("test", 1);
 
 		test.signForm(*wrong);
