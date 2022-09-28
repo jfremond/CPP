@@ -70,6 +70,7 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 			ofs << "       |o|        |.|         |o|" << std::endl;
 			ofs << "   o   |.|        | |         |.|      o" << std::endl;
 			ofs << "__\\|/_/ ._\\_  ___/ ._\\_______/._ \\____\\|/_" << std::endl;
+			ofs.close();
 		}
 	}
 	else
