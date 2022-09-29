@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:18:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 12:18:56 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:14:01 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target) : Form(
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : Form(src)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : Form(src), _target(src._target)
 {
 	(*this) = src;
 	std::cout << GREEN << "PresidentialPardonForm copy constructor called" << RESET << std::endl;

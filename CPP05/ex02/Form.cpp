@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:21:59 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 18:59:20 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:35:49 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ Form::Form(std::string const name, int const gts, int const gte) : _name(name), 
 
 Form::Form(Form const &src) : _name(src.getName()), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec())
 {
-	std::cout << GREEN << "Form copy constructor called" << RESET << std::endl;
 	(*this) = src;
+	std::cout << GREEN << "Form copy constructor called" << RESET << std::endl;
 	return ;
 }
 
@@ -73,14 +73,6 @@ void				Form::beSigned(Bureaucrat const &bc)
 		this->_signed = true;
 	else
 		throw Form::GradeTooLowException();
-}
-
-void				Form::execute(Bureaucrat const &executor) const
-{
-	if (this->getSigned())
-		throw Form::IsNotSignedException();
-	else
-		std::cout << executor.getName() << " executed " << this->getName() << " form." << std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &os, Form const &obj)

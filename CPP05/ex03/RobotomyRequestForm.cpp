@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 12:19:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:13:33 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const target) : Form(target
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : Form(src)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : Form(src), _target(src._target)
 {
 	(*this) = src;
 	std::cout << GREEN << "RobotomyRequestForm copy constructor called" << RESET << std::endl;

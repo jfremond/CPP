@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:34 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 12:19:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:07:22 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const target) : Form(target
 	return ;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : Form(src)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) : Form(src), _target(src._target)
 {
 	(*this) = src;
 	std::cout << GREEN << "RobotomyRequestForm copy constructor called" << RESET << std::endl;
@@ -54,18 +54,9 @@ void		RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	else
 	{
 		if (!(this->_index % 2))
-			std::cout << CYAN << this->_target << " has been robotomized." << RESET << std::endl;
+			std::cout << this->_target << " has been robotomized." << std::endl;
 		else
-			std::cout << CYAN << "The robotomy has failed." << RESET << std::endl;
+			std::cout << "The robotomy has failed." << std::endl;
 		RobotomyRequestForm::_index++;	
 	}
-}
-
-std::ostream	&operator<<(std::ostream &os, RobotomyRequestForm const &obj)
-{
-	os << "Name : " << obj.getName() << std::endl;
-	os << "Signed : " << obj.getSigned() << std::endl;
-	os << "Grade to sign : " << obj.getGradeSign() << std::endl;
-	os << "Grade to execute : " << obj.getGradeExec() << std::endl;
-	return (os);
 }

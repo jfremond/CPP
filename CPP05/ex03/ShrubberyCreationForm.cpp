@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 05:27:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 18:53:59 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:30:57 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target, 
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src), _target(src._target)
 {
 	(*this) = src;
 	std::cout << GREEN << "ShrubberyCreationForm copy constructor called" << RESET << std::endl;	
@@ -60,8 +60,8 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		}
 		else
 		{
-			ofs << "		,@@@@@@@," << std::endl;
-			ofs << "	,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+			ofs << "			  ,@@@@@@@," << std::endl;
+			ofs << "	,,,.     ,@@@@@@/@@,  .oo8888o." << std::endl;
 			ofs << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\'88/8o" << std::endl;
 			ofs << "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
 			ofs << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;

@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 04:36:41 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/24 12:22:13 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/26 22:56:27 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS	=	main.cpp					\
 			ShrubberyCreationForm.cpp	\
 			RobotomyRequestForm.cpp		\
 			PresidentialPardonForm.cpp	\
+			Intern.cpp					\
 
 ###############
 #   OBJECTS   #

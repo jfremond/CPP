@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 05:27:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/22 18:53:59 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:31:45 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target, 
 	return ;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) : Form(src), _target(src._target)
 {
 	(*this) = src;
 	std::cout << GREEN << "ShrubberyCreationForm copy constructor called" << RESET << std::endl;	
@@ -55,13 +55,13 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		std::ofstream	ofs(filename.c_str());
 		if (!ofs.is_open())
 		{
-			std::cout << "Error when opening file" << std::endl;
+			std::cout << "Error occured when trying to open file" << std::endl;
 			return ;
 		}
 		else
 		{
-			ofs << "		,@@@@@@@," << std::endl;
-			ofs << "	,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+			ofs << "			  ,@@@@@@@," << std::endl;
+			ofs << "	,,,.     ,@@@@@@/@@,  .oo8888o." << std::endl;
 			ofs << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\'88/8o" << std::endl;
 			ofs << "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
 			ofs << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
@@ -75,13 +75,4 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	}
 	else
 		throw Form::GradeTooLowException();
-}
-
-std::ostream	&operator<<(std::ostream &os, ShrubberyCreationForm const &obj)
-{
-	os << "Name : " << obj.getName() << std::endl;
-	os << "Signed : " << obj.getSigned() << std::endl;
-	os << "Grade to sign : " << obj.getGradeSign() << std::endl;
-	os << "Grade to execute : " << obj.getGradeExec() << std::endl;
-	return (os);
 }

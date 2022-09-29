@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 11:30:39 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 12:18:37 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:36:18 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,5 @@ class PresidentialPardonForm : public Form
 		virtual ~PresidentialPardonForm();
 		virtual void		execute(Bureaucrat const &executor) const;
 };
-
-std::ostream	&operator<<(std::ostream &os, PresidentialPardonForm const &obj);
-
 
 #endif

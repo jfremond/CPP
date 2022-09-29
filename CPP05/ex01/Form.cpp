@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:21:59 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/21 04:44:16 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:03:36 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ Form::Form(std::string const name, int const gts, int const gte) : _name(name), 
 
 Form::Form(Form const &src) : _name(src.getName()), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec())
 {
-	std::cout << GREEN << "Form copy constructor called" << RESET << std::endl;
 	(*this) = src;
+	std::cout << GREEN << "Form copy constructor called" << RESET << std::endl;
 	return ;
 }
 

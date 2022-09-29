@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 04:56:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/21 23:55:21 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:44:42 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	main(void)
 {
+	std::cout << YELLOW << "========== DEFAULT BUREACRAT ==========" << RESET << std::endl;
+	{
+		Bureaucrat	DB;
+		std::cout << DB << std::endl;
+	}
 	std::cout << YELLOW << "========== GRADE TOO HIGH ==========" << RESET << std::endl;
 	try
 	{
@@ -80,27 +85,5 @@ int	main(void)
 		valid.incrementGrade();
 		valid.incrementGrade();
 		std::cout << valid;
-	}
-	std::cout << std::endl;
-	std::cout << YELLOW << "========== COPY CONSTRUCTOR ==========" << RESET << std::endl;
-	{
-		Bureaucrat	src("Jack", 12);
-		Bureaucrat	cpy(src);
-		
-		std::cout << src << std::endl;
-		std::cout << cpy << std::endl;
-	}
-	std::cout << std::endl;
-	std::cout << YELLOW << "========== ASSIGNMENT OPERATOR OVERLOAD ==========" << RESET << std::endl;
-	{
-		Bureaucrat	src("Jack", 12);
-		Bureaucrat	cpy;
-		
-		std::cout << src << std::endl;
-		std::cout << cpy << std::endl;
-
-		cpy = src;
-		std::cout << src << std::endl;
-		std::cout << cpy << std::endl;
 	}
 }

@@ -29,7 +29,7 @@ class Form
 		Form(std::string const name, int const gts, int const gte);
 		Form(Form const &src);
 		Form				&operator=(Form const &rhs);
-		~Form();
+		virtual ~Form();
 		std::string const 	&getName() const;
 		bool const			&getSigned() const;
 		int const			&getGradeSign() const;

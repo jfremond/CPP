@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:18:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 12:18:56 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:06:55 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target) : Form(
 	return ;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : Form(src)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src) : Form(src), _target(src._target)
 {
 	(*this) = src;
 	std::cout << GREEN << "PresidentialPardonForm copy constructor called" << RESET << std::endl;
@@ -50,14 +50,5 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	else if (executor.getGrade() > this->getGradeExec())
 		throw Form::GradeTooLowException();
 	else
-		std::cout << CYAN << this->_target << " has been pardoned by Zaphod Beeblebox." << RESET << std::endl;
-}
-
-std::ostream	&operator<<(std::ostream &os, PresidentialPardonForm const &obj)
-{
-	os << "Name : " << obj.getName() << std::endl;
-	os << "Signed : " << obj.getSigned() << std::endl;
-	os << "Grade to sign : " << obj.getGradeSign() << std::endl;
-	os << "Grade to execute : " << obj.getGradeExec() << std::endl;
-	return (os);
+		std::cout << this->_target << " has been pardoned by Zaphod Beeblebox." << std::endl;
 }
