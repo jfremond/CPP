@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:18:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/26 20:14:01 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:56:20 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,6 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	else if (executor.getGrade() > this->getGradeExec())
 		throw Form::GradeTooLowException();
 	else
-		std::cout << CYAN << this->_target << " has been pardoned by Zaphod Beeblebox." << RESET << std::endl;
+		std::cout << this->_target << " has been pardoned by Zaphod Beeblebox." << std::endl;
 }
 
-std::ostream	&operator<<(std::ostream &os, PresidentialPardonForm const &obj)
-{
-	os << "Name : " << obj.getName() << std::endl;
-	os << "Signed : " << obj.getSigned() << std::endl;
-	os << "Grade to sign : " << obj.getGradeSign() << std::endl;
-	os << "Grade to execute : " << obj.getGradeExec() << std::endl;
-	return (os);
-}

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 05:27:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/29 17:31:45 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/30 01:07:41 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (!this->getSigned())
 		throw Form::IsNotSignedException();
-	if (executor.getGrade() <= this->getGradeExec())
+	if (executor.getGrade() > this->getGradeExec())
+		throw Form::GradeTooLowException();
+	else
 	{
 		std::string		filename = this->_target;
 		std::string		extension = "_shrubbery";
@@ -60,19 +62,17 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		}
 		else
 		{
-			ofs << "			  ,@@@@@@@," << std::endl;
-			ofs << "	,,,.     ,@@@@@@/@@,  .oo8888o." << std::endl;
+			ofs << "              ,@@@@@@@," << std::endl;
+			ofs << "    ,,,.     ,@@@@@@/@@,  .oo8888o." << std::endl;
 			ofs << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\'88/8o" << std::endl;
 			ofs << "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
 			ofs << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
 			ofs << "  %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
-			ofs << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
-			ofs << "       |o|        |.|         |o|" << std::endl;
-			ofs << "   o   |.|        | |         |.|      o" << std::endl;
-			ofs << "__\\|/_/ ._\\_  ___/ ._\\_______/._ \\____\\|/_" << std::endl;
+			ofs << "   `&%\\ ` /%&'   |.|        \\ '|8'" << std::endl;
+			ofs << "       |o|       |.|         |o|" << std::endl;
+			ofs << "   o   |.|       | |         |.|      o" << std::endl;
+			ofs << "__\\|/_/ ._\\_ ___/ ._\\_______/._ \\____\\|/_" << std::endl;
 			ofs.close();
 		}
 	}
-	else
-		throw Form::GradeTooLowException();
 }

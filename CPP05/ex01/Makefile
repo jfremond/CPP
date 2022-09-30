@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 04:36:41 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/21 23:57:05 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/29 22:05:55 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #   EXECUTABLE   #
 ##################
 
-NAME	=	Bureaucrat
+NAME	=	FormUp
 
 ################
 #   COMMANDS   #

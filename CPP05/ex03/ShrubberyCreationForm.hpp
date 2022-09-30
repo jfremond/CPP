@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 00:36:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 10:56:10 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:56:55 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ class ShrubberyCreationForm : public Form
 		virtual ~ShrubberyCreationForm();
 		virtual void			execute(Bureaucrat const &executor) const;
 };
-
-std::ostream	&operator<<(std::ostream &os, ShrubberyCreationForm const &obj);
 
 #endif

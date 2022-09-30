@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 10:52:54 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/24 12:19:20 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:56:41 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ class RobotomyRequestForm : public Form
 		virtual ~RobotomyRequestForm();
 		virtual void		execute(Bureaucrat const &executor) const;
 };
-
-std::ostream	&operator<<(std::ostream &os, RobotomyRequestForm const &obj);
 
 #endif

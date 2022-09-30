@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 04:56:19 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/29 16:59:53 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:54:08 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ int	main(void)
 	{
 		std::cout << e.what() << '\n';
 	}
-	std::cout << std::endl;
 }

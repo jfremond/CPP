@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 04:36:41 by jfremond          #+#    #+#              #
-#    Updated: 2022/09/24 12:22:13 by jfremond         ###   ########.fr        #
+#    Updated: 2022/09/29 23:14:25 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #   EXECUTABLE   #
 ##################
 
-NAME	=	Bureaucrat
+NAME	=	MultipleForms
 
 ################
 #   COMMANDS   #
@@ -88,4 +88,4 @@ re:				fclean all
 clean_files:
 				$(RM) *_shrubbery
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re clean_files
