@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:18:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/29 17:06:55 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:16:20 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	else if (executor.getGrade() > this->getGradeExec())
 		throw Form::GradeTooLowException();
 	else
-		std::cout << this->_target << " has been pardoned by Zaphod Beeblebox." << std::endl;
+		std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
