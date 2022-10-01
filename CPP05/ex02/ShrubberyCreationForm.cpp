@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 05:27:28 by jfremond          #+#    #+#             */
-/*   Updated: 2022/09/30 01:07:41 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:13:01 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		else
 		{
 			ofs << "              ,@@@@@@@," << std::endl;
-			ofs << "    ,,,.     ,@@@@@@/@@,  .oo8888o." << std::endl;
+			ofs << "       ,,,.  ,@@@@@@/@@,  .oo8888o." << std::endl;
 			ofs << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\'88/8o" << std::endl;
 			ofs << "  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
 			ofs << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
