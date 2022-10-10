@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 00:48:39 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/10 04:09:40 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/10 21:17:59 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@
 #define ORANGE  "\033[38;2;255;165;0m"
 
 #include <iostream>
-#include <stdexcept>
-#include <limits>
-#include <cstdlib>
+#include <cstdlib>	// atof
+#include <cstring>	// strlen
+#include <limits>	// numeric_limits
+
 
 class ScalarType
 {
 	private:
-		int			_value; // 1 char; 2 int; 3 float; 4 double
+		int			_value; // 1 char; 2 int; 3 double; 4 float
 		ScalarType();
 	public:
 		ScalarType(ScalarType const &src);
@@ -72,20 +73,81 @@ ScalarType::~ScalarType()
 
 int	determineType(char *arg)
 {	
-	//	TODO Determine what type it is
-	//	Return value
-	//	Convert value to other types
-	//	Print all
-	double value = std::atof(arg);
-	float test1 = static_cast<float>(value);
-	std::cout << "float : " << test1 << ".0f" << std::endl;
-	int	test2 = static_cast<int>(value);
-	std::cout << "int : " << test2 << std::endl;
-	char	test3 = static_cast<char>(value);
-	std::cout << "char : " << test3 << std::endl;
-	double	test4 = static_cast<double>(value);
-	std::cout << "int : " << test4 << ".0" << std::endl;
-	return 0;
+	std::cout << "max numeric limits int : "<< std::numeric_limits<int>::max()<< std::endl;
+	std::cout << "min numeric limits int : "<< std::numeric_limits<int>::min()<< std::endl;
+	std::cout << "max numeric limits double : "<< std::numeric_limits<double>::max()<< std::endl;
+	std::cout << "min numeric limits double : "<< std::numeric_limits<double>::min()<< std::endl;
+	std::cout << "max numeric limits float : "<< std::numeric_limits<float>::max()<< std::endl;
+	std::cout << "min numeric limits float : "<< std::numeric_limits<float>::min()<< std::endl;
+	int res = 0;
+	int dot = 0;
+	if (std::strlen(arg) == 1)
+	{
+		if (std::isalpha(arg[0]))
+			res = 1; // It is a char
+		else if (std::isdigit(arg[0]))
+			res = 2; // It is an int
+		else
+			res = -1; // You entered something that is not a number
+		std::cout << res << std::endl;
+		return (res);
+	}
+	else
+	{
+		if (!std::isalnum(arg[0]) && !std::isalnum(arg[1]))
+			res = -1; // You entered something that is not a number
+		else
+		{
+			// INF PART
+			if (!strcmp(arg, "inf") || !strcmp(arg, "+inf") || !strcmp(arg, "-inf") || !strcmp(arg, "nan"))
+			{
+				res = 3;
+				std::cout << 3 << std::endl;
+				return (res);
+			}
+			if (!strcmp(arg, "inff") || !strcmp(arg, "+inff") || !strcmp(arg, "-inff") || !strcmp(arg, "nanf"))
+			{
+				res = 4;
+				std::cout << 4 << std::endl;
+				return (res);
+			}
+			res = 2;
+			for (size_t i = 0; i < std::strlen(arg); i++)
+			{
+				if (arg[i] == '.')
+				{
+					if (dot == 1)
+						return (-1); // You entered something that is not a number
+					else
+					{
+						res = 3;
+						dot = 1;
+					}
+				}
+			}
+			if (res == 3 and arg[std::strlen(arg) - 1] == 'f')
+				res = 4;
+		}
+	}
+	// Check if double or float
+	double value = atof(arg);
+	if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max())
+		res = 4;
+	if ((value > 0 && value < std::numeric_limits<float>::min()) || value > std::numeric_limits<float>::max())
+		res = 3;
+	// Check if string has digit
+	// Check if more than one operator +/-
+	// float value = std::atof(arg);
+	// std::cout << "value : " << value << std::endl;
+	// float test1 = static_cast<float>(value);
+	// std::cout << "float : " << test1 << ".0f" << std::endl;
+	// int	test2 = static_cast<int>(value);
+	// std::cout << "int : " << test2 << std::endl;
+	// char	test3 = static_cast<char>(value);
+	// std::cout << "char : " << test3 << std::endl;
+	// double	test4 = static_cast<double>(value);
+	// std::cout << "double : " << test4 << ".0" << std::endl;
+	return (res);
 }
 
 #endif
