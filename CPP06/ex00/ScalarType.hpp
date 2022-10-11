@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 00:48:39 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/10 21:17:59 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:38:17 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #include <cstdlib>	// atof
 #include <cstring>	// strlen
 #include <limits>	// numeric_limits
-
+#include <stdexcept>
 
 class ScalarType
 {
@@ -46,7 +46,25 @@ class ScalarType
 		//!	Print double
 		//!	Print all
 };
-		int	determineType(char *arg);
+int		determineType(char *arg);
+void	print_char(char *arg);
+
+struct InvalidNumberOfArgsException : public std::exception
+{
+	const char *what() const throw()
+	{
+		return ("Usage: ./ScalarConversion [value]");
+	}
+};
+
+struct InvalidArgumentException : public std::exception
+{
+	const char *what() const throw()
+	{
+		return ("Invalid argument entered");
+	}		
+};
+
 
 ScalarType::ScalarType()
 {
@@ -94,10 +112,8 @@ int	determineType(char *arg)
 	}
 	else
 	{
-		if (!std::isalnum(arg[0]) && !std::isalnum(arg[1]))
-			res = -1; // You entered something that is not a number
-		else
-		{
+		if (!std::isdigit(arg[0]) && !std::isdigit(arg[1]))
+		{			
 			// INF PART
 			if (!strcmp(arg, "inf") || !strcmp(arg, "+inf") || !strcmp(arg, "-inf") || !strcmp(arg, "nan"))
 			{
@@ -111,23 +127,25 @@ int	determineType(char *arg)
 				std::cout << 4 << std::endl;
 				return (res);
 			}
-			res = 2;
-			for (size_t i = 0; i < std::strlen(arg); i++)
+			else
+				return (-1);
+		}
+		res = 2;
+		for (size_t i = 0; i < std::strlen(arg); i++)
+		{
+			if (arg[i] == '.')
 			{
-				if (arg[i] == '.')
+				if (dot == 1)
+					return (-1); // You entered something that is not a number
+				else
 				{
-					if (dot == 1)
-						return (-1); // You entered something that is not a number
-					else
-					{
-						res = 3;
-						dot = 1;
-					}
+					res = 3;
+					dot = 1;
 				}
 			}
-			if (res == 3 and arg[std::strlen(arg) - 1] == 'f')
-				res = 4;
 		}
+		if (res == 3 and arg[std::strlen(arg) - 1] == 'f')
+			res = 4;
 	}
 	// Check if double or float
 	double value = atof(arg);
@@ -148,6 +166,16 @@ int	determineType(char *arg)
 	// double	test4 = static_cast<double>(value);
 	// std::cout << "double : " << test4 << ".0" << std::endl;
 	return (res);
+}
+
+void	print_char(char *arg)
+{
+	double value = arg[0];
+	char c = static_cast<char>(value);
+	if (!isprint(c))
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << c << "'" << std::endl;
 }
 
 #endif

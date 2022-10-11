@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 00:59:22 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/10 03:47:12 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:09:44 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
+	try
 	{
-		std::cout << RED << "Usage: ./ScalarConversion [value]" << RESET << std::endl;
-		return (1);
+		if (argc != 2)
+			throw InvalidNumberOfArgsException();
+		if (determineType(argv[1]) == -1)
+			throw InvalidArgumentException();
+		print_char(argv[1]);
+		// print all
 	}
-	determineType(argv[1]);
-	// ScalarType	value(argv[1]);
+	catch(const std::exception& e)
+	{
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
 	return (0);
 }
