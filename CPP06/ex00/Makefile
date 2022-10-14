@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 00:42:40 by jfremond          #+#    #+#              #
-#    Updated: 2022/10/08 00:43:12 by jfremond         ###   ########.fr        #
+#    Updated: 2022/10/14 00:12:37 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #   EXECUTABLE   #
 ##################
 
-NAME	=	ScalarConversion
+NAME	=	Convert
 
 ################
 #   COMMANDS   #
