@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>	//atof
 #include <limits>	//numeric_limits
+#include <iomanip>	//precision
 
 //TODO	identify type
 //!		Possible return values
@@ -27,11 +28,15 @@ int		identify(std::string arg)
 	else
 	{
 		int dot;
+		int dot2;
 		for (size_t i = 0; i < arg.length(); i++)
 		{
 			dot = arg.find('.');
 			if (dot != -1)
 			{
+				dot2 = arg.find_last_of('.');
+				if (dot2 != dot)
+					return (0);
 				if (arg.at(arg.length() - 1) == 'f')
 					return (3);
 				else
@@ -72,16 +77,41 @@ void	print_int(double value, std::string arg)
 	}
 }
 
-void	print_float(double value)
+void	print_float(double value, int precision)
 {
 	double	fnum = static_cast<float>(value);
-	std::cout << "float: " << fnum << "f" << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(precision) << fnum << "f" << std::endl;
 }
 
-void	print_double(double value)
+void	print_double(double value, int precision)
 {
 	double	dnum = static_cast<double>(value);
-	std::cout << "double: " << dnum << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(precision) << dnum << std::endl;
+}
+
+int	set_precision(std::string arg)
+{
+	int	precision;
+
+	int dot = arg.find('.');
+	if (dot == -1)
+		return (arg.length());
+	else
+	{
+		precision = arg.length() - dot - 1;
+		if (arg.at(arg.length() - 1) == 'f')
+			precision--;
+	}
+	return (precision);
+}
+
+int	impossible(void)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: impossible" << std::endl;
+	std::cout << "double: impossible" << std::endl;
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -93,31 +123,37 @@ int	main(int argc, char **argv)
 	}
 	std::string arg = argv[1];
 	int		type = identify(arg);
-	double	value = 0;
+	double	value;
+	int		precision;
 	switch(type)
 	{
 		case (1):
 			std::cout << "char" << std::endl;
 			value = arg[0];
+			precision = 1;
 			break;
 		case (2):
 			std::cout << "int" << std::endl;
 			value = atof(arg.c_str());
+			precision = set_precision(arg);
 			break;
 		case (3):
 			std::cout << "float" << std::endl;
+			precision = set_precision(arg);
 			value = atof(arg.c_str());
 			break;
 		case (4):
 			std::cout << "double" << std::endl;
 			value = atof(arg.c_str());
+			precision = set_precision(arg);
 			break;
 		default:
 			std::cout << "Not a valid entry" << std::endl;
+			return (impossible());
 	}
 	print_char(value);
 	print_int(value, arg);
-	print_float(value);
-	print_double(value);
+	print_float(value, precision);
+	print_double(value, precision);
 	return (0);
 }
