@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:43:24 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/13 21:51:29 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/16 06:37:43 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,15 @@ Base	*generate(void)
 	switch (randnum)
 	{
 		case 1:
-			std::cout << "A" << std::endl;
 			new_base = new A;
 			break;
 		case 2:
-			std::cout << "B" << std::endl;
 			new_base = new B;
 			break;
 		case 3:
-			std::cout << "C" << std::endl;
 			new_base = new C;
 			break;
 		default:
-			std::cout << "ERROR" << std::endl;
 			new_base = new Base;
 	}
 	return new_base;
@@ -45,11 +41,13 @@ Base	*generate(void)
 void	identify(Base *p)
 {
 	if (A	*baseA = dynamic_cast<A *>(p))
-		std::cout << "A" << std::endl;
-	if (B	*baseB = dynamic_cast<B *>(p))
-		std::cout << "B" << std::endl;
-	if (C	*baseC = dynamic_cast<C *>(p))
-		std::cout << "C" << std::endl;
+		std::cout << GREEN << "The dynamic_cast to the class A succeded, congrats !" << RESET << std::endl;
+	else if (B	*baseB = dynamic_cast<B *>(p))
+		std::cout << GREEN << "The dynamic_cast to the class B succeded, congrats !" << RESET << std::endl;
+	else if (C	*baseC = dynamic_cast<C *>(p))
+		std::cout << GREEN << "The dynamic_cast to the class C succeded, congrats !" << RESET << std::endl;
+	else
+		std::cout << RED << "Mayday! Mayday! Something went wrong here!" << RESET << std::endl;
 }
 
 void	identify(Base &p)
@@ -57,42 +55,45 @@ void	identify(Base &p)
 	try
 	{
 		A	&baseA = dynamic_cast<A &>(p);
-		std::cout << "A" << std::endl;
+		std::cout << GREEN << "The dynamic_cast to the class A succeded, congrats !" << RESET << std::endl;
 		(void)baseA;
 	}
 	catch(const std::exception& e)
 	{
-		(void)e;
-		std::cerr << "Not A" << '\n';
+		std::cout << RED << "The dynamic_cast to the class A failed, better luck next time !" << RESET << std::endl;
 	}
 	try
 	{
 		B	&baseB = dynamic_cast<B &>(p);
-		std::cout << "B" << std::endl;
+		std::cout << GREEN << "The dynamic_cast to the class B succeded, congrats !" << RESET << std::endl;
 		(void)baseB;
 	}
 	catch(const std::exception& e)
 	{
-		(void)e;
-		std::cerr << "Not B" << '\n';
+		std::cout << RED << "The dynamic_cast to the class A failed, better luck next time !" << RESET << std::endl;	
 	}
 	try
 	{
 		C	&baseC = dynamic_cast<C &>(p);
-		std::cout << "C" << std::endl;
+		std::cout << GREEN << "The dynamic_cast to the class C succeded, congrats !" << RESET << std::endl;
 		(void)baseC;
 	}
 	catch(const std::exception& e)
 	{
-		(void)e;
-		std::cerr << "Not C" << '\n';
+		std::cout << RED << "The dynamic_cast to the class C failed, better luck next time !" << RESET << std::endl;
 	}
 }
 
 int	main(void)
 {
-	Base *p = generate();
-	identify(p);
-	identify(*p);
-	delete p;
+	std::cout << YELLOW << "GENERATING A NEW BASE" << RESET << std::endl << std::endl;
+	Base *new_base = generate();
+	std::cout << YELLOW << "IDENTIFYING IT USING A POINTER" << RESET << std::endl;
+	identify(new_base);
+	std::cout << std::endl;
+	std::cout << YELLOW << "IDENTIFYING IT USING A REFERENCE" << RESET << std::endl;
+	identify(*new_base);
+	std::cout << std::endl;
+	delete new_base;
+	return (0);
 }
