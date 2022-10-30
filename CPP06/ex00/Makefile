@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/16 01:55:56 by jfremond          #+#    #+#              #
-#    Updated: 2022/10/16 04:22:09 by jfremond         ###   ########.fr        #
+#    Updated: 2022/10/17 06:12:44 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,9 @@ OBJS_D	=	objs/
 ###############
 
 SRCS	=	main.cpp		\
-			print.cpp		\
-			utils.cpp		\
+			Convertor.cpp	\
+			conversions.cpp	\
+			print.cpp
 
 ###############
 #   OBJECTS   #

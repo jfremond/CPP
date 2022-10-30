@@ -5,42 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 02:13:30 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/16 04:32:02 by jfremond         ###   ########.fr       */
+/*   Created: 2022/10/17 01:25:09 by jfremond          #+#    #+#             */
+/*   Updated: 2022/10/17 07:32:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.hpp"
+#include "Convertor.hpp"
 
-int	main(int argc, char **argv)
+int	test_convertor(Convertor convert, std::string arg)
 {
-	if (argc != 2)
+	int type = convert.identify(arg);
+	switch (type)
 	{
-		std::cout << RED << "Usage: ./Convert [argument]" << RESET << std::endl;
-		return (1);
+		case 1:
+			convert.convert_from_char(arg[0]);
+			break;
+		case 2:
+			convert.convert_from_int(atoi(arg.c_str()));
+			break;
+		case 3:
+			convert.convert_from_float(strtof(arg.c_str(), NULL));
+			break;
+		case 4:
+			convert.convert_from_double(strtod(arg.c_str(), NULL));
+			break;
+		default:
+			return (convert.print_impossible());
 	}
-	std::string arg;
-	int			type;
-	double		value;
-	int			precision;
-	
-	arg = argv[1];
-	type = identify(arg);
-	if (type == 0)
-		return (print_impossible());
-	else if (type == 1)
-	{
-		value = arg[0];
-		precision = 1;
-	}
-	else
-	{
-		value = atof(arg.c_str());
-		precision = set_precision(arg, type);
-	}
-	print_char(value, arg);
-	print_int(value, arg);
-	print_float(value, precision);
-	print_double(value, precision);
+	convert.print_char(arg);
+	convert.print_int(arg);
+	convert.print_float();
+	convert.print_double();
+	return (0);
+}
+
+int	main(void)
+{
+	Convertor convert;
+	std::cout << YELLOW << "IMPOSSIBLE TEST" << RESET << std::endl;
+	test_convertor(convert, "hello");
+	std::cout << std::endl;
+	std::cout << YELLOW << "CHAR TEST" << RESET << std::endl;
+	test_convertor(convert, "a");
+	std::cout << std::endl;
+	std::cout << YELLOW << "INT TEST" << RESET << std::endl;
+	test_convertor(convert, "3432");
+	std::cout << std::endl;
+	std::cout << YELLOW << "FLOAT TEST" << RESET << std::endl;
+	test_convertor(convert, "546546343636.0544456f");
+	std::cout << std::endl;
+	std::cout << YELLOW << "DOUBLE TEST" << RESET << std::endl;
+	test_convertor(convert, "1234.5678");
+	std::cout << std::endl;
+	std::cout << YELLOW << "INF TEST" << RESET << std::endl;
+	test_convertor(convert, "-inf");
+	std::cout << std::endl;
+	test_convertor(convert, "+inff");
+	std::cout << std::endl;
+	std::cout << YELLOW << "NAN TEST" << RESET << std::endl;
+	test_convertor(convert, "nan");
+	std::cout << std::endl;
+	test_convertor(convert, "nanf");
+	std::cout << std::endl;
 	return (0);
 }

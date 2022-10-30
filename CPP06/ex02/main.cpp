@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:43:24 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/16 06:37:43 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:19:58 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,15 @@ int	main(void)
 {
 	std::cout << YELLOW << "GENERATING A NEW BASE" << RESET << std::endl << std::endl;
 	Base *new_base = generate();
+	
 	std::cout << YELLOW << "IDENTIFYING IT USING A POINTER" << RESET << std::endl;
 	identify(new_base);
 	std::cout << std::endl;
+	
 	std::cout << YELLOW << "IDENTIFYING IT USING A REFERENCE" << RESET << std::endl;
 	identify(*new_base);
 	std::cout << std::endl;
+	
 	delete new_base;
 	return (0);
 }

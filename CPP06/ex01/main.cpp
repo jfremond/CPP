@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:43:24 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/16 06:07:59 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:20:15 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ Data	*deserialize(uintptr_t raw)
 int	main(void)
 {
 	std::cout << YELLOW << "INITIALIZING A DATA STRUCT" << RESET << std::endl;
-	Data	*src = new Data;
+	Data		*src = new Data;
 	src->str = "This is a string";
 	src->value = 42;
 	std::cout << ORANGE <<"src->str: " << RESET << src->str << std::endl;
 	std::cout << ORANGE << "src->value: " << RESET << src->value << std::endl << std::endl;
 
-	Data	*cpy;
+	Data		*cpy;
 	uintptr_t	raw;
 	
 	raw = serialize(src);
@@ -60,9 +60,15 @@ int	main(void)
 	std::cout << YELLOW << "src structure" << RESET << std::endl;
 	std::cout << ORANGE <<"src->str: " << RESET << src->str << std::endl;
 	std::cout << ORANGE << "src->value: " << RESET << src->value << std::endl << std::endl;
+	
 	std::cout << YELLOW << "cpy structure" << RESET << std::endl;
 	std::cout << ORANGE <<"cpy->str: " << RESET << cpy->str << std::endl;
-	std::cout << ORANGE << "cpy->value: " << RESET << cpy->value << std::endl;
+	std::cout << ORANGE << "cpy->value: " << RESET << cpy->value << std::endl << std::endl;
+	
+	std::cout << YELLOW << "DISPLAYING THE POINTERS OF THE TWO DATA STRUCTURES" << RESET << std::endl;
+	std::cout << ORANGE << "src: " << RESET << src << std::endl;
+	std::cout << ORANGE << "cpy: " << RESET << cpy << std::endl << std::endl;
+	
 	delete src;
 	return (0);
 }

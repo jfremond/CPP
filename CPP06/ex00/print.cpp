@@ -5,55 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 04:16:00 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/16 04:47:08 by jfremond         ###   ########.fr       */
+/*   Created: 2022/10/17 06:11:35 by jfremond          #+#    #+#             */
+/*   Updated: 2022/10/17 07:20:07 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.hpp"
+#include "Convertor.hpp"
 
-void	print_char(double value, std::string arg)
+void	Convertor::print_char(std::string arg)
 {
-	if (value < 0 || value > 255 || arg == "nan" || arg == "nanf")
+	if (this->_impo_char || arg == "nan" || arg == "nanf")
 		std::cout << ORANGE << "char: " << RESET << "impossible" << std::endl;
+	else if (!isprint(_val_char))
+		std::cout << ORANGE << "char: " << RESET << "non displayable" << std::endl;
 	else
-	{
-		char c = static_cast<char>(value);
-		if (!isprint(c))
-			std::cout << ORANGE << "char: " << RESET << "non displayable" << std::endl;
-		else
-			std::cout << ORANGE << "char: " << RESET << "'" << c << "'" << std::endl;
-	}
-
+		std::cout << ORANGE << "char: " << RESET << "'" << _val_char << "'" << std::endl;
 }
 
-void	print_int(double value, std::string arg)
+void	Convertor::print_int(std::string arg)
 {
-	if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max()
-		|| arg == "nan" || arg == "nanf")
-				std::cout << ORANGE << "int: " << RESET << "impossible" << std::endl;
+	if (this->_impo_int || arg == "nan" || arg == "nanf")
+		std::cout << ORANGE << "int: " << RESET << "impossible" << std::endl;
 	else
-	{
-		int num = static_cast<int>(value);
-		std::cout << ORANGE << "int: " << RESET << num << std::endl;
-	}
+		std::cout << ORANGE << "int: " << RESET <<_val_int << std::endl;
 }
 
-void	print_float(double value, int precision)
+void	Convertor::print_float()
 {
-	double	fnum = static_cast<float>(value);
-	std::cout << ORANGE << "float: " << std::fixed << std::setprecision(precision) << RESET << fnum << "f" << std::endl;
+	std::cout << ORANGE << "float: " << RESET << std::fixed << std::setprecision(1) << _val_float << "f" << std::endl;
 }
 
-void	print_double(double value, int precision)
+void	Convertor::print_double()
 {
-	double	dnum = static_cast<double>(value);
-	std::cout << ORANGE << "double: " << std::fixed << std::setprecision(precision) << RESET << dnum << std::endl;
+	std::cout << ORANGE << "double: " << RESET << std::fixed << std::setprecision(1) << _val_double << std::endl;
 }
 
-int	print_impossible(void)
+int		Convertor::print_impossible()
 {
-	std::string	values[4] = {"char: ", "int: ", "float: ", "double: "};
+	std::string values[4] = {"char: ", "int: ", "float: ", "double: "};
 	for (int i = 0; i < 4; i++)
 		std::cout << ORANGE << values[i] << RESET << "impossible" << std::endl;
 	return (1);
