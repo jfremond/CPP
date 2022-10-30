@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:43:24 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/30 06:19:58 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/10/30 06:24:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ Base	*generate(void)
 
 void	identify(Base *p)
 {
-	if (A	*baseA = dynamic_cast<A *>(p))
+	if (dynamic_cast<A *>(p))
 		std::cout << GREEN << "The dynamic_cast to the class A succeded, congrats !" << RESET << std::endl;
-	else if (B	*baseB = dynamic_cast<B *>(p))
+	else if (dynamic_cast<B *>(p))
 		std::cout << GREEN << "The dynamic_cast to the class B succeded, congrats !" << RESET << std::endl;
-	else if (C	*baseC = dynamic_cast<C *>(p))
+	else if (dynamic_cast<C *>(p))
 		std::cout << GREEN << "The dynamic_cast to the class C succeded, congrats !" << RESET << std::endl;
 	else
 		std::cout << RED << "Mayday! Mayday! Something went wrong here!" << RESET << std::endl;
@@ -54,9 +54,8 @@ void	identify(Base &p)
 {
 	try
 	{
-		A	&baseA = dynamic_cast<A &>(p);
+		dynamic_cast<A &>(p);
 		std::cout << GREEN << "The dynamic_cast to the class A succeded, congrats !" << RESET << std::endl;
-		(void)baseA;
 	}
 	catch(const std::exception& e)
 	{
@@ -64,19 +63,17 @@ void	identify(Base &p)
 	}
 	try
 	{
-		B	&baseB = dynamic_cast<B &>(p);
+		dynamic_cast<B &>(p);
 		std::cout << GREEN << "The dynamic_cast to the class B succeded, congrats !" << RESET << std::endl;
-		(void)baseB;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << RED << "The dynamic_cast to the class A failed, better luck next time !" << RESET << std::endl;	
+		std::cout << RED << "The dynamic_cast to the class B failed, better luck next time !" << RESET << std::endl;	
 	}
 	try
 	{
-		C	&baseC = dynamic_cast<C &>(p);
+		dynamic_cast<C &>(p);
 		std::cout << GREEN << "The dynamic_cast to the class C succeded, congrats !" << RESET << std::endl;
-		(void)baseC;
 	}
 	catch(const std::exception& e)
 	{
