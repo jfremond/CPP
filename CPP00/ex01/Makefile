@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/18 15:51:07 by jfremond          #+#    #+#              #
-#    Updated: 2022/07/25 19:50:52 by jfremond         ###   ########.fr        #
+#    Created: 2022/11/08 23:09:56 by jfremond          #+#    #+#              #
+#    Updated: 2022/11/17 06:56:04 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,61 +14,61 @@
 #   EXECUTABLE   #
 ##################
 
-NAME 		=	MyAwesomePhoneBook
+NAME	=	MyAwesomePhoneBook
 
 ################
 #   COMMANDS   #
 ################
 
-CXX			=	c++
-MKDIR		=	/bin/mkdir -p
-RM			=	/bin/rm -rf
+CXX		=	c++
+MKDIR	=	/bin/mkdir -p
+RM		=	/bin/rm -rf
 
 #############
 #   FLAGS   #
 #############
 
-CXXFLAGS	=	-Wall -Wextra -Werror -c
-CXXFLAGS	+=	-std=c++98 -g
+CXXFLAGS	=	-c -Wall -Wextra -Werror
+CXXFLAGS	+=	-std=c++98
 CXXFLAGS	+=	-MMD -MP
 
 ###################
 #   DIRECTORIES   #
 ###################
 
-OBJS_D		=	objs/
+OBJS_D	=	objs/
 
 ###############
 #   SOURCES   #
 ###############
 
-SRCS_L		=	main.cpp		\
-				Contact.cpp		\
-				PhoneBook.cpp	\
+SRCS	=	main.cpp		\
+			PhoneBook.cpp	\
+			Contact.cpp		\
 
 ###############
 #   OBJECTS   #
 ###############
 
-OBJS_L	=		$(SRCS_L:.cpp=.o)
-OBJS_L	:=		$(addprefix $(OBJS_D), $(OBJS_L))
+OBJS	=	$(SRCS:.cpp=.o)
+OBJS	:=	$(addprefix $(OBJS_D), $(OBJS))
 
 ####################
 #   DEPENDENCIES   #
 ####################
 
-DEP_L	=		$(OBJS_L:.o=.d)
+DEP		=	$(OBJS:.o=.d)
 
 #############
 #   RULES   #
 #############
 
-all:			$(NAME)
+all:		$(NAME)
 
-$(NAME):		$(OBJS_L)
-				$(CXX) $(OBJS_L) $(OUTPUT_OPTION)
+$(NAME):	$(OBJS)
+			$(CXX) $(OBJS) $(OUTPUT_OPTION)
 
--include $(DEP_L)
+-include	$(DEP)
 
 $(OBJS_D)%.o:	%.cpp
 				$(MKDIR) $(OBJS_D)
@@ -82,4 +82,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re 
+.PHONY:			all clean fclean re
