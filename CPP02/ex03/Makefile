@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/06/09 15:31:18 by jfremond          #+#    #+#              #
-#    Updated: 2022/06/10 12:28:35 by jfremond         ###   ########.fr        #
+#    Created: 2022/11/08 23:09:56 by jfremond          #+#    #+#              #
+#    Updated: 2022/11/17 07:05:14 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ NAME	=	bsp
 #   COMMANDS   #
 ################
 
-CC		=	c++
-LINK	=	c++
+CXX		=	c++
 MKDIR	=	/bin/mkdir -p
 RM		=	/bin/rm -rf
 
@@ -29,9 +28,9 @@ RM		=	/bin/rm -rf
 #   FLAGS   #
 #############
 
-CFLAGS	=	-Wall -Wextra -Werror -c
-CFLAGS	+=	-std=c++98
-CFLAGS	+=	-MMD -MP
+CXXFLAGS	=	-c -Wall -Wextra -Werror
+CXXFLAGS	+=	-std=c++98
+CXXFLAGS	+=	-MMD -MP
 
 ###################
 #   DIRECTORIES   #
@@ -43,19 +42,17 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS_L	=	bsp.cpp			\
-			Fixed.cpp		\
-			Point.cpp		\
-			main.cpp		\
+SRCS	=	main.cpp	\
+			bsp.cpp		\
+			Fixed.cpp	\
+			Point.cpp	\
 
 ###############
 #   OBJECTS   #
 ###############
 
-OBJS_L	=	$(SRCS_L:.cpp=.o)
-OBJS_L	:=	$(addprefix $(OBJS_D), $(OBJS_L))
-
-OBJS	=	$(OBJS_L)
+OBJS	=	$(SRCS:.cpp=.o)
+OBJS	:=	$(addprefix $(OBJS_D), $(OBJS))
 
 ####################
 #   DEPENDENCIES   #
@@ -70,14 +67,13 @@ DEP		=	$(OBJS:.o=.d)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			$(LINK) $(OBJS) $(OUTPUT_OPTION)
-# Pas de cflags quand il y a link 
+			$(CXX) $(OBJS) $(OUTPUT_OPTION)
 
 -include	$(DEP)
 
 $(OBJS_D)%.o:	%.cpp
-				$(MKDIR) $(@D)
-				$(CC) $(CFLAGS) $(OUTPUT_OPTION) $<
+				$(MKDIR) $(OBJS_D)
+				$(CXX) $(CXXFLAGS) $(OUTPUT_OPTION) $<
 
 clean:
 				$(RM) $(OBJS_D)
