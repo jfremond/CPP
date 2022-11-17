@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 23:09:56 by jfremond          #+#    #+#              #
-#    Updated: 2022/11/17 07:02:15 by jfremond         ###   ########.fr        #
+#    Updated: 2022/11/17 07:03:33 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS	=	main.cpp		\
-			Harl.cpp
+SRCS	=	main.cpp	\
+			Harl.cpp	\
 
 ###############
 #   OBJECTS   #
