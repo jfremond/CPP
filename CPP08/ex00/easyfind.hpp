@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:45:13 by jfremond          #+#    #+#             */
-/*   Updated: 2022/11/28 16:54:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:18:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define ORANGE  "\033[38;2;255;165;0m"
 
 #include <iostream>
+#include <stdexcept>
 #include <algorithm>
 #include <list>
 #include <vector>
