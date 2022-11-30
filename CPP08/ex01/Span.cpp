@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:27:09 by jfremond          #+#    #+#             */
-/*   Updated: 2022/11/28 19:00:45 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/11/30 04:11:17 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Span::Span(Span const &src)
 
 Span	&Span::operator=(Span const &rhs)
 {
-	_vec.clear();
+	_vec.clear();	
 	_size = rhs._size;
 	std::copy(rhs._vec.begin(), rhs._vec.end(), std::back_inserter(_vec));
 	return (*this);
@@ -38,6 +38,7 @@ Span	&Span::operator=(Span const &rhs)
 
 Span::~Span()
 {
+	_vec.clear();
 	return ;
 }
 
@@ -50,6 +51,8 @@ void	Span::addNumber(int i)
 
 int	Span::shortestSpan()
 {
+	if (_size < 2)
+		throw Span::NotEnoughValuesException();
 	std::vector<int>	tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
 	
@@ -65,6 +68,8 @@ int	Span::shortestSpan()
 
 int	Span::longuestSpan()
 {
+	if (_size < 2)
+		throw Span::NotEnoughValuesException();
 	std::vector<int>	tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
 
@@ -72,9 +77,19 @@ int	Span::longuestSpan()
 	return (std::abs(diff));
 }
 
+void	Span::fillVec(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end)
+{
+	std::vector<int>::const_iterator it;
+	for (it = begin; it != end; it++)
+	{
+		addNumber(*it);
+		_size++;
+	}
+}
+
 void	Span::printVec()
 {
-	std::vector<int>::iterator	it;
+	std::vector<int>::const_iterator	it;
 	int i = 1;
 	for (it = _vec.begin(); it != _vec.end(); it++)
 	{
