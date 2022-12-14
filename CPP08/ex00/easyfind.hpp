@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 07:21:35 by jfremond          #+#    #+#             */
-/*   Updated: 2022/12/03 02:29:29 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/12/14 05:43:21 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@
 #include <vector>		// replicates an array
 
 template<typename T>
-typename T::iterator	easyfind(T &cont, int n)
+int	easyfind(T &cont, int n)
 {
 	typename T::iterator	res = std::find(cont.begin(), cont.end(), n);
 	
 	if (res == cont.end())
 		throw (std::out_of_range("The number is not in the container"));
 	else
-		return (res);
+		return (*res);
 }
 
 #endif

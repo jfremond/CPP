@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 19:58:41 by jfremond          #+#    #+#             */
-/*   Updated: 2022/12/14 03:28:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/12/14 05:43:40 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	main()
 		lst1.push_back(17);
 		lst1.push_back(42);
 
-		std::cout << "The container contains " << *easyfind(lst1, 17) << std::endl;
+		std::cout << "The container contains " << easyfind(lst1, 17) << std::endl;
 		try
 		{
-			std::cout << *easyfind(lst1, 28) << std::endl;
+			std::cout << easyfind(lst1, 28) << std::endl;
 		}
 		catch (const std::exception &e)
 		{
@@ -41,10 +41,10 @@ int	main()
 		vec1.push_back(17);
 		vec1.push_back(42);
 
-		std::cout << "The container contains " << *easyfind(vec1, 42) << std::endl;
+		std::cout << "The container contains " << easyfind(vec1, 42) << std::endl;
 		try
 		{
-			std::cout << *easyfind(vec1, 58) << std::endl;
+			std::cout << easyfind(vec1, 58) << std::endl;
 		}
 		catch (const std::exception	&e)
 		{
