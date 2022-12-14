@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:45:13 by jfremond          #+#    #+#             */
-/*   Updated: 2022/11/28 17:18:34 by jfremond         ###   ########.fr       */
+/*   Created: 2022/11/17 07:21:35 by jfremond          #+#    #+#             */
+/*   Updated: 2022/12/03 02:29:29 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@
 #define ORANGE  "\033[38;2;255;165;0m"
 
 #include <iostream>
-#include <stdexcept>
 #include <algorithm>
-#include <list>
-#include <vector>
-#include <set>
+#include <stdexcept>
+#include <list>			// replicates a linked list
+#include <vector>		// replicates an array
 
 template<typename T>
-typename T::iterator	easyfind(T &cont, int num)
+typename T::iterator	easyfind(T &cont, int n)
 {
-	typename T::iterator	res = std::find(cont.begin(), cont.end(), num);
+	typename T::iterator	res = std::find(cont.begin(), cont.end(), n);
 	
 	if (res == cont.end())
-		throw std::out_of_range("The value is not in the container");
-	return (res);	
+		throw (std::out_of_range("The number is not in the container"));
+	else
+		return (res);
 }
+
 #endif
