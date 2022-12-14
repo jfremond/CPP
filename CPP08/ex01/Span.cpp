@@ -6,18 +6,18 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:27:09 by jfremond          #+#    #+#             */
-/*   Updated: 2022/11/30 04:11:17 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/12/14 05:36:22 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span() : _size(0)
+Span::Span() : _N(0)
 {
 	return ;
 }
 
-Span::Span(unsigned int N) : _size(N)
+Span::Span(unsigned int N) : _N(N)
 {
 	return ;
 }
@@ -31,7 +31,7 @@ Span::Span(Span const &src)
 Span	&Span::operator=(Span const &rhs)
 {
 	_vec.clear();	
-	_size = rhs._size;
+	_N = rhs._N;
 	std::copy(rhs._vec.begin(), rhs._vec.end(), std::back_inserter(_vec));
 	return (*this);
 }
@@ -44,14 +44,14 @@ Span::~Span()
 
 void	Span::addNumber(int i)
 {
-	if (_vec.size() == _size)
+	if (_vec.size() == _N)
 		throw Span::VecIsFullException();
 	_vec.push_back(i);
 }
 
 int	Span::shortestSpan()
 {
-	if (_size < 2)
+	if (_vec.size() < 2)
 		throw Span::NotEnoughValuesException();
 	std::vector<int>	tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
@@ -66,25 +66,15 @@ int	Span::shortestSpan()
 	return (std::abs(diff));
 }
 
-int	Span::longuestSpan()
+int	Span::longestSpan()
 {
-	if (_size < 2)
+	if (_vec.size() < 2)
 		throw Span::NotEnoughValuesException();
 	std::vector<int>	tmp = _vec;
 	std::sort(tmp.begin(), tmp.end());
-
-	int	diff = *tmp.rbegin() - *tmp.begin();
-	return (std::abs(diff));
-}
-
-void	Span::fillVec(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end)
-{
-	std::vector<int>::const_iterator it;
-	for (it = begin; it != end; it++)
-	{
-		addNumber(*it);
-		_size++;
-	}
+	std::vector<int>::iterator	min = std::min_element(tmp.begin(), tmp.end());
+	std::vector<int>::iterator	max = std::max_element(tmp.begin(), tmp.end());
+	return (std::abs(*max - *min));
 }
 
 void	Span::printVec()
@@ -97,4 +87,20 @@ void	Span::printVec()
 		i++;
 	}
 	
+}
+
+void	Span::printVecInFile(std::string filename)
+{
+	std::ofstream	ofs(filename.c_str());
+	if (!ofs.is_open())
+	{
+		std::cout << RED << "Error when opening file" << RESET << std::endl;
+		return ;
+	}
+	std::vector<int>::const_iterator	it;
+	for (it = _vec.begin(); it != _vec.end(); it++)
+	{
+		ofs << *it << std::endl;
+	}
+	ofs.close();
 }

@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:16:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/11/30 03:58:29 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/12/14 05:36:17 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@
 #include <stdexcept>
 #include <algorithm>
 #include <vector>
+#include <list>
+#include <fstream>
 
 class Span
 {
 	private:
 		std::vector<int>	_vec;
-		unsigned int 		_size;
+		unsigned int 		_N;
 	public:
 		Span();
 		Span(unsigned int N);
@@ -40,9 +42,15 @@ class Span
 		~Span();
 		void	addNumber(int i);
 		int		shortestSpan();
-		int		longuestSpan();
-		void	fillVec(typename std::vector<int>::const_iterator begin, typename std::vector<int>::const_iterator end);
+		int		longestSpan();
 		void	printVec();
+		void	printVecInFile(std::string filename);
+		template<typename T>
+		void	fillVec(T begin, T end)
+		{
+			for (T it = begin; it != end; it++)
+			addNumber(*it);
+		}
 		class	VecIsFullException : public std::exception
 		{
 			virtual const char	*what() const throw()

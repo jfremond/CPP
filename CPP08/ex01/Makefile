@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/17 07:13:26 by jfremond          #+#    #+#              #
-#    Updated: 2022/11/28 18:26:19 by jfremond         ###   ########.fr        #
+#    Created: 2022/12/14 03:25:49 by jfremond          #+#    #+#              #
+#    Updated: 2022/12/14 03:25:50 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,11 +73,15 @@ $(OBJS_D)%.o:	%.cpp
 				$(MKDIR) $(OBJS_D)
 				$(CXX) $(CXXFLAGS) $(OUTPUT_OPTION) $<
 
-clean:
+clean_files:
+				$(RM) vec2 vec4
+
+clean:			clean_files
 				$(RM) $(OBJS_D)
 
 fclean:			clean
 				$(RM) $(NAME)
+
 
 re:				fclean all
 

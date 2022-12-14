@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 04:20:33 by jfremond          #+#    #+#             */
-/*   Updated: 2022/11/30 03:55:50 by jfremond         ###   ########.fr       */
+/*   Updated: 2022/12/14 05:39:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,48 +34,41 @@ int	main()
 	vec1.printVec();
 	std::cout << std::endl;
 	
-	std::cout << ORANGE << "CREATE A VECTOR AND FILL IT USING FILLVEC" << RESET << std::endl;
-	srand(time(NULL));
-	std::vector<int>	tmp_vec;
-	for (unsigned int i = 0; i < 15; i++)
+	std::cout << ORANGE << "CREATE A VECTOR AND FILL IT USING FILLVEC (printed in file vec2)" << RESET << std::endl;
+	Span	vec2(15000);
+	std::list<int>	lst;
+	
+	srand(time(NULL));		
+	for (unsigned int i = 0; i < 15000; i++)
 	{
-		int	val = rand() % 15 + 1;
-		tmp_vec.push_back(val);
-	}		
-	Span	vec2(15);
-	vec2.fillVec(tmp_vec.begin(), tmp_vec.end());
-	vec2.printVec();
-	std::cout << std::endl;
+		int	val = rand() % 15000 + 1;
+		lst.push_back(val);
+	}	
+	vec2.fillVec(lst.begin(), lst.end());
+	vec2.printVecInFile("vec2");
 	
 	std::cout << ORANGE << "FINDING SPANS OF BOTH VECTORS" << RESET << std::endl;
 	std::cout << "Shortest span of vec1 is : " << vec1.shortestSpan() << std::endl;
-	std::cout << "Longuest span of vec1 is : "  << vec1.longuestSpan() << std::endl;
+	std::cout << "Longest span of vec1 is : "  << vec1.longestSpan() << std::endl;
 	std::cout << "Shortest span of vec2 is : " << vec2.shortestSpan() << std::endl;
-	std::cout << "Longuest span of vec2 is : "  << vec2.longuestSpan() << std::endl;
+	std::cout << "Longest span of vec2 is : "  << vec2.longestSpan() << std::endl;
 	std::cout << std::endl;
 	
-	std::cout << ORANGE << "CREATING EMPTY VECTOR AND TRYING TO FILL IT" << RESET << std::endl;
-	Span	empty_vec;
+	std::cout << ORANGE << "CREATING VECTOR TOO SMALL AND TRYING TO FILL IT" << RESET << std::endl;
+	Span	vec_too_small(10);
+	std::cout << ORANGE << "TRYING TO FIND SPANS OF VECTOR TOO SMALL" << RESET << std::endl;
 	try
 	{
-		empty_vec.addNumber(-42);
+		std::cout << "Shortest span of vec_too_small is : " << vec_too_small.shortestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
-	std::cout << ORANGE << "TRYING TO FIND SPANS OF EMPTY VECTOR" << RESET << std::endl;
+	vec_too_small.addNumber(-42);
 	try
 	{
-		std::cout << "Shortest span of empty_vec is : " << empty_vec.shortestSpan() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << e.what() << '\n';
-	}
-	try
-	{
-		std::cout << "Longuest span of empty_vec is : " << empty_vec.longuestSpan() << std::endl;
+		std::cout << "Longest span of vec_too_small is : " << vec_too_small.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -88,9 +81,9 @@ int	main()
 	vec3.printVec();
 	std::cout << std::endl;
 
-	std::cout << ORANGE << "TESTING ASSIGNMENT OPERATOR" << RESET << std::endl;
+	std::cout << ORANGE << "TESTING ASSIGNMENT OPERATOR (results printed in file vec4)" << RESET << std::endl;
 	Span	vec4 = vec2;
-	vec4.printVec();
+	vec4.printVecInFile("vec4");
 	
 	return (0);
 }
