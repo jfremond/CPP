@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 17:16:49 by jfremond          #+#    #+#             */
-/*   Updated: 2022/12/14 05:36:17 by jfremond         ###   ########.fr       */
+/*   Created: 2022/12/14 19:29:40 by jfremond          #+#    #+#             */
+/*   Updated: 2022/12/15 04:02:41 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ class Span
 		void	fillVec(T begin, T end)
 		{
 			for (T it = begin; it != end; it++)
-			addNumber(*it);
+				addNumber(*it);
 		}
 		class	VecIsFullException : public std::exception
 		{

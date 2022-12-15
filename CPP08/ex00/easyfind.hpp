@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 07:21:35 by jfremond          #+#    #+#             */
-/*   Updated: 2022/12/14 05:43:21 by jfremond         ###   ########.fr       */
+/*   Created: 2022/12/14 19:28:40 by jfremond          #+#    #+#             */
+/*   Updated: 2022/12/14 22:44:45 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	easyfind(T &cont, int n)
 	
 	if (res == cont.end())
 		throw (std::out_of_range("The number is not in the container"));
-	else
-		return (*res);
+	return (*res);
 }
 
 #endif

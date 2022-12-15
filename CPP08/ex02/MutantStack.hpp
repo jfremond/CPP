@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 08:17:21 by jfremond          #+#    #+#             */
-/*   Updated: 2022/12/14 05:40:31 by jfremond         ###   ########.fr       */
+/*   Created: 2022/12/14 19:30:14 by jfremond          #+#    #+#             */
+/*   Updated: 2022/12/14 22:48:55 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class MutantStack : public std::stack<T>
 			this->c = rhs.c;
 			return (*this);
 		}
-		~MutantStack() {};
+		virtual ~MutantStack() {};
 		typedef typename std::stack<T>::container_type::iterator		iterator;
 		iterator begin() { return (this->c.begin()); }
 		iterator end() { return (this->c.end()); }
