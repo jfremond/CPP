@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:43:24 by jfremond          #+#    #+#             */
-/*   Updated: 2022/10/30 06:24:34 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/01/05 04:48:10 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	identify(Base &p)
 {
 	try
 	{
-		dynamic_cast<A &>(p);
+		(void)dynamic_cast<A &>(p);
 		std::cout << GREEN << "The dynamic_cast to the class A succeded, congrats !" << RESET << std::endl;
 	}
 	catch(const std::exception& e)
@@ -63,7 +63,7 @@ void	identify(Base &p)
 	}
 	try
 	{
-		dynamic_cast<B &>(p);
+		(void)dynamic_cast<B &>(p);
 		std::cout << GREEN << "The dynamic_cast to the class B succeded, congrats !" << RESET << std::endl;
 	}
 	catch(const std::exception& e)
@@ -72,7 +72,7 @@ void	identify(Base &p)
 	}
 	try
 	{
-		dynamic_cast<C &>(p);
+		(void)dynamic_cast<C &>(p);
 		std::cout << GREEN << "The dynamic_cast to the class C succeded, congrats !" << RESET << std::endl;
 	}
 	catch(const std::exception& e)
