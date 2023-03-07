@@ -1,0 +1,3 @@
+- [ ] Use two lists
+	- [ ] One for the dates
+	- [ ] One for the values
