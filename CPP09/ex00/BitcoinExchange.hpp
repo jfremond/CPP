@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:31:18 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/07 20:32:29 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:25:42 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@
 #include <iostream>
 #include <list>
 #include <fstream>
+#include <cstdlib>
 
 class BitcoinExchange
 {
-	private:
-		std::string				_filename;
+	public:
 		//!The database
 		std::list<std::string>	_db_date;
 		std::list<float>		_db_price;
+	private:
+		std::string				_filename;
 		//!The input file
 		std::list<std::string>	_date;
 		std::list<int>			_value;
@@ -83,6 +85,8 @@ BitcoinExchange::BitcoinExchange(std::string const filename) : _filename(filenam
 		ac = ac.substr(space + 1, ac.length());
 		std::cout << "bc: " << bc << "\t\t";
 		std::cout << "ac: " << ac << std::endl;
+		_db_date.push_back(bc);
+		_db_price.push_back(atof(ac.c_str()));
 	}
 	// std::ifstream	ifs(_filename.c_str());
 	// //! Can't differenciate if file exist or if i have the rights to open/read it
@@ -90,6 +94,8 @@ BitcoinExchange::BitcoinExchange(std::string const filename) : _filename(filenam
 	// ifs.open(_filename.c_str(), std::ifstream::in);
 	// if (!ifs || !ifs.good())
 	// 	throw CannotOpenFileException();
+	_db_date.pop_front();
+	_db_price.pop_front();
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &src) : _filename(src._filename), _date(src._date), _value(src._value)
