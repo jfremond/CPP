@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:31:18 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/07 22:25:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:40:26 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(std::string const filename) : _filename(filename)
 {
-	std::ifstream	db("database.csv");
+	std::ifstream	db("data.csv");
 	std::string		buffer;
 	std::string		bc;
 	std::string		ac;
@@ -81,21 +81,21 @@ BitcoinExchange::BitcoinExchange(std::string const filename) : _filename(filenam
 		comma = buffer.find(",");
 		bc = buffer.substr(0, comma);
 		ac = buffer.substr(comma + 1, buffer.length());
-		size_t space = ac.find(" ");
-		ac = ac.substr(space + 1, ac.length());
 		std::cout << "bc: " << bc << "\t\t";
 		std::cout << "ac: " << ac << std::endl;
-		_db_date.push_back(bc);
+		if (!bc.empty())
+			_db_date.push_back(bc);
+		if (!ac.empty())
 		_db_price.push_back(atof(ac.c_str()));
 	}
-	// std::ifstream	ifs(_filename.c_str());
-	// //! Can't differenciate if file exist or if i have the rights to open/read it
-	// //! Allows to check if directory is passed as a parameter
-	// ifs.open(_filename.c_str(), std::ifstream::in);
-	// if (!ifs || !ifs.good())
-	// 	throw CannotOpenFileException();
 	_db_date.pop_front();
 	_db_price.pop_front();
+	std::ifstream	file;
+	//! Can't differenciate if file exist or if i have the rights to open/read it
+	//! Allows to check if directory is passed as a parameter
+	file.open(_filename.c_str());
+	if (!file)
+		throw CannotOpenFileException();
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &src) : _filename(src._filename), _date(src._date), _value(src._value)
