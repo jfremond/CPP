@@ -5,124 +5,143 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 16:31:18 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/15 18:40:26 by jfremond         ###   ########.fr       */
+/*   Created: 2023/03/16 00:28:30 by jfremond          #+#    #+#             */
+/*   Updated: 2023/03/16 06:09:27 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#define RESET	"\033[0m"
-#define BLACK	"\033[30m"
-#define RED		"\033[31m"
-#define GREEN	"\033[32m"
-#define YELLOW	"\033[33m"
-#define BLUE	"\033[34m"
-#define MAGENTA	"\033[35m"
-#define CYAN	"\033[36m"
-#define ORANGE	"\033[38;2;255;165;0m"
-
-#define ERR_ARG_NUM "Error: wrong number of arguments"
-#define ERR_OPN_FIL "Error: cannot open file"
-#define ERR_NEG_NUM "Error: not a positive number"
-#define ERR_NUM_LIM "Error: number too large"
-#define ERR_BAD_INP "Error: bad input"
-
 #include <iostream>
-#include <list>
 #include <fstream>
 #include <cstdlib>
+#include <map>
+#include <list>
 
 class BitcoinExchange
 {
-	public:
-		//!The database
-		std::list<std::string>	_db_date;
-		std::list<float>		_db_price;
 	private:
-		std::string				_filename;
-		//!The input file
-		std::list<std::string>	_date;
-		std::list<int>			_value;
+		std::map<std::string, double>	_data;
+		std::list<std::string>			_date;
+		std::list<double>				_value;
 		BitcoinExchange();
 	public:
 		BitcoinExchange(std::string const filename);
 		BitcoinExchange(BitcoinExchange const &src);
 		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
 		~BitcoinExchange();
-		//! Can call this function even with no class instantied
-		static int	print_error(std::string error);
-		class CannotOpenFileException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw()
-				{
-					return (ERR_OPN_FIL);
-				}
-		};
+		void	fillData();
+		void	printData();
+		void	fillList(std::string filename);
+		void	printList();
 };
 
 BitcoinExchange::BitcoinExchange()
 {
+	fillData();
 	std::cout << "Default constructor" << std::endl;
 }
 
-BitcoinExchange::BitcoinExchange(std::string const filename) : _filename(filename)
+BitcoinExchange::BitcoinExchange(std::string const filename)
 {
-	std::ifstream	db("data.csv");
-	std::string		buffer;
-	std::string		bc;
-	std::string		ac;
-	size_t			comma;
-	while (!db.eof())
-	{
-		getline(db, buffer);
-		comma = buffer.find(",");
-		bc = buffer.substr(0, comma);
-		ac = buffer.substr(comma + 1, buffer.length());
-		std::cout << "bc: " << bc << "\t\t";
-		std::cout << "ac: " << ac << std::endl;
-		if (!bc.empty())
-			_db_date.push_back(bc);
-		if (!ac.empty())
-		_db_price.push_back(atof(ac.c_str()));
-	}
-	_db_date.pop_front();
-	_db_price.pop_front();
-	std::ifstream	file;
-	//! Can't differenciate if file exist or if i have the rights to open/read it
-	//! Allows to check if directory is passed as a parameter
-	file.open(_filename.c_str());
-	if (!file)
-		throw CannotOpenFileException();
+	fillData();
+	fillList(filename);
+	std::cout << "String constructor" << std::endl;
 }
 
-BitcoinExchange::BitcoinExchange(BitcoinExchange const &src) : _filename(src._filename), _date(src._date), _value(src._value)
+BitcoinExchange::BitcoinExchange(BitcoinExchange const &src) : _data(src._data)
 {
 	std::cout << "Copy constructor" << std::endl;
-	return ;
 }
 
 BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &rhs)
 {
+	_data = rhs._data;
 	std::cout << "Assignment operator overload" << std::endl;
-	if (this != &rhs) {	
-		_filename = rhs._filename;
-		_date = rhs._date;
-		_value = rhs._value;
-	}
 	return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
+	std::cout << "Destructor" << std::endl;
 }
 
-int	BitcoinExchange::print_error(std::string error)
+void	BitcoinExchange::fillData()
 {
-	std::cout << RED << error << RESET << std::endl;
-	return (1);
+	std::ifstream	db("data.csv");
+	std::string		line;
+	std::string		bc;
+	std::string		ac;
+	size_t			comma;
+
+	while (!db.eof())
+	{
+		getline(db, line);
+		comma = line.find(",");
+		bc = line.substr(0, comma);
+		ac = line.substr(comma + 1, line.length());
+		if (!db.eof())
+			_data.insert(std::pair<std::string, double>(bc, atof(ac.c_str())));
+	}
+	_data.erase("date");
+}
+
+void	BitcoinExchange::printData()
+{
+	for (std::map<std::string, double>::iterator it = _data.begin(); it != _data.end(); it++)
+		std::cout << "date: " << it->first << "\t" << "exchange_rate: " << it->second << std::endl;
+	std::cout << "size: " << _data.size() << std::endl;
+}
+
+void	BitcoinExchange::fillList(std::string filename)
+{
+	std::ifstream	file;
+	file.open(filename.c_str());
+	if (!file)
+	{
+		std::cout << "Error: cannot open file" << std::endl;
+		return ;
+	}
+	std::string		line;
+	std::string		bp;
+	std::string		ap;
+	size_t			pipe;
+
+	while (!file.eof())
+	{
+		getline(file, line);
+		pipe = line.find("|");
+		bp = line.substr(0, pipe - 1);
+		std::cout << "bp: " << bp << "\t\t";
+		if (pipe != std::string::npos)
+		{
+			ap = line.substr(pipe + 2, line.length());
+			std::cout << "ap: " << ap << std::endl;
+		}
+		// if (!bp.empty())
+		// else
+		// 	std::cout << "bp: empty" << std::endl;
+		// if (!ap.empty())
+		// else
+		// 	std::cout << "ap: empty" << std::endl;
+		if (!file.eof())
+		{
+			if (!bp.empty())
+				_date.push_back(bp);
+			if (!ap.empty())
+			_value.push_back(atof(ap.c_str()));
+		}
+	}
+}
+
+void	BitcoinExchange::printList()
+{
+	for (std::list<std::string>::iterator it = _date.begin(); it != _date.end(); it++)
+		std::cout << "date: " << *it << std::endl;
+	for (std::list<double>::iterator it = _value.begin(); it != _value.end(); it++)
+		std::cout << "value: " << *it << std::endl;
+	std::cout << "size of _date: " << _date.size() << "\t" << "size of _value: " << _value.size() << std::endl;
 }
 
 #endif

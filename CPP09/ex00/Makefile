@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/07 03:46:44 by jfremond          #+#    #+#              #
-#    Updated: 2023/03/07 04:19:35 by jfremond         ###   ########.fr        #
+#    Created: 2023/03/16 00:10:25 by jfremond          #+#    #+#              #
+#    Updated: 2023/03/16 05:55:43 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ RM		=	/bin/rm -rf
 #   FLAGS   #
 #############
 
-CXXFLAGS	=	-c -Wall -Wextra -Werror
+CXXFLAGS	=	-c -Wall -Wextra -Werror -g3
 CXXFLAGS	+=	-std=c++98
 CXXFLAGS	+=	-MMD -MP
 
@@ -63,7 +63,7 @@ DEP		=	$(OBJS:.o=.d)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) data.csv
 			$(CXX) $(OBJS) $(OUTPUT_OPTION)
 
 -include	$(DEP)

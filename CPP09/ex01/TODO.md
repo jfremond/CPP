@@ -1,3 +1,0 @@
-- [ ] Use two stacks
-	- [ ] One for the numbers
-	- [ ] One for the operators
