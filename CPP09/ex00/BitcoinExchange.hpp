@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:28:30 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/17 05:46:33 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:37:32 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,23 @@ void	BitcoinExchange::_printRes()
 		return ;
 	}
 	
+	getline(file, line);
+	std::string s1 = line.substr(0, 4);
+	//& Function to check date validity here
+	std::cout << "[" << s1 << "]" << "\t";
+	line.erase(0, s1.length());
+	std::string	s2 = line.substr(0, 3);
+	//& Function to check separator validity here
+	std::cout << "[" << s2 << "]" << "\t";
+	line.erase(0, s2.length());
+	std::string s3 = line.substr(0, line.length());
+	//& Function to check value validity here
+	std::cout << "[" << s3 << "]" << std::endl;	
 	while (!file.eof())
 	{
 		getline(file, line);
-		if (line.substr(0, line.find(" ")) != "date")
-		{
+		if (!file.eof())
+		{	
 			std::string s1 = line.substr(0, 10);
 			//& Function to check date validity here
 			std::cout << "[" << s1 << "]" << "\t";
@@ -123,10 +135,7 @@ void	BitcoinExchange::_printRes()
 			std::string s3 = line.substr(0, line.length());
 			//& Function to check value validity here
 			std::cout << "[" << s3 << "]" << std::endl;	
-			// std::cout << "[" << line.substr(0, 10) << "]" << "\t\t" << "[" << line.substr(10, 13) << "]" << "\t\t" << "[" << line.substr(13, line.length()) << "]" << "\t" << std::endl;
 		}
-		// if (!file.eof())
-			// Do something
 	}
 }
 
