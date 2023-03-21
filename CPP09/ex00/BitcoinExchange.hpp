@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:28:30 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/17 16:37:32 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:37:46 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>	//ifstream
-// #include <cstdlib>	//atof //! TO BE REMOVED
 #include <map>
 
 class BitcoinExchange
@@ -109,16 +108,17 @@ void	BitcoinExchange::_printRes()
 	
 	getline(file, line);
 	std::string s1 = line.substr(0, 4);
-	//& Function to check date validity here
-	std::cout << "[" << s1 << "]" << "\t";
+	if (s1 != "date")
+		std::cout << "Error: invalid header date" << std::endl;
 	line.erase(0, s1.length());
 	std::string	s2 = line.substr(0, 3);
-	//& Function to check separator validity here
-	std::cout << "[" << s2 << "]" << "\t";
+	if (s2 != " | ")
+		std::cout << "Error: invalid header delim" << std::endl;
 	line.erase(0, s2.length());
 	std::string s3 = line.substr(0, line.length());
-	//& Function to check value validity here
-	std::cout << "[" << s3 << "]" << std::endl;	
+	if (s3 != "value")
+		std::cout << "Error: invalid header value" << std::endl;
+	std::cout << "Header is valid" << std::endl;
 	while (!file.eof())
 	{
 		getline(file, line);
