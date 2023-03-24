@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:28:30 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/23 03:58:07 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/23 19:14:56 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ int	BitcoinExchange::_checkDateValidity(std::string str)
 		// std::cout << d << std::endl;
 		// std::cout << "wrong day" << std::endl;
 	}
-	if (str < "2009-01-02")
+	if (_stod(y) <= 2009 && _stod(m) <= 1 && _stod(d) <= 2)
 	{
 		_error = 2;
 		return (1);
