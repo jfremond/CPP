@@ -6,36 +6,43 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:40:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/24 05:44:08 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/26 13:34:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "PmergeMe.hpp"
 #include <iostream>
 #include <set>
 #include <map>
+#include <vector>
 
-int	main()
+int	main(int argc, char **argv)
 {
-	std::multiset<int>	a;
-	
-	a.insert(1);
-	a.insert(2);
-	a.insert(1);
-
-	std::multiset<int>::const_iterator it;
-	for (it = a.begin(); it != a.end(); it++)
+	PmergeMe	test;
+	std::vector<int>&	vec = test.getVec();
+	if (argc <= 2)
 	{
-		std::cout << *it << std::endl;
+		std::cout << "Error: There's no sequence to sort" << std::endl;
+		return (1);
 	}
-	std::multimap<int, int>	b;
-	
-	b.insert(std::pair<int, int>(1, 1));
-	b.insert(std::pair<int, int>(2, 2));
-	b.insert(std::pair<int, int>(1, 1));
-
-	std::multimap<int, int>::const_iterator ite;
-	for (ite = b.begin(); ite != b.end(); ite++)
+	else
 	{
-		std::cout << ite->first << std::endl;
+		for (int i = 1; i < argc; i++)
+		{
+			std::string	str = argv[i];
+			if (str.find_first_not_of("0123456789") != std::string::npos)
+			{
+				std::cout << "Error: Only positive values allowed" << std::endl;
+				return (1);
+			}
+			else
+				vec.push_back(test._stod(str));
+		}
 	}
+	test.printVec();
+	test.display1();
+	//& Print sorted sequence
+	//& Print time first container
+	//& Print time second container
+	return (0);
 }
