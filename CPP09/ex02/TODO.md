@@ -14,7 +14,7 @@ TODO
 	- [x] Group elements by pairs, last one is left alone if amount of numbers is odd
 	- [x] Determine larger value in each pair 
 	- [x] Insert in mset/pqueue, larger element from each vector pair
-	- [ ] Insert at the start of mset/pqueue, the element paired with the smallest of the sorted sequence
+	- [x] Insert at the start of mset/pqueue, the element paired with the smallest of the sorted sequence
 	- [x] Insert the rest
 
 - [ ] Write merge-sort function for each container
