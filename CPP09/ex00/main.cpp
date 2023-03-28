@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:27:12 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/23 02:34:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/03/28 05:18:12 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	BitcoinExchange	test(argv[1]);
+	// test._printRes(getError());
 	// test.printData();
 	return (0);
 }

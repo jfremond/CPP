@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 00:10:25 by jfremond          #+#    #+#              #
-#    Updated: 2023/03/17 01:48:33 by jfremond         ###   ########.fr        #
+#    Updated: 2023/03/28 18:39:47 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ DEP		=	$(OBJS:.o=.d)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS) data.csv
+$(NAME):	$(OBJS)
 			$(CXX) $(OBJS) $(OUTPUT_OPTION)
 
 -include	$(DEP)
