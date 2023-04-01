@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:23:30 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/01 18:19:03 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/01 18:34:47 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		BitcoinExchange	test(argv[1]);
+		BitcoinExchange	btc(argv[1]);
 	}
 	catch(const std::exception& e)
 	{
