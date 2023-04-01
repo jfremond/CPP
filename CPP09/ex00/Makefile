@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 00:10:25 by jfremond          #+#    #+#              #
-#    Updated: 2023/03/28 19:45:41 by jfremond         ###   ########.fr        #
+#    Updated: 2023/04/01 15:15:28 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ OBJS_D	=	objs/
 ###############
 
 SRCS	=	main.cpp			\
-			BitcoinExchange.cpp	\
+			# BitcoinExchange.cpp	\
 
 ###############
 #   OBJECTS   #
