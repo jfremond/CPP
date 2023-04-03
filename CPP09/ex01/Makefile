@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/23 04:02:16 by jfremond          #+#    #+#              #
-#    Updated: 2023/03/23 05:09:06 by jfremond         ###   ########.fr        #
+#    Created: 2023/04/01 18:59:18 by jfremond          #+#    #+#              #
+#    Updated: 2023/04/03 10:45:35 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ OBJS_D	=	objs/
 #   SOURCES   #
 ###############
 
-SRCS	=	main.cpp		\
+SRCS	=	main.cpp	\
+			RPN.cpp		\
 
 ###############
 #   OBJECTS   #
