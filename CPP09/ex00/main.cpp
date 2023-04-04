@@ -5,23 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/01 17:23:30 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/01 18:34:47 by jfremond         ###   ########.fr       */
+/*   Created: 2023/03/16 00:27:12 by jfremond          #+#    #+#             */
+/*   Updated: 2023/04/03 12:42:37 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "BitcoinExchange.hpp"
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		std::cout << "Error: Wrong number of arguments" << std::endl;
-		return (1);
-	}
 	try
 	{
-		BitcoinExchange	btc(argv[1]);
+		if (argc != 2)
+			throw BitcoinExchange::CannotOpenFile();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+		return (1);
+	}
+	
+	BitcoinExchange	btc;
+	try
+	{
+		btc.parseFile(argv[1]);
 	}
 	catch(const std::exception& e)
 	{

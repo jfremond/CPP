@@ -6,41 +6,69 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:40:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/03/26 13:34:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/03 22:29:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
 #include <set>
-#include <map>
 #include <vector>
+#include <limits>
 
 int	main(int argc, char **argv)
 {
-	PmergeMe	test;
-	std::vector<int>&	vec = test.getVec();
-	if (argc <= 2)
+	PmergeMe	seq;
+	std::vector<int>&	vec = seq.getVec();
+	try
 	{
-		std::cout << "Error: There's no sequence to sort" << std::endl;
+		if (argc <= 2)
+			throw PmergeMe::WrongUsage();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
 		return (1);
 	}
-	else
+	
+	try
 	{
+		std::string	str;
 		for (int i = 1; i < argc; i++)
 		{
-			std::string	str = argv[i];
+			str = argv[i];
 			if (str.find_first_not_of("0123456789") != std::string::npos)
-			{
-				std::cout << "Error: Only positive values allowed" << std::endl;
-				return (1);
-			}
+				throw PmergeMe::ForbiddenCharacters();
+			else if (seq._stod(str) > std::numeric_limits<int>::max())
+				throw PmergeMe::BiggerThanInt();
 			else
-				vec.push_back(test._stod(str));
+			{
+				try
+				{
+					vec.push_back(seq._stod(str));
+				}
+				catch(const std::exception& e)
+				{
+					std::cout << e.what() << std::endl;
+				}
+			}
 		}
 	}
-	test.printVec();
-	test.display1();
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+		return (1);
+	}
+	try
+	{
+		// seq.printVec();
+		seq.display1();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+		return (1);
+	}	
 	//& Print sorted sequence
 	//& Print time first container
 	//& Print time second container

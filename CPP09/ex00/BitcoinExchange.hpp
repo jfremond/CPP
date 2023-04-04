@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/01 15:02:48 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/01 18:55:18 by jfremond         ###   ########.fr       */
+/*   Created: 2023/03/28 02:17:36 by jfremond          #+#    #+#             */
+/*   Updated: 2023/04/03 12:52:30 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <stdexcept>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -31,19 +30,18 @@ class BitcoinExchange
 		void											_checkDateValidity(std::string date);
 		void											_checkLine(std::string date, std::string const &delim, std::string const &value);
 		void											_printRes(std::string const &date, std::string const &value);
-		void											_parseFile(std::string const &filename);
-		BitcoinExchange();
 	public:
-		BitcoinExchange(std::string const &filename);
+		BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const &src);
 		BitcoinExchange	&operator=(BitcoinExchange const &rhs);
 		~BitcoinExchange();
-		class CannotOpenFile : public std::exception
+		void											parseFile(std::string const &filename);
+		class CannotOpenFile : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Error: could not open file.");
+					return ("Error: cannot open file");
 				}
 		};
 };

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/01 19:00:10 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 10:45:11 by jfremond         ###   ########.fr       */
+/*   Created: 2023/03/29 16:17:27 by jfremond          #+#    #+#             */
+/*   Updated: 2023/04/03 15:12:54 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,72 +22,79 @@
 class RPN
 {
 	private:
-		std::stack<int>		_stack;
-		double				_stod(std::string const &to_cast);
-		int					_isope(int const &ch);
-		void				_check_str(std::string const &str);
-		void				_do_ope(std::string const &str);
-		void				_print_res();
-		RPN();
+		std::stack<int>	_stack;
+		double			_stod(std::string const &to_cast);
+		int				_isope(int const &ch);
 	public:
-		RPN(std::string const ope);
+		RPN();
 		RPN(RPN const &src);
 		RPN	&operator=(RPN const &rhs);
 		~RPN();
-		class ConversionHasFailed : public std::exception
+		void			check_str(std::string const &str);
+		void			do_ope(std::string const &str);
+		void			print_res();
+		class WrongUsage : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Error: conversion has failed");
+					return ("Error:\nUsage: ./RPN \"operation\"");
 				}
 		};
-		class InvalidCharacter : public std::exception
+		class ConversionFailed : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Error: invalid character in string");
+					return ("Error: conversion failed");
 				}
 		};
-		class NotSeparatedBySpaces : public std::exception
+		class ForbiddenCharacters : public std::exception 
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Error: characters not separated by spaces");
+					return ("Error: forbidden character in input string");
+				}
+		};
+		class NotSeparatedBySpace : public std::exception 
+		{
+			public:
+				virtual const char	*what() const throw()
+				{
+					return ("Error: characters not separated by space");
+				}
+		};
+		class DivisionByZero : public std::exception 
+		{
+			public:
+				virtual const char	*what() const throw()
+				{
+					return ("Error: division by zero");
+				}
+		};
+		class EmptyStack : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw()
+				{
+					return ("Error: stack is empty");
 				}
 		};
 		class NotEnoughValues : public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Error: not enough values in stack");
+					return ("Error: not contain enough values to do an operation");
 				}
 		};
-		class DivisionByZero : public std::exception
+		class TooManyValues : public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
+				virtual const char	*what() const throw()
 				{
-					return ("Error: division by zero");
-				}
-		};
-		class StackIsEmpty : public std::exception
-		{
-			public:
-				virtual const char *what() const throw()
-				{
-					return ("Error: stack is empty");
-				}
-		};
-		class MoreThanOneValue : public std::exception
-		{
-			public:
-				virtual const char *what() const throw()
-				{
-					return ("Error: more than one value in stack");
+					return ("Error: too many values in stack");
 				}
 		};
 };

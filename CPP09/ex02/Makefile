@@ -6,7 +6,7 @@
 #    By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 00:29:57 by jfremond          #+#    #+#              #
-#    Updated: 2023/03/24 00:30:24 by jfremond         ###   ########.fr        #
+#    Updated: 2023/04/03 19:06:04 by jfremond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ OBJS_D	=	objs/
 ###############
 
 SRCS	=	main.cpp		\
+			PmergeMe.cpp	\
 
 ###############
 #   OBJECTS   #
