@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:58:44 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 22:48:00 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:21:15 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,23 @@ std::vector<int>&	PmergeMe::getVec()
 
 void	PmergeMe::printVec()
 {
+	std::vector<int>	cpy(_vec);
 	std::vector<int>::const_iterator	it;
 
+	if (_vec.empty())
+	{
+		std::cout << "empty" << std::endl;
+		return ;
+	}
 	std::cout << "Before: ";
 	for (it = _vec.begin(); it != _vec.end(); it++)
+	{
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	std::sort(cpy.begin(), cpy.end());
+	std::cout << "Sorted: ";
+	for (it = cpy.begin(); it != cpy.end(); it++)
 	{
 		std::cout << *it << " ";
 	}
@@ -53,8 +66,6 @@ void	PmergeMe::checkVec()
 {
 	std::vector<int>	cpy(_vec);
 	std::sort(cpy.begin(), cpy.end());
-	if (_vec == cpy)
-		throw AlreadySorted();
 	std::vector<int>::const_iterator	it;
 	std::vector<int>::const_iterator	prev;
 	for (it = cpy.begin() + 1; it != cpy.end(); ++it)
@@ -63,6 +74,8 @@ void	PmergeMe::checkVec()
 		if (*it == *prev)
 			throw HasDuplicate();
 	}
+	if (_vec == cpy)
+		throw AlreadySorted();
 }
 
 void	PmergeMe::display1()
@@ -76,65 +89,138 @@ void	PmergeMe::display1()
 		std::cout << e.what() << std::endl;
 		return ;
 	}
-	//! Put pairs in minivectors
-	// //! Determine the largest value out of the pairs
-	// std::vector<int> tab(_vec.size(), 0);
-	// for (size_t i = 0; i < _vec.size(); i++)
-	// {
-	// 	if (i % 2)
-	// 	{
-	// 		if (_vec[i] > _vec[i - 1])
-	// 		{
-	// 			tab[i] = 1;
-	// 			std::swap(_vec[i], _vec[i - 1]);
-	// 			std::swap(tab[i], tab[i - 1]);
-	// 		}
-	// 		else
-	// 			tab[i - 1] = 1;
-	// 	}
-	// }
-	// for (size_t i = 0; i < _vec.size(); i++)
-	// {
-	// 	std::cout << "value: " << _vec[i] << "\t" << "check: " << tab[i] << std::endl;
-	// }
-	// for (size_t i = 0; i < tab.size(); i++)
-	// {
-	// 	if (tab[i] == true)
-	// 	{
-	// 		_mset.insert(_vec[i]);
-	// 		_pqueue.push(_vec[i]);
-	// 	}
-	// }
-	// int	top = _pqueue.top();
-	// //! Find value associated with smallest value in sorted sequence
-	// for (size_t i = 0; i < _vec.size(); i++)
-	// {
-	// 	if (_vec[i] == top)
-	// 	{
-	// 		std::cout << "i: " << _vec[i] << std::endl;
-	// 		std::cout << "i + 1: " << _vec[i + 1] << std::endl;
-	// 		_pqueue.push(_vec[i + 1]);
-	// 		_mset.insert(_vec[i + 1]);
-	// 	}
-	// }
-	// top = _pqueue.top();
-	// for (size_t i = 0; i < _vec.size(); i++)
-	// {
-	// 	if (tab[i] == 0 && _vec[i] != top)
-	// 	{
-	// 		_mset.insert(_vec[i]);
-	// 		_pqueue.push(_vec[i]);
-	// 	}
-	// }
-	
-	// std::multiset<int>::const_iterator	it;
-	// for (it = _mset.begin(); it != _mset.end(); it++)
-	// {
-	// 	std::cout << "mset: " << *it << std::endl;
-	// }
-	// while (!_pqueue.empty()) {
-    //     int value = _pqueue.top();
-    //     _pqueue.pop();
-	// 	std::cout << "pqueue: " << value << std::endl;
-    // }
+	//& Create new vector
+	std::vector<std::pair<int, int> >	tab;
+	//& Push pairs in vector
+	for (size_t i = 0; i < _vec.size(); i += 2)
+		tab.push_back(std::make_pair(_vec[i], _vec[i + 1]));
+	//& Clear final vector
+	_vec.clear();
+	//& Display new vector with pairs
+	std::vector<std::pair<int, int> >::const_iterator	citt;
+	for (citt = tab.begin(); citt != tab.end(); ++citt)
+	{	
+		if (citt->second)
+			std::cout << "first: " << citt->first << " second: " << citt->second << std::endl;
+		else
+			std::cout << "first: " << citt->first << std::endl;
+	}
+	//& Sort pairs
+	std::vector<std::pair<int, int> >::iterator	itt;
+	for (itt = tab.begin(); itt != tab.end(); ++itt)
+	{
+		if (itt->second)
+		{
+			if (itt->first > itt->second)
+				std::swap(itt->first, itt->second);
+		}
+	}
+	//& Display vector to make sure pairs are sorted
+	for (citt = tab.begin(); citt != tab.end(); ++citt)
+	{		
+		if (citt->second)
+			std::cout << "first: " << citt->first << " second: " << citt->second << std::endl;
+		else
+			std::cout << "first: " << citt->first << std::endl;
+	}
+	//& Push larger values in sorted sequence (you push then sort)
+	std::vector<int>::reverse_iterator	itvr;
+	std::vector<int>::reverse_iterator	itvr_prev;
+	for (citt = tab.begin(); citt != tab.end(); ++citt)
+	{		
+		if (citt->second)
+		{
+			_vec.push_back(citt->second);
+			for (itvr = _vec.rbegin(); itvr != _vec.rend(); ++itvr)
+			{
+				itvr_prev = itvr + 1;
+				if (*itvr < *itvr_prev)
+					std::swap(*itvr, *itvr_prev);
+			}
+		}
+	}
+	//& Sort values associated with each values in sorted sequence (maybe special case if one pair with one value)
+	for (citt = tab.begin(); citt != tab.end(); ++citt)
+	{		
+		_vec.insert(std::lower_bound(_vec.begin(), _vec.end(), citt->first), citt->first);
+	}
 }
+
+	//! This works
+	// //! Change tab to std::vector<std::pair<int, bool>>	tab;
+	// std::vector<std::pair<int, bool> >	tab;
+	// std::vector<int>::iterator	itv;
+	// std::vector<int>::iterator	itv_prev;
+	// std::vector<std::pair<int, bool> >::iterator	itt;
+	// std::vector<std::pair<int, bool> >::iterator	itt_prev;
+	// int	dist;
+	// //! Fill tab with _vec values and false
+	// for (itv = _vec.begin(); itv != _vec.end(); ++itv)
+	// 	tab.push_back(std::pair<int, bool>(*itv, false));
+	// //! Clear _vec	
+	// _vec.clear();
+	// //! Determine the largest value out of the pairs and sort them inside tab
+	// for (itt = tab.begin(); itt != tab.end(); ++itt)
+	// {
+	// 	dist = std::distance(tab.begin(), itt);
+	// 	if (dist % 2)
+	// 	{
+	// 		itt_prev = itt - 1;
+	// 		if (itt->first < itt_prev->first)
+	// 			std::swap(itt->first, itt_prev->first);
+	// 		itt->second = true;
+	// 	}
+	// }
+	// std::vector<std::pair<int, bool> >::iterator	itt2;
+	// for (itt2 = tab.begin(); itt2 != tab.end(); ++itt2)
+	// 	std::cout << "value: " << itt2->first << "\t" << itt2->second << std::endl;
+	// //! Insert largest elements of the pairs in _vec
+	// std::vector<std::pair<int, bool> >::const_iterator	citt;
+	// std::vector<int>::reverse_iterator	itvr;
+	// std::vector<int>::reverse_iterator	itvr_prev;
+	// for (citt = tab.begin(); citt != tab.end(); ++citt)
+	// {
+	// 	if (citt->second == true)
+	// 	{
+	// 		_vec.push_back(citt->first);
+	// 		//! Sort after insertion
+	// 		for (itvr = _vec.rbegin(); itvr != _vec.rend(); ++itvr)
+	// 		{
+	// 			itvr_prev = itvr + 1;
+	// 			if (*itvr < *itvr_prev)
+	// 				std::swap(*itvr, *itvr_prev);
+	// 		}
+	// 	}
+	// }
+	// std::cout << "DISPLAY _VEC" << std::endl;
+	// for (itv = _vec.begin(); itv !=_vec.end(); itv++)
+	// {
+	// 	std::cout << *itv << '\t';
+	// }
+	// std::cout << std::endl;
+	
+	// //! Find smallest number in _vec
+	// std::vector<int>::iterator	small;
+	// small =_vec.begin();
+	// //! Insert the rest
+	// dist = 0;
+	// for (itt = tab.begin(); itt != tab.end(); ++itt)
+	// {
+	// 	dist = std::distance(tab.begin(), itt);
+	// 	if ((dist % 2))
+	// 	{
+	// 		itt_prev = itt - 1;
+	// 		if (itt->first == *small)
+	// 		{
+	// 			_vec.insert(std::lower_bound(_vec.begin(), _vec.end(), itt_prev->first), itt_prev->first);
+	// 			itt = tab.begin();
+	// 			small += 2;
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		if (itt == tab.end() - 1)
+	// 			_vec.insert(std::lower_bound(_vec.begin(), _vec.end(), itt->first), itt->first);
+	// 	}
+	// }
+	// std::cout << std::endl;

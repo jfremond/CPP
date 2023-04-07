@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:36:18 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 22:23:51 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:00:11 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <queue>
-#include <set>
+#include <deque>
 
 
 //& For the time
@@ -41,17 +40,16 @@
 class PmergeMe
 {
 	private:
-		std::vector<int>												_vec;
-		std::multiset<int>												_mset;
-		std::priority_queue<int, std::vector<int>, std::greater<int> >	_pqueue;
+		std::vector<int>	_vec;
+		std::deque<int>		_deq;
 	public:
 		PmergeMe();
 		~PmergeMe();
 		std::vector<int>&	getVec();
-		double															_stod(std::string const &to_cast);
-		void															printVec();
-		void															checkVec();
-		void															display1();
+		double				_stod(std::string const &to_cast);
+		void				printVec();
+		void				checkVec();
+		void				display1();
 		class WrongUsage : public std::exception 
 		{
 			public:

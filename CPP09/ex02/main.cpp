@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:40:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 22:29:34 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:20:24 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		// seq.printVec();
+		seq.printVec();
 		seq.display1();
+		seq.printVec();
 	}
 	catch(const std::exception& e)
 	{
