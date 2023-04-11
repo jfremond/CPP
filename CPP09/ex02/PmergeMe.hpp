@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:36:18 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/06 18:00:11 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/11 06:53:36 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,29 @@
 #include <vector>
 #include <deque>
 
-
-//& For the time
-// #include <ctime>
-
-
-//     clock_t begin = clock();
-    
-//     // Do something
-//     // sleep( 2 );    // Wait 2 seconds, but no ticks are consumed
-//     int i;
-//     for( i=0; i<1000000000; i++ ) {
-//     }
-    
-//     clock_t end = clock();
-//     unsigned long millis = (end -  begin) * 1000 / CLOCKS_PER_SEC;        
-//& For the time
-
 class PmergeMe
 {
 	private:
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
+		unsigned int		_vec_time;
+		unsigned int		_deq_time;
 	public:
 		PmergeMe();
+		PmergeMe(PmergeMe const &src);
+		PmergeMe	&operator=(PmergeMe const &rhs);
 		~PmergeMe();
-		std::vector<int>&	getVec();
-		double				_stod(std::string const &to_cast);
-		void				printVec();
+		double				myStod(std::string const &to_cast);
+		void				printVec(std::string const &arg);
+		void				printDeq(std::string const &arg);
 		void				checkVec();
-		void				display1();
+		void				recSortVec(std::vector<int>& vec, int n);
+		void				recSortDeq(std::deque<int>& deq, int n);
+		void				sortVec();
+		void				sortDeq();
+		void				printTimeVec();
+		void				printTimeDeq();
+		std::vector<int>&	getVec();
 		class WrongUsage : public std::exception 
 		{
 			public:

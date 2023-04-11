@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:17:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 15:12:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:48:38 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #include <iostream>
 #include <sstream>
 #include <cctype>
-#include <stack>
+#include <list>
 
 class RPN
 {
 	private:
-		std::stack<int>	_stack;
+		std::list<int>	_lst;
 		double			_stod(std::string const &to_cast);
 		int				_isope(int const &ch);
 	public:
@@ -73,12 +73,12 @@ class RPN
 					return ("Error: division by zero");
 				}
 		};
-		class EmptyStack : public std::exception
+		class Emptylist : public std::exception
 		{
 			public:
 				virtual const char	*what() const throw()
 				{
-					return ("Error: stack is empty");
+					return ("Error: list is empty");
 				}
 		};
 		class NotEnoughValues : public std::exception
@@ -94,7 +94,7 @@ class RPN
 			public:
 				virtual const char	*what() const throw()
 				{
-					return ("Error: too many values in stack");
+					return ("Error: too many values in list");
 				}
 		};
 };

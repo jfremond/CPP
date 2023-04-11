@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:32:06 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 15:05:42 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:49:06 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 RPN::RPN() {}
 
-RPN::RPN(RPN const &src) : _stack(src._stack) {}
+RPN::RPN(RPN const &src) : _lst(src._lst) {}
 
 RPN	&RPN::operator=(RPN const &rhs)
 {
-	_stack = rhs._stack;
+	_lst = rhs._lst;
 	return (*this);
 }
 
@@ -78,7 +78,7 @@ void	RPN::do_ope(std::string const &str)
 		if (isdigit(*it))
 			try
 			{
-				_stack.push(_stod(&(*it)));
+				_lst.push_front(_stod(&(*it)));
 			}
 			catch(const std::exception& e)
 			{
@@ -86,28 +86,28 @@ void	RPN::do_ope(std::string const &str)
 			}
 		if (_isope(*it))
 		{
-			if (_stack.size() >= 2)
+			if (_lst.size() >= 2)
 			{
-				int	rhs = _stack.top();
-				_stack.pop();
-				int	lhs = _stack.top();
-				_stack.pop();
+				int	rhs = _lst.front();
+				_lst.pop_front();
+				int	lhs = _lst.front();
+				_lst.pop_front();
 				switch (*it)
 				{
 					case '+':
-						_stack.push(lhs + rhs);
+						_lst.push_front(lhs + rhs);
 						break;
 					case '-':
-						_stack.push(lhs - rhs);
+						_lst.push_front(lhs - rhs);
 						break;
 					case '*':
-						_stack.push(lhs * rhs);
+						_lst.push_front(lhs * rhs);
 						break;
 					case '/':
 						if (rhs == 0)
 							throw DivisionByZero();
 						else
-							_stack.push(lhs / rhs);
+							_lst.push_front(lhs / rhs);
 						break;
 				}
 			}
@@ -119,9 +119,9 @@ void	RPN::do_ope(std::string const &str)
 
 void	RPN::print_res()
 {
-	if (_stack.empty())
-		throw EmptyStack();
-	else if (_stack.size() != 1)
+	if (_lst.empty())
+		throw Emptylist();
+	else if (_lst.size() != 1)
 		throw TooManyValues();
-	std::cout << _stack.top() << std::endl;
+	std::cout << _lst.front() << std::endl;
 }

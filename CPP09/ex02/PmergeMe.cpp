@@ -6,25 +6,31 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:58:44 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/06 19:21:15 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/11 06:55:41 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe()
+PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe(PmergeMe const &src) : _vec(src._vec), _deq(src._deq), _vec_time(src._vec_time), _deq_time(src._deq_time) {}
+
+PmergeMe	&PmergeMe::operator=(PmergeMe const &rhs)
 {
+	_vec = rhs._vec;
+	_deq = rhs._deq;
+	_vec_time = rhs._vec_time;
+	_deq_time = rhs._deq_time;
+	return (*this);
 }
 
-PmergeMe::~PmergeMe()
-{
-}
+PmergeMe::~PmergeMe() {}
 
-double	PmergeMe::_stod(std::string const &to_cast)
+double	PmergeMe::myStod(std::string const &to_cast)
 {
 	std::stringstream	stream;
 	double	res;
-	
+
 	stream << to_cast;
 	stream >> res;
 	if (stream.fail())
@@ -32,30 +38,28 @@ double	PmergeMe::_stod(std::string const &to_cast)
 	return (res);
 }
 
-std::vector<int>&	PmergeMe::getVec()
-{
-	return (_vec);
-}
-
-void	PmergeMe::printVec()
+void	PmergeMe::printVec(std::string const &arg)
 {
 	std::vector<int>	cpy(_vec);
 	std::vector<int>::const_iterator	it;
 
-	if (_vec.empty())
-	{
-		std::cout << "empty" << std::endl;
-		return ;
-	}
-	std::cout << "Before: ";
-	for (it = _vec.begin(); it != _vec.end(); it++)
+	if (!arg.compare("After: "))
+		std::sort(cpy.begin(), cpy.end());
+	std::cout << arg;
+	for (it = cpy.begin(); it != cpy.end(); it++)
 	{
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
-	std::sort(cpy.begin(), cpy.end());
-	std::cout << "Sorted: ";
-	for (it = cpy.begin(); it != cpy.end(); it++)
+}
+
+void	PmergeMe::printDeq(std::string const &arg)
+{
+	std::deque<int>	cpy(_deq);
+	std::deque<int>::const_iterator	it;
+
+	std::cout << arg;
+	for (it = _deq.begin(); it != _deq.end(); it++)
 	{
 		std::cout << *it << " ";
 	}
@@ -78,149 +82,106 @@ void	PmergeMe::checkVec()
 		throw AlreadySorted();
 }
 
-void	PmergeMe::display1()
+void PmergeMe::recSortVec(std::vector<int>& vec, int n)
 {
-	try
-	{
-		checkVec();
+	// Base case
+	if (n <= 1)
+		return;
+
+	// Sort first n-1 elements
+	recSortVec(vec, n - 1);
+	
+	// Insert last element in correct position
+	int last = vec[n - 1];
+	int j = n - 2;
+	while (j >= 0 && vec[j] > last) {
+		vec[j + 1] = vec[j];
+		j--;
 	}
-	catch(const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-		return ;
+	vec[j + 1] = last;
+}
+
+void PmergeMe::recSortDeq(std::deque<int>& deq, int n)
+{
+	// Base case
+	if (n <= 1)
+		return;
+
+	// Sort first n-1 elements
+	recSortDeq(deq, n - 1);
+	
+	// Insert last element in correct position
+	int last = deq[n-1];
+	int j = n - 2;
+	while (j >= 0 && deq[j] > last) {
+		deq[j + 1] = deq[j];
+		j--;
 	}
-	//& Create new vector
-	std::vector<std::pair<int, int> >	tab;
-	//& Push pairs in vector
+	deq[j + 1] = last;
+}
+
+void	PmergeMe::sortVec()
+{
+	std::vector<std::pair<int, int> >	tmp;
 	for (size_t i = 0; i < _vec.size(); i += 2)
-		tab.push_back(std::make_pair(_vec[i], _vec[i + 1]));
-	//& Clear final vector
+		tmp.push_back(std::make_pair(_vec[i], _vec[i + 1]));
 	_vec.clear();
-	//& Display new vector with pairs
-	std::vector<std::pair<int, int> >::const_iterator	citt;
-	for (citt = tab.begin(); citt != tab.end(); ++citt)
-	{	
-		if (citt->second)
-			std::cout << "first: " << citt->first << " second: " << citt->second << std::endl;
-		else
-			std::cout << "first: " << citt->first << std::endl;
-	}
-	//& Sort pairs
 	std::vector<std::pair<int, int> >::iterator	itt;
-	for (itt = tab.begin(); itt != tab.end(); ++itt)
+	for (itt = tmp.begin(); itt != tmp.end(); ++itt)
 	{
 		if (itt->second)
 		{
 			if (itt->first > itt->second)
 				std::swap(itt->first, itt->second);
+			_vec.push_back(itt->second);
 		}
 	}
-	//& Display vector to make sure pairs are sorted
-	for (citt = tab.begin(); citt != tab.end(); ++citt)
-	{		
-		if (citt->second)
-			std::cout << "first: " << citt->first << " second: " << citt->second << std::endl;
-		else
-			std::cout << "first: " << citt->first << std::endl;
-	}
-	//& Push larger values in sorted sequence (you push then sort)
-	std::vector<int>::reverse_iterator	itvr;
-	std::vector<int>::reverse_iterator	itvr_prev;
-	for (citt = tab.begin(); citt != tab.end(); ++citt)
-	{		
-		if (citt->second)
-		{
-			_vec.push_back(citt->second);
-			for (itvr = _vec.rbegin(); itvr != _vec.rend(); ++itvr)
-			{
-				itvr_prev = itvr + 1;
-				if (*itvr < *itvr_prev)
-					std::swap(*itvr, *itvr_prev);
-			}
-		}
-	}
-	//& Sort values associated with each values in sorted sequence (maybe special case if one pair with one value)
-	for (citt = tab.begin(); citt != tab.end(); ++citt)
-	{		
+	recSortVec(_vec, _vec.size());
+	std::vector<std::pair<int, int> >::const_iterator	citt;
+	for (citt = tmp.begin(); citt != tmp.end(); ++citt)
 		_vec.insert(std::lower_bound(_vec.begin(), _vec.end(), citt->first), citt->first);
-	}
 }
 
-	//! This works
-	// //! Change tab to std::vector<std::pair<int, bool>>	tab;
-	// std::vector<std::pair<int, bool> >	tab;
-	// std::vector<int>::iterator	itv;
-	// std::vector<int>::iterator	itv_prev;
-	// std::vector<std::pair<int, bool> >::iterator	itt;
-	// std::vector<std::pair<int, bool> >::iterator	itt_prev;
-	// int	dist;
-	// //! Fill tab with _vec values and false
-	// for (itv = _vec.begin(); itv != _vec.end(); ++itv)
-	// 	tab.push_back(std::pair<int, bool>(*itv, false));
-	// //! Clear _vec	
-	// _vec.clear();
-	// //! Determine the largest value out of the pairs and sort them inside tab
-	// for (itt = tab.begin(); itt != tab.end(); ++itt)
-	// {
-	// 	dist = std::distance(tab.begin(), itt);
-	// 	if (dist % 2)
-	// 	{
-	// 		itt_prev = itt - 1;
-	// 		if (itt->first < itt_prev->first)
-	// 			std::swap(itt->first, itt_prev->first);
-	// 		itt->second = true;
-	// 	}
-	// }
-	// std::vector<std::pair<int, bool> >::iterator	itt2;
-	// for (itt2 = tab.begin(); itt2 != tab.end(); ++itt2)
-	// 	std::cout << "value: " << itt2->first << "\t" << itt2->second << std::endl;
-	// //! Insert largest elements of the pairs in _vec
-	// std::vector<std::pair<int, bool> >::const_iterator	citt;
-	// std::vector<int>::reverse_iterator	itvr;
-	// std::vector<int>::reverse_iterator	itvr_prev;
-	// for (citt = tab.begin(); citt != tab.end(); ++citt)
-	// {
-	// 	if (citt->second == true)
-	// 	{
-	// 		_vec.push_back(citt->first);
-	// 		//! Sort after insertion
-	// 		for (itvr = _vec.rbegin(); itvr != _vec.rend(); ++itvr)
-	// 		{
-	// 			itvr_prev = itvr + 1;
-	// 			if (*itvr < *itvr_prev)
-	// 				std::swap(*itvr, *itvr_prev);
-	// 		}
-	// 	}
-	// }
-	// std::cout << "DISPLAY _VEC" << std::endl;
-	// for (itv = _vec.begin(); itv !=_vec.end(); itv++)
-	// {
-	// 	std::cout << *itv << '\t';
-	// }
-	// std::cout << std::endl;
-	
-	// //! Find smallest number in _vec
-	// std::vector<int>::iterator	small;
-	// small =_vec.begin();
-	// //! Insert the rest
-	// dist = 0;
-	// for (itt = tab.begin(); itt != tab.end(); ++itt)
-	// {
-	// 	dist = std::distance(tab.begin(), itt);
-	// 	if ((dist % 2))
-	// 	{
-	// 		itt_prev = itt - 1;
-	// 		if (itt->first == *small)
-	// 		{
-	// 			_vec.insert(std::lower_bound(_vec.begin(), _vec.end(), itt_prev->first), itt_prev->first);
-	// 			itt = tab.begin();
-	// 			small += 2;
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		if (itt == tab.end() - 1)
-	// 			_vec.insert(std::lower_bound(_vec.begin(), _vec.end(), itt->first), itt->first);
-	// 	}
-	// }
-	// std::cout << std::endl;
+void	PmergeMe::sortDeq()
+{
+	std::deque<std::pair<int, int> >	tmp;
+	for (size_t i = 0; i < _vec.size(); i += 2)
+		tmp.push_back(std::make_pair(_vec[i], _vec[i + 1]));
+	std::deque<std::pair<int, int> >::iterator	itt;
+	for (itt = tmp.begin(); itt != tmp.end(); ++itt)
+	{
+		if (itt->second)
+		{
+			if (itt->first > itt->second)
+				std::swap(itt->first, itt->second);
+			_deq.push_back(itt->second);
+		}
+	}
+	recSortDeq(_deq, _deq.size());
+	std::deque<std::pair<int, int> >::const_iterator	citt;
+	for (citt = tmp.begin(); citt != tmp.end(); ++citt)
+		_deq.insert(std::lower_bound(_deq.begin(), _deq.end(), citt->first), citt->first);
+}
+
+void	PmergeMe::printTimeVec()
+{
+	clock_t begin = clock();
+	sortVec();
+	clock_t end = clock();
+	_vec_time = (end -  begin) * 1000000 / CLOCKS_PER_SEC;
+	std::cout << "Time to process a range of " << _vec.size() << " with std::vector : " << _vec_time << " us" << std::endl;
+}
+
+void	PmergeMe::printTimeDeq()
+{
+	clock_t begin = clock();
+	sortDeq();
+	clock_t end = clock();
+	_deq_time = (end -  begin) * 1000000 / CLOCKS_PER_SEC;
+	std::cout << "Time to process a range of " << _deq.size() << " with std::deque : " << _deq_time << " us" << std::endl;
+}
+
+std::vector<int>&	PmergeMe::getVec()
+{
+	return (_vec);
+}

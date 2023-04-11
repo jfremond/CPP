@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 19:45:16 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 12:44:15 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/11 03:47:25 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	BitcoinExchange::_checkLine(std::string date, std::string const &delim, std
 {
 	_checkDateValidity(date);
 	_it = _data.upper_bound(date);
-	--_it;	
+	--_it;
 	if (_error == 0 && delim != " | ")
 		_error = 3;
 	if (_error == 0 && _stod(value) < 0)
@@ -120,22 +120,22 @@ void	BitcoinExchange::parseFile(std::string const &filename)
 	file.open(filename.c_str());
 	if (!file)
 		throw CannotOpenFile();
+	getline(file, line);
+	if (line == "date | value")
+		getline(file, line);
 	while (!file.eof())
 	{
 		getline(file, line);
-		if (!file.eof())
+		if (!file.eof() && !line.empty())
 		{
-			if (line != "date | value")
-			{	
-				date = line.substr(0, 10);
-				line.erase(0, date.length());
-				delim = line.substr(0, 3);
-				line.erase(0, delim.length());
-				value = line.substr(0, line.length());
-				line.erase(0, value.length());
-				_checkLine(date, delim, value);
-				_printRes(date, value);
-			}
+			date = line.substr(0, 10);
+			line.erase(0, date.length());
+			delim = line.substr(0, 3);
+			line.erase(0, delim.length());
+			value = line.substr(0, line.length());
+			line.erase(0, value.length());
+			_checkLine(date, delim, value);
+			_printRes(date, value);
 		}
 		_error = 0;
 	}

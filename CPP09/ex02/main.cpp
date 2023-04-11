@@ -6,14 +6,12 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:40:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/05 16:20:24 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/11 06:26:09 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
-#include <set>
-#include <vector>
 #include <limits>
 
 int	main(int argc, char **argv)
@@ -30,7 +28,6 @@ int	main(int argc, char **argv)
 		std::cout << e.what() << std::endl;
 		return (1);
 	}
-	
 	try
 	{
 		std::string	str;
@@ -39,13 +36,13 @@ int	main(int argc, char **argv)
 			str = argv[i];
 			if (str.find_first_not_of("0123456789") != std::string::npos)
 				throw PmergeMe::ForbiddenCharacters();
-			else if (seq._stod(str) > std::numeric_limits<int>::max())
+			else if (seq.myStod(str) > std::numeric_limits<int>::max())
 				throw PmergeMe::BiggerThanInt();
 			else
 			{
 				try
 				{
-					vec.push_back(seq._stod(str));
+					vec.push_back(seq.myStod(str));
 				}
 				catch(const std::exception& e)
 				{
@@ -61,17 +58,16 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		seq.printVec();
-		seq.display1();
-		seq.printVec();
+		seq.checkVec();
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
 		return (1);
-	}	
-	//& Print sorted sequence
-	//& Print time first container
-	//& Print time second container
+	}
+	seq.printVec("Before: ");
+	seq.printVec("After: ");
+	seq.printTimeVec();
+	seq.printTimeDeq();
 	return (0);
 }
