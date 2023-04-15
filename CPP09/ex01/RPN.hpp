@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:17:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/10 18:48:38 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:06:32 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,24 @@
 #include <iostream>
 #include <sstream>
 #include <cctype>
+#include <limits>
+#include <stack>
 #include <list>
 
 class RPN
 {
 	private:
-		std::list<int>	_lst;
-		double			_stod(std::string const &to_cast);
-		int				_isope(int const &ch);
+		std::stack<int, std::list<int> >	_stack;
+		double								_stod(std::string const &to_cast);
+		int									_isope(int const &ch);
 	public:
 		RPN();
 		RPN(RPN const &src);
 		RPN	&operator=(RPN const &rhs);
 		~RPN();
-		void			check_str(std::string const &str);
-		void			do_ope(std::string const &str);
-		void			print_res();
+		void								checkStr(std::string const &str);
+		void								doOpe(std::string const &str);
+		void								printRes();
 		class WrongUsage : public std::exception 
 		{
 			public:
@@ -73,12 +75,12 @@ class RPN
 					return ("Error: division by zero");
 				}
 		};
-		class Emptylist : public std::exception
+		class EmptyStack : public std::exception
 		{
 			public:
 				virtual const char	*what() const throw()
 				{
-					return ("Error: list is empty");
+					return ("Error: stack is empty");
 				}
 		};
 		class NotEnoughValues : public std::exception
@@ -86,7 +88,7 @@ class RPN
 			public:
 				virtual const char	*what() const throw()
 				{
-					return ("Error: not contain enough values to do an operation");
+					return ("Error: not enough values to do an operation");
 				}
 		};
 		class TooManyValues : public std::exception
@@ -94,7 +96,15 @@ class RPN
 			public:
 				virtual const char	*what() const throw()
 				{
-					return ("Error: too many values in list");
+					return ("Error: too many values in stack");
+				}
+		};
+		class ExceedsIntLimits : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw()
+				{
+					return ("Error: result exceeds integer limits");
 				}
 		};
 };

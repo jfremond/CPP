@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:36:18 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/11 06:53:36 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:46:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,15 @@
 class PmergeMe
 {
 	private:
+		std::vector<int>	_unsorted;
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
 		unsigned int		_vec_time;
 		unsigned int		_deq_time;
+		void				_recSortVec(std::vector<int>& vec, int size);
+		void				_recSortDeq(std::deque<int>& deq, int size);
+		void				_sortVec();
+		void				_sortDeq();
 	public:
 		PmergeMe();
 		PmergeMe(PmergeMe const &src);
@@ -34,15 +39,10 @@ class PmergeMe
 		~PmergeMe();
 		double				myStod(std::string const &to_cast);
 		void				printVec(std::string const &arg);
-		void				printDeq(std::string const &arg);
-		void				checkVec();
-		void				recSortVec(std::vector<int>& vec, int n);
-		void				recSortDeq(std::deque<int>& deq, int n);
-		void				sortVec();
-		void				sortDeq();
+		void				checkUnsortedVec();
 		void				printTimeVec();
 		void				printTimeDeq();
-		std::vector<int>&	getVec();
+		std::vector<int>&	getUnsortedVec();
 		class WrongUsage : public std::exception 
 		{
 			public:

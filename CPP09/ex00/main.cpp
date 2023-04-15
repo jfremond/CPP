@@ -6,11 +6,12 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 00:27:12 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/03 12:42:37 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:33:50 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include "BitcoinExchange.hpp"
 
 int	main(int argc, char **argv)

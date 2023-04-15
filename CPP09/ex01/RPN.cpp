@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 02:32:06 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/10 18:49:06 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:02:27 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 RPN::RPN() {}
 
-RPN::RPN(RPN const &src) : _lst(src._lst) {}
+RPN::RPN(RPN const &src) : _stack(src._stack) {}
 
 RPN	&RPN::operator=(RPN const &rhs)
 {
-	_lst = rhs._lst;
+	_stack = rhs._stack;
 	return (*this);
 }
 
@@ -53,7 +53,7 @@ int	RPN::_isope(int const &ch)
 	}
 }
 
-void	RPN::check_str(std::string const &str)
+void	RPN::checkStr(std::string const &str)
 {
 	std::string::const_iterator	it;
 	std::string::const_iterator	prev;
@@ -70,7 +70,7 @@ void	RPN::check_str(std::string const &str)
 	}
 }
 
-void	RPN::do_ope(std::string const &str)
+void	RPN::doOpe(std::string const &str)
 {
 	std::string::const_iterator	it;
 	for (it = str.begin(); it != str.end(); ++it)
@@ -78,7 +78,7 @@ void	RPN::do_ope(std::string const &str)
 		if (isdigit(*it))
 			try
 			{
-				_lst.push_front(_stod(&(*it)));
+				_stack.push(_stod(&(*it)));
 			}
 			catch(const std::exception& e)
 			{
@@ -86,30 +86,35 @@ void	RPN::do_ope(std::string const &str)
 			}
 		if (_isope(*it))
 		{
-			if (_lst.size() >= 2)
+			if (_stack.size() >= 2)
 			{
-				int	rhs = _lst.front();
-				_lst.pop_front();
-				int	lhs = _lst.front();
-				_lst.pop_front();
+				int		rhs = _stack.top();
+				_stack.pop();
+				int		lhs = _stack.top();
+				_stack.pop();
+				double	res;
 				switch (*it)
 				{
 					case '+':
-						_lst.push_front(lhs + rhs);
+						res = lhs + rhs;
 						break;
 					case '-':
-						_lst.push_front(lhs - rhs);
+						res = lhs - rhs;
 						break;
 					case '*':
-						_lst.push_front(lhs * rhs);
+						res = lhs * rhs;
 						break;
 					case '/':
 						if (rhs == 0)
 							throw DivisionByZero();
 						else
-							_lst.push_front(lhs / rhs);
+							res = lhs / rhs;
 						break;
 				}
+				if (res < std::numeric_limits<int>::min() || res > std::numeric_limits<int>::max())
+					throw ExceedsIntLimits();
+				else
+					_stack.push(res);	
 			}
 			else
 				throw NotEnoughValues();
@@ -117,11 +122,11 @@ void	RPN::do_ope(std::string const &str)
 	}
 }
 
-void	RPN::print_res()
+void	RPN::printRes()
 {
-	if (_lst.empty())
-		throw Emptylist();
-	else if (_lst.size() != 1)
+	if (_stack.empty())
+		throw EmptyStack();
+	else if (_stack.size() != 1)
 		throw TooManyValues();
-	std::cout << _lst.front() << std::endl;
+	std::cout << _stack.top() << std::endl;
 }

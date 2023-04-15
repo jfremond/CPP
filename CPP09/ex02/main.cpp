@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 04:40:27 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/11 06:26:09 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/12 23:23:34 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	main(int argc, char **argv)
 {
 	PmergeMe	seq;
-	std::vector<int>&	vec = seq.getVec();
+	std::vector<int>&	unsorted = seq.getUnsortedVec();
 	try
 	{
 		if (argc <= 2)
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 			{
 				try
 				{
-					vec.push_back(seq.myStod(str));
+					unsorted.push_back(seq.myStod(str));
 				}
 				catch(const std::exception& e)
 				{
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		seq.checkVec();
+		seq.checkUnsortedVec();
 	}
 	catch(const std::exception& e)
 	{

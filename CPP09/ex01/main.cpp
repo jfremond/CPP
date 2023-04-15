@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 05:05:03 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/11 05:45:54 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:07:40 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	RPN	rpn;
 	try
 	{
-		rpn.check_str(argv[1]);
+		rpn.checkStr(argv[1]);
 	}
 	catch(const std::exception& e)
 	{
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		rpn.do_ope(argv[1]);
+		rpn.doOpe(argv[1]);
 	}
 	catch(const std::exception& e)
 	{
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		rpn.print_res();
+		rpn.printRes();
 	}
 	catch(const std::exception& e)
 	{

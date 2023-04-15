@@ -6,13 +6,13 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 19:45:16 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/11 03:47:25 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:34:52 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange()
+BitcoinExchange::BitcoinExchange() : _error(0)
 {
 	_fillData();
 }
@@ -125,8 +125,7 @@ void	BitcoinExchange::parseFile(std::string const &filename)
 		getline(file, line);
 	while (!file.eof())
 	{
-		getline(file, line);
-		if (!file.eof() && !line.empty())
+		if (!line.empty())
 		{
 			date = line.substr(0, 10);
 			line.erase(0, date.length());
@@ -137,6 +136,7 @@ void	BitcoinExchange::parseFile(std::string const &filename)
 			_checkLine(date, delim, value);
 			_printRes(date, value);
 		}
+		getline(file, line);
 		_error = 0;
 	}
 }
