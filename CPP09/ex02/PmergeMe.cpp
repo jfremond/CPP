@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:58:44 by jfremond          #+#    #+#             */
-/*   Updated: 2023/05/02 20:01:47 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/05/02 21:43:14 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,15 @@ void	PmergeMe::_sortVec()
 {
 	std::vector<std::pair<int, int> >	tmp;
 	for (size_t i = 0; i < _unsorted.size(); i += 2)
+	{
+		if (_unsorted.size() % 2 && i == _unsorted.size() - 1)
+			_unsorted[i + 1] = -1;
 		tmp.push_back(std::make_pair(_unsorted[i], _unsorted[i + 1]));
+	}
 	std::vector<std::pair<int, int> >::iterator	itt;
 	for (itt = tmp.begin(); itt != tmp.end(); ++itt)
 	{
-		if (itt != tmp.end() - 1)
+		if (itt->second != -1)
 		{
 			if (itt->first > itt->second)
 				std::swap(itt->first, itt->second);
@@ -128,11 +132,15 @@ void	PmergeMe::_sortDeq()
 {
 	std::deque<std::pair<int, int> >	tmp;
 	for (size_t i = 0; i < _unsorted.size(); i += 2)
+	{
+		if (_unsorted.size() % 2 && i == _unsorted.size() - 1)
+			_unsorted[i + 1] = -1;
 		tmp.push_back(std::make_pair(_unsorted[i], _unsorted[i + 1]));
+	}	
 	std::deque<std::pair<int, int> >::iterator	itt;
 	for (itt = tmp.begin(); itt != tmp.end(); ++itt)
 	{
-		if (itt != tmp.end() - 1)
+		if (itt->second != -1)
 		{
 			if (itt->first > itt->second)
 				std::swap(itt->first, itt->second);
