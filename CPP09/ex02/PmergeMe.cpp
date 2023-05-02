@@ -6,7 +6,7 @@
 /*   By: jfremond <jfremond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 18:58:44 by jfremond          #+#    #+#             */
-/*   Updated: 2023/04/13 17:48:08 by jfremond         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:01:47 by jfremond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	PmergeMe::_sortVec()
 	std::vector<std::pair<int, int> >::iterator	itt;
 	for (itt = tmp.begin(); itt != tmp.end(); ++itt)
 	{
-		if (itt->second)
+		if (itt != tmp.end() - 1)
 		{
 			if (itt->first > itt->second)
 				std::swap(itt->first, itt->second);
@@ -132,7 +132,7 @@ void	PmergeMe::_sortDeq()
 	std::deque<std::pair<int, int> >::iterator	itt;
 	for (itt = tmp.begin(); itt != tmp.end(); ++itt)
 	{
-		if (itt->second)
+		if (itt != tmp.end() - 1)
 		{
 			if (itt->first > itt->second)
 				std::swap(itt->first, itt->second);
